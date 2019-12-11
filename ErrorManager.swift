@@ -46,38 +46,38 @@ import Foundation
 
 struct ErrorManager {
     
-    static func errorHandler(_ errorType: ErrorType) -> String {
-        switch errorType {
-        case .model(let errorModel):
-            //уточнить у бэка какие ошибки будут на этапе авторизации и в соответствии этого изменить блок ниже
-            if let msg = errorModel.message, let key = errorModel.code {
-                switch msg {
-                case "required":
-                    return "Field \(key) are required!"
-                case "invalid":
-                    return "The username or password you entered is incorrect."
-                case "exists":
-                    return "This email already exists."
-                case "too_short":
-                    return "Password must be at least 8 symbols."
-                default:
-                    return "Server error"
-                }
-            } else {
-                return "Server error"
-            }
-        case .string(let errorString):
-            switch errorString {
-            case "internal_server_error":
-                return "Internal Server Error"
-            default:
-                return errorString
-            }
-            
-        case .stringArray(let errorStringArray):
-            return errorStringArray.first ?? "Server error"
-        }
-    }
+//    static func errorHandler(_ errorType: ErrorType) -> String {
+//        switch errorType {
+//        case .model(let errorModel):
+//            //уточнить у бэка какие ошибки будут на этапе авторизации и в соответствии этого изменить блок ниже
+//            if let msg = errorModel.message, let key = errorModel.code {
+//                switch msg {
+//                case "required":
+//                    return "Field \(key) are required!"
+//                case "invalid":
+//                    return "The username or password you entered is incorrect."
+//                case "exists":
+//                    return "This email already exists."
+//                case "too_short":
+//                    return "Password must be at least 8 symbols."
+//                default:
+//                    return "Server error"
+//                }
+//            } else {
+//                return "Server error"
+//            }
+//        case .string(let errorString):
+//            switch errorString {
+//            case "internal_server_error":
+//                return "Internal Server Error"
+//            default:
+//                return errorString
+//            }
+//            
+//        case .stringArray(let errorStringArray):
+//            return errorStringArray.first ?? "Server error"
+//        }
+//    }
     
     static func decodingError(_ error: Error) -> String {
         var errorText = ""
@@ -115,7 +115,7 @@ enum GeneralError: Error {
     case noSuccessKey
     case network
     case remoteServer
-    case errorType(ErrorType)
+    case errorType(ErrorModel)//errorType(ErrorType)
     case decodingError(Error)
     case simpleError(Error)
     
@@ -134,7 +134,7 @@ enum GeneralError: Error {
         case .remoteServer:
             return "Remote server error"
         case .errorType(let errorType):
-            return ErrorManager.errorHandler(errorType)
+            return "errorType" //ErrorManager.errorHandler(errorType)
         case .decodingError(let error):
             return ErrorManager.decodingError(error)
         case .simpleError(let error):
@@ -143,32 +143,32 @@ enum GeneralError: Error {
     }
 }
 
-//ErrorModel
-import Foundation
-
-struct ErrorModel: Decodable {
-    var code: Int?
-    var message: String?
-}
-
-enum ErrorType: Decodable {
-    
-    case model(errorModel: ErrorModel), string(errorString: String), stringArray(errorStringArray: [String])
-    
-    init(from decoder: Decoder) throws {
-        if let model = try? decoder.singleValueContainer().decode(ErrorModel.self) {
-            self = .model(errorModel: model)
-            return
-        }
-        if let string = try? decoder.singleValueContainer().decode(String.self) {
-            self = .string(errorString: string)
-            return
-        }
-        if let stringArray = try? decoder.singleValueContainer().decode([String].self) {
-            self = .stringArray(errorStringArray: stringArray)
-            return
-        }
-        throw GeneralError.missingValue
-    }
-}
+////ErrorModel
+//import Foundation
+//
+//struct ErrorModel: Decodable {
+//    var code: Int?
+//    var message: String?
+//}
+//
+//enum ErrorType: Decodable {
+//
+//    case model(errorModel: ErrorModel), string(errorString: String), stringArray(errorStringArray: [String])
+//
+//    init(from decoder: Decoder) throws {
+//        if let model = try? decoder.singleValueContainer().decode(ErrorModel.self) {
+//            self = .model(errorModel: model)
+//            return
+//        }
+//        if let string = try? decoder.singleValueContainer().decode(String.self) {
+//            self = .string(errorString: string)
+//            return
+//        }
+//        if let stringArray = try? decoder.singleValueContainer().decode([String].self) {
+//            self = .stringArray(errorStringArray: stringArray)
+//            return
+//        }
+//        throw GeneralError.missingValue
+//    }
+//}
 

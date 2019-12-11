@@ -15,8 +15,4 @@ public class FTAuthLogoutBtn: UIButton {
     public static func logout() {
         print("logout")
     }
-    
-    @IBAction public override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        
-    }
 }

@@ -10,6 +10,11 @@ import Foundation
 
 public class FTAuth {
     
+    let presenter = Presenter()
+    
+    public static func login(_ email: String, _ password: String) {
+        Presenter().auth(email, password)
+    }
     
     
 }
