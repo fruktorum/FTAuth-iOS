@@ -1,6 +1,0 @@
-framework module Pods_FTAuth {
-  umbrella header "Pods-FTAuth-umbrella.h"
-
-  export *
-  module * { export * }
-}
