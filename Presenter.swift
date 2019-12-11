@@ -14,6 +14,14 @@ class Presenter: NSObject {
         postAuth(email, password)
     }
     
+    func registration(_ email: String, _ password: String) {
+        postRegistration(email, password)
+    }
+    
+    func logout() {
+        postLogout()
+    }
+    
     private func postAuth(_ email: String, _ password: String) {
         APIAuth.Email.auth(email, password).responseSimpleData { (data, error) in
             if let error = error {
@@ -24,8 +32,11 @@ class Presenter: NSObject {
                     case true:
                         guard let session_token = responseModel.session_token else { return }
                     case false:
-                        let errorMsg = responseModel.errors
-                        errorMsg?.forEach { error in
+//                        if let errorType = responseModel.errors {
+//                            print(GeneralError.errorType(errorType).msg)
+//                        }
+                        let errors = responseModel.errors
+                        errors?.forEach { error in
                             print("Error: \(error.key == nil ? "" : "\n key: \(error.key!)") \(error.message == nil ? "" : "\n message: \(error.message!)")")
                         }
 //                        showError(message: errorMsg ?? "Server error")
@@ -38,75 +49,104 @@ class Presenter: NSObject {
             }
         }
     }
-    
-    func registration(_ email: String, _ password: String) {
-            postRegistration(email, password)
-        }
         
-        private func postRegistration(_ email: String, _ password: String) {
-            APIAuth.Email.register(email, password).responseSimpleData { (data, error) in
-                if let error = error {
-    //                showError(message: error.localizedDescription)
-                } else if let data = data {
-                    if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
-                        switch responseModel.success {
-                        case true:
-                            guard let session_token = responseModel.session_token else { return }
-                        case false:
-                            let errorMsg = responseModel.errors
-                            errorMsg?.forEach { error in
-                                print("Error: \(error.key == nil ? "" : "\n key: \(error.key!)") \(error.message == nil ? "" : "\n message: \(error.message!)")")
-                            }
-    //                        showError(message: errorMsg ?? "Server error")
-                        default:
-                            break
+    private func postRegistration(_ email: String, _ password: String) {
+        APIAuth.Email.register(email, password).responseSimpleData { (data, error) in
+            if let error = error {
+//                showError(message: error.localizedDescription)
+            } else if let data = data {
+                if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
+                    switch responseModel.success {
+                    case true:
+                        guard let session_token = responseModel.session_token else { return }
+                    case false:
+//                        if let errorType = responseModel.errors {
+//                            print(GeneralError.errorType(errorType).msg)
+//                        }
+                        let errors = responseModel.errors
+                        errors?.forEach { error in
+                            print("Error: \(error.key == nil ? "" : "\n key: \(error.key!)") \(error.message == nil ? "" : "\n message: \(error.message!)")")
                         }
-                    } else {
-    //                    showError(message: "Decoding json error")
+//                        showError(message: errorMsg ?? "Server error")
+                    default:
+                        break
                     }
+                } else {
+//                    showError(message: "Decoding json error")
                 }
             }
         }
-}
-
-
-
-extension NSObject {
-    
-    func showHandlerError(_ error: Error) {
-//        ErrorChecker.shared.error.accept(error)
+    }
         
-//        if let error = self as? GeneralError {
-//            self.showError(message: error.msg)
-//        } else {
-//            self.showError(message: error.localizedDescription)
-//        }
+    private func postLogout() {
+        APIAuth.Session.logout.responseSimpleData { (data, error) in
+            if let error = error {
+//                showError(message: error.localizedDescription)
+            } else if let data = data {
+                if let responseModel = try? JSONDecoder().decode(ResponseModel.self, from: data) {
+                    switch responseModel.success {
+                    case true:
+                        print("Success logout")
+                    case false:
+                        if let errorType = responseModel.errors {
+                            print("Error: \n\(GeneralError.errorType(errorType).msg)")
+                        }
+//                        showError(message: errorMsg ?? "Server error")
+                    default:
+                        break
+                    }
+                } else {
+//                    showError(message: "Decoding json error")
+                }
+            }
+        }
     }
 }
 
+
+
+//extension NSObject {
+//    
+//    func showHandlerError(_ error: Error) {
+//        ErrorChecker.shared.error = error
+//        
+////        if let error = self as? GeneralError {
+////            self.showError(message: error.msg)
+////        } else {
+////            self.showError(message: error.localizedDescription)
+////        }
+//    }
+//}
+//
 //class ErrorChecker: NSObject {
 //
 //    static let shared = ErrorChecker()
-//    var error = BehaviorRelay<Error?>(value: nil)
+//    var error: Error? {
+//        didSet {
+//            guard let error = error else { return }
+//            if !self.isShowed {
+//                self.showError(error)
+//            }
+//        }
+//    }
 //    var isShowed = false
-//    let disposeBag = DisposeBag()
 //
 //    private override init() {
 //        super.init()
-//        setupBindings()
+////        setupBindings()
 //    }
 //
-//    private func setupBindings() {
-//        error
-//            .throttle(.seconds(3), scheduler: MainScheduler.instance)
-//            .bind(onNext: { [weak self] error in
-//                guard let `self` = self, let error = error else { return }
-//                if !self.isShowed {
-//                    self.showError(error)
-//                }
-//            })
-//            .disposed(by: disposeBag)
-//    }
+////    private func setupBindings() {
+////        error
+////            .throttle(.seconds(3), scheduler: MainScheduler.instance)
+////            .bind(onNext: { [weak self] error in
+////                guard let `self` = self, let error = error else { return }
+////                if !self.isShowed {
+////                    self.showError(error)
+////                }
+////            })
+////            .disposed(by: disposeBag)
+////    }
 //
 //    private func showError(_ error: Error) {
 //        if let error = error as? GeneralError {
@@ -120,8 +160,8 @@ extension NSObject {
 //        return error == "The Internet connection appears to be offline." ? "Подключение к интернету, похоже, отключено." : error
 //    }
 //}
-
-//NSObject + Alert
+//
+////NSObject + Alert
 //import UIKit
 //
 //extension NSObject {

@@ -20,5 +20,9 @@ public class FTAuth {
         Presenter().registration(email, password)
     }
     
+    public static func logout() {
+        Presenter().logout()
+    }
+    
     
 }

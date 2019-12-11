@@ -19,7 +19,7 @@ extension APIResponse {
         guard let url = URL(string: request.url) else { return }
         var sessionRequest = URLRequest(url: url)
         sessionRequest.httpMethod = request.httpMethod
-        if let httpBody = try? JSONSerialization.data(withJSONObject: request.body, options: []) {
+        if let body = request.body, let httpBody = try? JSONSerialization.data(withJSONObject: body, options: []) {
             sessionRequest.httpBody = httpBody
             sessionRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
@@ -38,7 +38,6 @@ extension APIResponse {
             guard let data = data else { return }
             self.showSuccessLogs(with: data)
             completionHandler(data, error as NSError?)
-            
         }.resume()
     }
     
