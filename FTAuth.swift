@@ -16,5 +16,9 @@ public class FTAuth {
         Presenter().auth(email, password)
     }
     
+    public static func registration(_ email: String, _ password: String) {
+        Presenter().registration(email, password)
+    }
+    
     
 }

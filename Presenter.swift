@@ -38,6 +38,35 @@ class Presenter: NSObject {
             }
         }
     }
+    
+    func registration(_ email: String, _ password: String) {
+            postRegistration(email, password)
+        }
+        
+        private func postRegistration(_ email: String, _ password: String) {
+            APIAuth.Email.register(email, password).responseSimpleData { (data, error) in
+                if let error = error {
+    //                showError(message: error.localizedDescription)
+                } else if let data = data {
+                    if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
+                        switch responseModel.success {
+                        case true:
+                            guard let session_token = responseModel.session_token else { return }
+                        case false:
+                            let errorMsg = responseModel.errors
+                            errorMsg?.forEach { error in
+                                print("Error: \(error.key == nil ? "" : "\n key: \(error.key!)") \(error.message == nil ? "" : "\n message: \(error.message!)")")
+                            }
+    //                        showError(message: errorMsg ?? "Server error")
+                        default:
+                            break
+                        }
+                    } else {
+    //                    showError(message: "Decoding json error")
+                    }
+                }
+            }
+        }
 }
 
 

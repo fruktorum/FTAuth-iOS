@@ -21,6 +21,7 @@ extension APIResponse {
         sessionRequest.httpMethod = request.httpMethod
         if let httpBody = try? JSONSerialization.data(withJSONObject: request.body, options: []) {
             sessionRequest.httpBody = httpBody
+            sessionRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         let session = URLSession.shared
         session.dataTask(with: sessionRequest) { (data, response, error) in
