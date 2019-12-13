@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C922048239FBCDA0083B48A /* APIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C922047239FBCDA0083B48A /* APIUrl.swift */; };
+		4C92204C239FBD360083B48A /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92204B239FBD360083B48A /* APIRequest.swift */; };
+		4C92204E239FBE260083B48A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92204D239FBE260083B48A /* APIResponse.swift */; };
+		4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92204F239FBEBC0083B48A /* ErrorManager.swift */; };
+		4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205223A013CF0083B48A /* APIAuth+Email.swift */; };
+		4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205423A013DC0083B48A /* APIAuth+Logout.swift */; };
+		4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */; };
 		4CCF184023969CE9001846D3 /* FTAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCF183623969CE9001846D3 /* FTAuth.framework */; };
 		4CCF184523969CE9001846D3 /* FTAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF184423969CE9001846D3 /* FTAuthTests.swift */; };
 		4CCF184723969CE9001846D3 /* FTAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CCF183923969CE9001846D3 /* FTAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		647B89C5DDC11DA8B9035D23 /* Pods_FTAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B142392D608CBBC200FC1042 /* Pods_FTAuth.framework */; };
-		A33C8E19239EBA000030032A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C8E18239EBA000030032A /* API.swift */; };
+		A33C8E19239EBA000030032A /* APIAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C8E18239EBA000030032A /* APIAuth.swift */; };
 		A378705B239E6CC5005B057D /* FTAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705A239E6CC5005B057D /* FTAuth.swift */; };
-		A378705F239E6D4F005B057D /* FTAuthLogoutBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705E239E6D4F005B057D /* FTAuthLogoutBtn.swift */; };
+		A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */; };
+		A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E610023A135BC00D4B54A /* ErrorModel.swift */; };
 		A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */; };
-		A3AD8E1E239EBB6500EAD94A /* APIAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD8E1D239EBB6500EAD94A /* APIAuth.swift */; };
+		A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */; };
+		A3C6C38723A23FF600FFE5F0 /* String + Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */; };
+		A3C6C3A523A24F9000FFE5F0 /* FTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */; };
+		A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,20 +39,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C922047239FBCDA0083B48A /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
+		4C92204B239FBD360083B48A /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		4C92204D239FBE260083B48A /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		4C92204F239FBEBC0083B48A /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		4C92205223A013CF0083B48A /* APIAuth+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Email.swift"; sourceTree = "<group>"; };
+		4C92205423A013DC0083B48A /* APIAuth+Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Logout.swift"; sourceTree = "<group>"; };
+		4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Facebook.swift"; sourceTree = "<group>"; };
 		4CCF183623969CE9001846D3 /* FTAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FTAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCF183923969CE9001846D3 /* FTAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAuth.h; sourceTree = "<group>"; };
 		4CCF183A23969CE9001846D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CCF183F23969CE9001846D3 /* FTAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FTAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCF184423969CE9001846D3 /* FTAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthTests.swift; sourceTree = "<group>"; };
 		4CCF184623969CE9001846D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96CDA39FBA34A933795D3DAB /* Pods-FTAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FTAuth.debug.xcconfig"; path = "Target Support Files/Pods-FTAuth/Pods-FTAuth.debug.xcconfig"; sourceTree = "<group>"; };
-		A33C8E18239EBA000030032A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		A33C8E18239EBA000030032A /* APIAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuth.swift; sourceTree = "<group>"; };
 		A378705A239E6CC5005B057D /* FTAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuth.swift; sourceTree = "<group>"; };
-		A378705E239E6D4F005B057D /* FTAuthLogoutBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthLogoutBtn.swift; sourceTree = "<group>"; };
+		A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
+		A39E610023A135BC00D4B54A /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		A3AD8E1D239EBB6500EAD94A /* APIAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuth.swift; sourceTree = "<group>"; };
-		B142392D608CBBC200FC1042 /* Pods_FTAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FTAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EEE8BC7A8E2D8B60387C20F0 /* Pods-FTAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FTAuth.release.xcconfig"; path = "Target Support Files/Pods-FTAuth/Pods-FTAuth.release.xcconfig"; sourceTree = "<group>"; };
+		A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorOutput.swift; sourceTree = "<group>"; };
+		A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Validation.swift"; sourceTree = "<group>"; };
+		A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextField.swift; sourceTree = "<group>"; };
+		A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				647B89C5DDC11DA8B9035D23 /* Pods_FTAuth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,19 +82,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C922046239FBCBB0083B48A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4C922047239FBCDA0083B48A /* APIUrl.swift */,
+				A33C8E18239EBA000030032A /* APIAuth.swift */,
+				4C92204B239FBD360083B48A /* APIRequest.swift */,
+				4C92204D239FBE260083B48A /* APIResponse.swift */,
+				4C92205123A013AC0083B48A /* APIAuth */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4C92205123A013AC0083B48A /* APIAuth */ = {
+			isa = PBXGroup;
+			children = (
+				4C92205223A013CF0083B48A /* APIAuth+Email.swift */,
+				4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */,
+				4C92205423A013DC0083B48A /* APIAuth+Logout.swift */,
+			);
+			path = APIAuth;
+			sourceTree = "<group>";
+		};
 		4CCF182C23969CE9001846D3 = {
 			isa = PBXGroup;
 			children = (
-				A378705E239E6D4F005B057D /* FTAuthLogoutBtn.swift */,
 				A378705A239E6CC5005B057D /* FTAuth.swift */,
+				A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */,
+				A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */,
+				A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */,
 				A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */,
-				A33C8E18239EBA000030032A /* API.swift */,
-				A3AD8E1D239EBB6500EAD94A /* APIAuth.swift */,
+				4C92204F239FBEBC0083B48A /* ErrorManager.swift */,
+				A39E60FD23A1359800D4B54A /* Models */,
+				4C922046239FBCBB0083B48A /* API */,
 				4CCF183823969CE9001846D3 /* FTAuth */,
 				4CCF184323969CE9001846D3 /* FTAuthTests */,
 				4CCF183723969CE9001846D3 /* Products */,
-				9EA6AA0EEA3AA8590A01F5FC /* Pods */,
-				A900D37D0508A24DA75E43C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,21 +148,22 @@
 			path = FTAuthTests;
 			sourceTree = "<group>";
 		};
-		9EA6AA0EEA3AA8590A01F5FC /* Pods */ = {
+		A39E60FD23A1359800D4B54A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				96CDA39FBA34A933795D3DAB /* Pods-FTAuth.debug.xcconfig */,
-				EEE8BC7A8E2D8B60387C20F0 /* Pods-FTAuth.release.xcconfig */,
+				A3C6C3A323A24F7000FFE5F0 /* CustomUI */,
+				A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */,
+				A39E610023A135BC00D4B54A /* ErrorModel.swift */,
 			);
-			path = Pods;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		A900D37D0508A24DA75E43C4 /* Frameworks */ = {
+		A3C6C3A323A24F7000FFE5F0 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
-				B142392D608CBBC200FC1042 /* Pods_FTAuth.framework */,
+				A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */,
 			);
-			name = Frameworks;
+			path = CustomUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +184,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CCF184A23969CE9001846D3 /* Build configuration list for PBXNativeTarget "FTAuth" */;
 			buildPhases = (
-				02CF5264357BE8B13ED9FA22 /* [CP] Check Pods Manifest.lock */,
 				4CCF183123969CE9001846D3 /* Headers */,
 				4CCF183223969CE9001846D3 /* Sources */,
 				4CCF183323969CE9001846D3 /* Frameworks */,
@@ -231,41 +271,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		02CF5264357BE8B13ED9FA22 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FTAuth-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		4CCF183223969CE9001846D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A378705F239E6D4F005B057D /* FTAuthLogoutBtn.swift in Sources */,
-				A33C8E19239EBA000030032A /* API.swift in Sources */,
-				A3AD8E1E239EBB6500EAD94A /* APIAuth.swift in Sources */,
+				A3C6C38723A23FF600FFE5F0 /* String + Validation.swift in Sources */,
+				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
+				A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */,
+				A33C8E19239EBA000030032A /* APIAuth.swift in Sources */,
+				4C922048239FBCDA0083B48A /* APIUrl.swift in Sources */,
+				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
+				A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */,
+				4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */,
+				4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */,
+				4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */,
+				A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */,
 				A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */,
+				4C92204C239FBD360083B48A /* APIRequest.swift in Sources */,
 				A378705B239E6CC5005B057D /* FTAuth.swift in Sources */,
+				4C92204E239FBE260083B48A /* APIResponse.swift in Sources */,
+				A3C6C3A523A24F9000FFE5F0 /* FTTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +436,6 @@
 		};
 		4CCF184B23969CE9001846D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96CDA39FBA34A933795D3DAB /* Pods-FTAuth.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -437,7 +462,6 @@
 		};
 		4CCF184C23969CE9001846D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEE8BC7A8E2D8B60387C20F0 /* Pods-FTAuth.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

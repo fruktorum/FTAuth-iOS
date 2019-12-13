@@ -7,180 +7,191 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 
-class Presenter: NSObject {
+public class Presenter: NSObject {
     
-    var tokens = BehaviorRelay<AuthTokenModel?>(value: nil)
-    let disposeBag = DisposeBag()
-    
-    func auth(_ email: String, password: String) {
-        
+    func auth(_ email: String, _ password: String, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        postAuth(email, password, completionError)
     }
     
-    func requestRegistration(_ email: String, _ password: String) {
-        registration(email, password)
+    func registration(_ email: String, _ password: String, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        postRegistration(email, password, completionError)
     }
     
-    func logout() {
-        
+    func logout(completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
+        postLogout(completionError)
     }
     
-    private func registration(_ email: String, _ password: String) {
-        postRegistration(email, password)
-            .takeUntil(rx.deallocated)
-            .subscribeOn(ConcurrentMainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                guard let `self` = self else { return }
-                self.tokens.accept($0)
-                }, onError: { error in
-                    self.showHandlerError(error)
-            }).disposed(by: disposeBag)
-    }
-    
-    private func postRegistration(_ email: String, _ password: String) -> Observable<AuthTokenModel?> {
-        return Observable<AuthTokenModel?>.create({ (observer) -> Disposable in
-            return API.Auth.authorization(email, password).responseSimpleData()
-                .subscribe(onNext: { data in
-                    do {
-                        let responseModel = try JSONDecoder().decode(AuthTokenResponseModel.self, from: data)
-                        guard let success = responseModel.success else {
-                            observer.onError(GeneralError.noSuccessKey)
-                            return }
-                        if success {
-                            guard  let deviceToken = responseModel.device_token, let smsToken = responseModel.sms_token else { return }
-                            let tokens = AuthTokenModel(deviceToken: deviceToken, smsToken: smsToken)
-                            observer.onNext(tokens)
-                        } else if let errorType = responseModel.error {
-                            observer.onError(GeneralError.errorType(errorType))
-                        }
-                        observer.onCompleted()
-                    } catch let error {
-                        observer.onError(GeneralError.simpleError(error))
-                        observer.onCompleted()
+    private func postAuth(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        APIAuth.Email.auth(email, password).responseSimpleData { (data, error) in
+            if let error = error {
+                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
+            } else if let data = data {
+                if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
+                    switch responseModel.success {
+                    case true:
+                        guard let session_token = responseModel.session_token else { return }
+                    case false:
+//                        if let errorType = responseModel.errors {
+//                            print(GeneralError.errorType(errorType).msg)
+//                        }
+                        let errors = responseModel.errors
+                        completionError(errors)
+                    default:
+                        break
                     }
-                }, onError: { error in
-                    observer.onError(GeneralError.simpleError(error))
-                    observer.onCompleted()
-                })
-        })
-    }
-}
-
-
-import Foundation
-
-class AuthTokenResponseModel: Decodable {
-    var success: Bool?
-    var error: ErrorType?
-    var device_token: String?
-    var sms_token: String?
-}
-
-class AuthTokenModel {
-    var deviceToken: String
-    var smsToken: String
-    
-    init(deviceToken: String, smsToken: String) {
-        self.deviceToken = deviceToken
-        self.smsToken = smsToken
-    }
-}
-
-
-
-extension NSObject {
-    
-    func showHandlerError(_ error: Error) {
-        ErrorChecker.shared.error.accept(error)
-        
-//        if let error = self as? GeneralError {
-//            self.showError(message: error.msg)
-//        } else {
-//            self.showError(message: error.localizedDescription)
-//        }
-    }
-}
-
-import RxSwift
-import RxCocoa
-
-class ErrorChecker: NSObject {
-    
-    static let shared = ErrorChecker()
-    var error = BehaviorRelay<Error?>(value: nil)
-    var isShowed = false
-    let disposeBag = DisposeBag()
-    
-    private override init() {
-        super.init()
-        setupBindings()
-    }
-    
-    private func setupBindings() {
-        error
-            .throttle(.seconds(3), scheduler: MainScheduler.instance)
-            .bind(onNext: { [weak self] error in
-                guard let `self` = self, let error = error else { return }
-                if !self.isShowed {
-                    self.showError(error)
+                } else {
+                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
                 }
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func showError(_ error: Error) {
-        if let error = error as? GeneralError {
-            self.showError(message: checkNetworkConnected(error.msg))
-        } else {
-            self.showError(message: checkNetworkConnected(error.localizedDescription))
+            }
         }
     }
-    
-    private func checkNetworkConnected(_ error: String) -> String {
-        return error == "The Internet connection appears to be offline." ? "Подключение к интернету, похоже, отключено." : error
-    }
-}
-
-//NSObject + Alert
-import UIKit
-
-extension NSObject {
-    
-    func showSuccess(message: String) {
-        let alert = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
+        
+    private func postRegistration(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        APIAuth.Email.register(email, password).responseSimpleData { (data, error) in
+            if let error = error {
+                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
+            } else if let data = data {
+                if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
+                    switch responseModel.success {
+                    case true:
+                        guard let session_token = responseModel.session_token else { return }
+                    case false:
+//                        if let errorType = responseModel.errors {
+//                            print(GeneralError.errorType(errorType).msg)
+//                        }
+                        let errors = responseModel.errors
+                        completionError(errors)
+                    default:
+                        break
+                    }
+                } else {
+                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
+                }
             }
-            topController.present(alert, animated: true, completion: nil)
-        }                       
-    }
-    
-    func showError(message: String) {
-        ErrorChecker.shared.isShowed = true
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-            ErrorChecker.shared.isShowed = false
-        }))
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            topController.present(alert, animated: true, completion: nil)
         }
     }
-    
-    func showMessage(title: String, message: String, _ handler: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in handler?() }))
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
+        
+    private func postLogout(_ completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
+        APIAuth.Session.logout.responseSimpleData { (data, error) in
+            if let error = error {
+                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
+            } else if let data = data {
+                if let responseModel = try? JSONDecoder().decode(ResponseModel.self, from: data) {
+                    switch responseModel.success {
+                    case true:
+                        print("Success logout")
+                    case false:
+                        if let errorType = responseModel.errors {
+                            completionError([ErrorModel(key: nil, message: GeneralError.errorType(errorType).msg)])
+                        }
+                    default:
+                        break
+                    }
+                } else {
+                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
+                }
             }
-            topController.present(alert, animated: true, completion: nil)
         }
     }
 }
+
+
+
+//extension NSObject {
+//    
+//    func showHandlerError(_ error: Error) {
+//        ErrorChecker.shared.error = error
+//        
+////        if let error = self as? GeneralError {
+////            self.showError(message: error.msg)
+////        } else {
+////            self.showError(message: error.localizedDescription)
+////        }
+//    }
+//}
+//
+//class ErrorChecker: NSObject {
+//
+//    static let shared = ErrorChecker()
+//    var error: Error? {
+//        didSet {
+//            guard let error = error else { return }
+//            if !self.isShowed {
+//                self.showError(error)
+//            }
+//        }
+//    }
+//    var isShowed = false
+//
+//    private override init() {
+//        super.init()
+////        setupBindings()
+//    }
+//
+////    private func setupBindings() {
+////        error
+////            .throttle(.seconds(3), scheduler: MainScheduler.instance)
+////            .bind(onNext: { [weak self] error in
+////                guard let `self` = self, let error = error else { return }
+////                if !self.isShowed {
+////                    self.showError(error)
+////                }
+////            })
+////            .disposed(by: disposeBag)
+////    }
+//
+//    private func showError(_ error: Error) {
+//        if let error = error as? GeneralError {
+//            self.showError(message: checkNetworkConnected(error.msg))
+//        } else {
+//            self.showError(message: checkNetworkConnected(error.localizedDescription))
+//        }
+//    }
+//
+//    private func checkNetworkConnected(_ error: String) -> String {
+//        return error == "The Internet connection appears to be offline." ? "Подключение к интернету, похоже, отключено." : error
+//    }
+//}
+//
+////NSObject + Alert
+//import UIKit
+//
+//extension NSObject {
+//
+//    func showSuccess(message: String) {
+//        let alert = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
+//        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+//            while let presentedViewController = topController.presentedViewController {
+//                topController = presentedViewController
+//            }
+//            topController.present(alert, animated: true, completion: nil)
+//        }
+//    }
+//
+//    func showError(message: String) {
+//        ErrorChecker.shared.isShowed = true
+//        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+//            ErrorChecker.shared.isShowed = false
+//        }))
+//        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+//            while let presentedViewController = topController.presentedViewController {
+//                topController = presentedViewController
+//            }
+//            topController.present(alert, animated: true, completion: nil)
+//        }
+//    }
+//
+//    func showMessage(title: String, message: String, _ handler: (() -> Void)? = nil) {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in handler?() }))
+//        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+//            while let presentedViewController = topController.presentedViewController {
+//                topController = presentedViewController
+//            }
+//            topController.present(alert, animated: true, completion: nil)
+//        }
+//    }
+//}
