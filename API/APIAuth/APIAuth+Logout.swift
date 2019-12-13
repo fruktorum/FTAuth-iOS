@@ -13,8 +13,7 @@ extension APIAuth.Session: APIResponse {
     var request: APIRequest {
             return APIRequest.createRequest(
                 url: path,
-                httpMethod: .post)//,
-    //            body: body)
+                httpMethod: .post)
         }
 
     var path: String {
@@ -22,14 +21,5 @@ extension APIAuth.Session: APIResponse {
         case .logout:
             return "\(AUTH_SERVER_URL)/session/logout"
     }
-
-//    var body: [String: AnyObject] {
-//        switch self {
-//        case .logout:
-//            return [
-//                "email": email as AnyObject,
-//                "password": password as AnyObject
-//            ] as [String: AnyObject]
-//        }
     }
 }

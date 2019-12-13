@@ -7,7 +7,6 @@
 //
 
 //NSError+ConsoleOutput
-
 import Foundation
 
 extension Error {
@@ -145,11 +144,6 @@ enum GeneralError: Error {
 
 //ErrorModel
 import Foundation
-
-//struct ErrorModel: Decodable {
-//    var code: Int?
-//    var message: String?
-//}
 
 enum ErrorType: Decodable {
 

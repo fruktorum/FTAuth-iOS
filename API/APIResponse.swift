@@ -25,16 +25,19 @@ extension APIResponse {
         }
         let session = URLSession.shared
         session.dataTask(with: sessionRequest) { (data, response, error) in
-            if let response = response {
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("StatusCode: \(httpResponse.statusCode)")
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                    self.showFailureLogs(with: error)
                 }
-                print("Response: \(response)")
+                return
             }
-            if let error = error {
-                print("Error: \(error)")
-                self.showFailureLogs(with: error)
+            if let httpResponse = response as? HTTPURLResponse {
+                print("StatusCode: \(httpResponse.statusCode)")
+                // ошибку всегда выводим алертом, если она не от сервера
             }
+            print("Response: \(response)")
+            
             guard let data = data else { return }
             self.showSuccessLogs(with: data)
             completionHandler(data, error as NSError?)

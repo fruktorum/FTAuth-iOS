@@ -7,22 +7,42 @@
 //
 
 import Foundation
+import UIKit
 
-public class FTAuth {
+public class FTAuth: NSObject {
     
-    let presenter = Presenter()
+    public static var emailTextField: FTEmailTextField?
+    public static var passwordTextField: FTPasswordTextField?
     
-    public static func login(_ email: String, _ password: String) {
-        Presenter().auth(email, password)
+    static public let textFieldDelegate = FTTextFieldDelegate()
+    static let presenter = Presenter()
+    
+    static public var errorOutputType: ErrorOutputType? = .log
+//    static public var verticalLocationOfDescription: CGFloat? {
+//        didSet {
+//            emailTextField?.verticalLocationOfDescription = verticalLocationOfDescription
+//        }
+//    }
+    
+    static public func login(_ email: String, _ password: String) {
+        print("emailTextField?.text\(emailTextField?.text)")
+        print("passwordTextField?.text\(passwordTextField?.text)")
+        if let email = emailTextField?.text, email.isValidEmail, let password = passwordTextField?.text, !password.isEmpty {
+            presenter.auth(email, password, completionError: { errorMessage in
+                showError(message: errorMessage, outputType: errorOutputType)
+            })
+        }
     }
     
-    public static func registration(_ email: String, _ password: String) {
-        Presenter().registration(email, password)
+    static public func registration(_ email: String, _ password: String) {
+        presenter.registration(email, password, completionError: { errorMessage in
+            showError(message: errorMessage, outputType: errorOutputType)
+        })
     }
     
-    public static func logout() {
-        Presenter().logout()
+    static public func logout() {
+        presenter.logout(completionError: { errorMessage in
+            showError(message: errorMessage, outputType: errorOutputType)
+        })
     }
-    
-    
 }
