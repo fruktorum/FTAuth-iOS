@@ -18,31 +18,28 @@ public class FTAuth: NSObject {
     static let presenter = Presenter()
     
     static public var errorOutputType: ErrorOutputType? = .log
-//    static public var verticalLocationOfDescription: CGFloat? {
-//        didSet {
-//            emailTextField?.verticalLocationOfDescription = verticalLocationOfDescription
-//        }
-//    }
     
-    static public func login(_ email: String, _ password: String) {
-        print("emailTextField?.text\(emailTextField?.text)")
-        print("passwordTextField?.text\(passwordTextField?.text)")
+    static public func login() {
         if let email = emailTextField?.text, email.isValidEmail, let password = passwordTextField?.text, !password.isEmpty {
-            presenter.auth(email, password, completionError: { errorMessage in
-                showError(message: errorMessage, outputType: errorOutputType)
+            presenter.auth(email, password, completionError: { errors in
+                showError(errors: errors, outputType: errorOutputType)
             })
         }
     }
     
-    static public func registration(_ email: String, _ password: String) {
-        presenter.registration(email, password, completionError: { errorMessage in
-            showError(message: errorMessage, outputType: errorOutputType)
-        })
+    static public func registration() {
+        if let email = emailTextField?.text, email.isValidEmail, let password = passwordTextField?.text, !password.isEmpty {
+            presenter.registration(email, password, completionError: { errors in
+                showError(errors: errors, outputType: errorOutputType)
+            })
+        }
     }
     
     static public func logout() {
-        presenter.logout(completionError: { errorMessage in
-            showError(message: errorMessage, outputType: errorOutputType)
+        presenter.logout(completionError: { errors in
+            showError(errors: errors, outputType: errorOutputType)
         })
     }
+    
+    //MARK: DESIGN
 }

@@ -11,12 +11,10 @@ import UIKit
 public class FTTextField: UITextField {
     
     public var descriptionLbl = UILabel()
-    
-    public var verticalLocationOfDescription: CGFloat? {
-        didSet {
-            setConstraints()
-        }
-    }
+    var horizontalConstraint = NSLayoutConstraint()
+    var verticalConstraint = NSLayoutConstraint()
+    var widthConstraint = NSLayoutConstraint()
+    var heightConstraint = NSLayoutConstraint()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,47 +22,28 @@ public class FTTextField: UITextField {
         descriptionLbl.font = self.font
         descriptionLbl.textColor = .red
         descriptionLbl.textAlignment = .left
-        setConstraints()
         self.addSubview(descriptionLbl)
+        addConstraints()
     }
             
-    func setConstraints() {
+    func addConstraints() {
         descriptionLbl.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = NSLayoutConstraint(item: descriptionLbl,
-                                                      attribute: NSLayoutConstraint.Attribute.centerX,
-                                                      relatedBy: NSLayoutConstraint.Relation.equal,
-                                                      toItem: self,
-                                                      attribute: NSLayoutConstraint.Attribute.centerX,
-                                                      multiplier: 1,
-                                                      constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: descriptionLbl,
-                                                    attribute: NSLayoutConstraint.Attribute.centerY,
-                                                    relatedBy: NSLayoutConstraint.Relation.equal,
-                                                    toItem: self,
-                                                    attribute: NSLayoutConstraint.Attribute.centerY,
-                                                    multiplier: 1,
-                                                    constant: verticalLocationOfDescription ?? self.frame.height)
-        let widthConstraint = NSLayoutConstraint(item: descriptionLbl,
-                                                 attribute: NSLayoutConstraint.Attribute.width,
-                                                 relatedBy: NSLayoutConstraint.Relation.equal,
-                                                 toItem: nil,
-                                                 attribute: NSLayoutConstraint.Attribute.notAnAttribute,
-                                                 multiplier: 1,
-                                                 constant: self.frame.width)
-        let heightConstraint = NSLayoutConstraint(item: descriptionLbl,
-                                                  attribute: NSLayoutConstraint.Attribute.height,
-                                                  relatedBy: NSLayoutConstraint.Relation.equal,
-                                                  toItem: nil,
-                                                  attribute: NSLayoutConstraint.Attribute.notAnAttribute,
-                                                  multiplier: 1,
-                                                  constant: self.frame.height)
-        self.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        horizontalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+        setVerticalLocationOfDescription(nil)
+        widthConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: self.frame.width)
+        heightConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: self.frame.height)
+        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+    }
+    
+    public func setVerticalLocationOfDescription(_ verticalLocationOfDescription: CGFloat?) {
+        NSLayoutConstraint.deactivate([verticalConstraint])
+        verticalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: verticalLocationOfDescription ?? self.frame.height)
+        NSLayoutConstraint.activate([verticalConstraint])
     }
         
     
     
     func checkValidTextField() {
-        setConstraints()
         let text = "The field cannot be empty"
         self.descriptionLbl.text = text
         self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
@@ -77,16 +56,25 @@ public class FTTextField: UITextField {
 
 public class FTEmailTextField: FTTextField {
     
-    override func checkValidTextField() {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         FTAuth.emailTextField = self
+    }
+    
+    override func checkValidTextField() {
         let text = "Incorrect email"
         self.descriptionLbl.text = text
         self.descriptionLbl.isHidden = self.text?.isValidEmail ?? false
     }
 }
 public class FTPasswordTextField: FTTextField {
-    override func checkValidTextField() {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         FTAuth.passwordTextField = self
+    }
+    
+    override func checkValidTextField() {
         let text = "The password cannot be blank"
         self.descriptionLbl.text = text
         self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)

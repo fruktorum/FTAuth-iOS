@@ -10,22 +10,22 @@ import Foundation
 
 public class Presenter: NSObject {
     
-    func auth(_ email: String, _ password: String, completionError: @escaping (_ error: String) -> Void) {
+    func auth(_ email: String, _ password: String, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         postAuth(email, password, completionError)
     }
     
-    func registration(_ email: String, _ password: String, completionError: @escaping (_ error: String) -> Void) {
+    func registration(_ email: String, _ password: String, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         postRegistration(email, password, completionError)
     }
     
-    func logout(completionError: @escaping (_ error: String) -> Void) {
+    func logout(completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
         postLogout(completionError)
     }
     
-    private func postAuth(_ email: String, _ password: String,_ completionError: @escaping (_ error: String) -> Void) {
+    private func postAuth(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         APIAuth.Email.auth(email, password).responseSimpleData { (data, error) in
             if let error = error {
-                completionError(error.localizedDescription)
+                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
             } else if let data = data {
                 if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
                     switch responseModel.success {
@@ -36,26 +36,21 @@ public class Presenter: NSObject {
 //                            print(GeneralError.errorType(errorType).msg)
 //                        }
                         let errors = responseModel.errors
-                        var errorMessage = ""
-                        errors?.forEach { error in
-                            errorMessage.append("\(error.key == nil ? "" : "key: \(error.key!), ") \(error.message == nil ? "" : "message: \(error.message!)")\n")
-                        }
-                        completionError(errorMessage)
+                        completionError(errors)
                     default:
                         break
                     }
                 } else {
-//                    showError(message: "Decoding json error")
-                    completionError(error?.localizedDescription ?? "Network problem")
+                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
                 }
             }
         }
     }
         
-    private func postRegistration(_ email: String, _ password: String,_ completionError: @escaping (_ error: String) -> Void) {
+    private func postRegistration(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         APIAuth.Email.register(email, password).responseSimpleData { (data, error) in
             if let error = error {
-                completionError(error.localizedDescription)
+                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
             } else if let data = data {
                 if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
                     switch responseModel.success {
@@ -66,27 +61,21 @@ public class Presenter: NSObject {
 //                            print(GeneralError.errorType(errorType).msg)
 //                        }
                         let errors = responseModel.errors
-                        var errorMessage = "Error: "
-                        errors?.forEach { error in
-                            errorMessage.append("\(error.key == nil ? "" : "key: \(error.key!) ") \(error.message == nil ? "" : "message: \(error.message!)")\n")
-                        }
-                            completionError(errorMessage)
+                        completionError(errors)
                     default:
                         break
                     }
                 } else {
-                    completionError(error?.localizedDescription ?? "Network problem")
-//                    showError(message: "Decoding json error")
+                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
                 }
             }
         }
     }
         
-    private func postLogout(_ completionError: @escaping (_ error: String) -> Void) {
+    private func postLogout(_ completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
         APIAuth.Session.logout.responseSimpleData { (data, error) in
             if let error = error {
-                completionError(error.localizedDescription)
-//                showError(message: error.localizedDescription)
+                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
             } else if let data = data {
                 if let responseModel = try? JSONDecoder().decode(ResponseModel.self, from: data) {
                     switch responseModel.success {
@@ -94,15 +83,13 @@ public class Presenter: NSObject {
                         print("Success logout")
                     case false:
                         if let errorType = responseModel.errors {
-                            completionError(GeneralError.errorType(errorType).msg)
+                            completionError([ErrorModel(key: nil, message: GeneralError.errorType(errorType).msg)])
                         }
-//                        showError(message: errorMsg ?? "Server error")
                     default:
                         break
                     }
                 } else {
-                    completionError(error?.localizedDescription ?? "Network problem")
-//                    showError(message: "Decoding json error")
+                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
                 }
             }
         }

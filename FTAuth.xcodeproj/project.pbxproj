@@ -19,7 +19,6 @@
 		4CCF184723969CE9001846D3 /* FTAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CCF183923969CE9001846D3 /* FTAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A33C8E19239EBA000030032A /* APIAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C8E18239EBA000030032A /* APIAuth.swift */; };
 		A378705B239E6CC5005B057D /* FTAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705A239E6CC5005B057D /* FTAuth.swift */; };
-		A378705F239E6D4F005B057D /* FTAuthLogoutBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705E239E6D4F005B057D /* FTAuthLogoutBtn.swift */; };
 		A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */; };
 		A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E610023A135BC00D4B54A /* ErrorModel.swift */; };
 		A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */; };
@@ -55,7 +54,6 @@
 		4CCF184623969CE9001846D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A33C8E18239EBA000030032A /* APIAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuth.swift; sourceTree = "<group>"; };
 		A378705A239E6CC5005B057D /* FTAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuth.swift; sourceTree = "<group>"; };
-		A378705E239E6D4F005B057D /* FTAuthLogoutBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthLogoutBtn.swift; sourceTree = "<group>"; };
 		A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		A39E610023A135BC00D4B54A /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 		4CCF182C23969CE9001846D3 = {
 			isa = PBXGroup;
 			children = (
-				A378705E239E6D4F005B057D /* FTAuthLogoutBtn.swift */,
 				A378705A239E6CC5005B057D /* FTAuth.swift */,
 				A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */,
 				A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */,
@@ -282,7 +279,6 @@
 				A3C6C38723A23FF600FFE5F0 /* String + Validation.swift in Sources */,
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
 				A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */,
-				A378705F239E6D4F005B057D /* FTAuthLogoutBtn.swift in Sources */,
 				A33C8E19239EBA000030032A /* APIAuth.swift in Sources */,
 				4C922048239FBCDA0083B48A /* APIUrl.swift in Sources */,
 				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
