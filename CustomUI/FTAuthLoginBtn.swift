@@ -20,3 +20,17 @@ public class FTAuthLoginBtn: UIButton {
         FTAuth.login()
     }
 }
+
+
+public class FTAuthLogoutBtn: UIButton {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
+    }
+    
+    @objc func touchUpInside(sender: UIButton) {
+        superview?.endEditing(true)
+        FTAuth.logout()
+    }
+}
