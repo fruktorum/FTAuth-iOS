@@ -19,9 +19,10 @@ extension String {
         return true
     }
     
-//    var isValidPassword: Bool {
+    var isValidPassword: Bool {
 //        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*#?&]).{8,}")
 //        return passwordTest.evaluate(with: self)
-//    }
+        return self.count >= 8
+    }
     
 }

@@ -26,6 +26,7 @@
 		A3C6C38723A23FF600FFE5F0 /* String + Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */; };
 		A3C6C3A523A24F9000FFE5F0 /* FTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */; };
 		A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */; };
+		A3D7302123A82E89001F0073 /* FTAuthLoginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Validation.swift"; sourceTree = "<group>"; };
 		A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextField.swift; sourceTree = "<group>"; };
 		A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextFieldDelegate.swift; sourceTree = "<group>"; };
+		A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthLoginBtn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */,
 				A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */,
 				4C92204F239FBEBC0083B48A /* ErrorManager.swift */,
+				A3C6C3A323A24F7000FFE5F0 /* CustomUI */,
 				A39E60FD23A1359800D4B54A /* Models */,
 				4C922046239FBCBB0083B48A /* API */,
 				4CCF183823969CE9001846D3 /* FTAuth */,
@@ -151,7 +154,6 @@
 		A39E60FD23A1359800D4B54A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A3C6C3A323A24F7000FFE5F0 /* CustomUI */,
 				A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */,
 				A39E610023A135BC00D4B54A /* ErrorModel.swift */,
 			);
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */,
+				A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */,
 				4C92204C239FBD360083B48A /* APIRequest.swift in Sources */,
 				A378705B239E6CC5005B057D /* FTAuth.swift in Sources */,
+				A3D7302123A82E89001F0073 /* FTAuthLoginBtn.swift in Sources */,
 				4C92204E239FBE260083B48A /* APIResponse.swift in Sources */,
 				A3C6C3A523A24F9000FFE5F0 /* FTTextField.swift in Sources */,
 			);

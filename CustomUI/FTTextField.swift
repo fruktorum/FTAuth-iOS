@@ -75,11 +75,18 @@ public class FTPasswordTextField: FTTextField {
     }
     
     override func checkValidTextField() {
-        let text = "The password cannot be blank"
-        self.descriptionLbl.text = text
-        self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
+        self.descriptionLbl.isHidden = true
+        if self.text == nil || self.text == "" {
+            self.descriptionLbl.text = "The password cannot be blank"
+            self.descriptionLbl.isHidden = false
+        } else if !(self.text?.isValidPassword ?? false) {
+            self.descriptionLbl.text = "The password must contain at least 8 characters"
+            self.descriptionLbl.isHidden = false
+        }
     }
 }
+
+
 //class FTConfirmPasswordTextField: FTTextField {
 //    override func checkValidTextField() {
 //        let text = "Incorrect email"
@@ -89,3 +96,4 @@ public class FTPasswordTextField: FTTextField {
 //        self.bottomDescription?.isHidden = self.text?.isValidEmail ?? false
 //    }
 //}
+
