@@ -40,12 +40,9 @@ public class FTTextField: UITextField {
         verticalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: verticalLocationOfDescription ?? self.frame.height)
         NSLayoutConstraint.activate([verticalConstraint])
     }
-        
-    
     
     func checkValidTextField() {
-        let text = "The field cannot be empty"
-        self.descriptionLbl.text = text
+        self.descriptionLbl.text = "The field cannot be empty"
         self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
     }
     
@@ -53,47 +50,4 @@ public class FTTextField: UITextField {
         self.descriptionLbl.isHidden = true
     }
 }
-
-public class FTEmailTextField: FTTextField {
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        FTAuth.emailTextField = self
-    }
-    
-    override func checkValidTextField() {
-        let text = "Incorrect email"
-        self.descriptionLbl.text = text
-        self.descriptionLbl.isHidden = self.text?.isValidEmail ?? false
-    }
-}
-public class FTPasswordTextField: FTTextField {
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        FTAuth.passwordTextField = self
-    }
-    
-    override func checkValidTextField() {
-        self.descriptionLbl.isHidden = true
-        if self.text == nil || self.text == "" {
-            self.descriptionLbl.text = "The password cannot be blank"
-            self.descriptionLbl.isHidden = false
-        } else if !(self.text?.isValidPassword ?? false) {
-            self.descriptionLbl.text = "The password must contain at least 8 characters"
-            self.descriptionLbl.isHidden = false
-        }
-    }
-}
-
-
-//class FTConfirmPasswordTextField: FTTextField {
-//    override func checkValidTextField() {
-//        let text = "Incorrect email"
-//        self.topDescription?.text = text
-//        self.bottomDescription?.text = text
-//        self.topDescription?.isHidden = self.text?.isValidEmail ?? false
-//        self.bottomDescription?.isHidden = self.text?.isValidEmail ?? false
-//    }
-//}
 

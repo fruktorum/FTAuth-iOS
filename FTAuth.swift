@@ -15,11 +15,11 @@ public class FTAuth: NSObject {
     public static var passwordTextField: FTPasswordTextField?
     
     public static let textFieldDelegate = FTTextFieldDelegate()
-    static let presenter = Presenter()
     
     public static var errorOutputType: ErrorOutputType? = .log
-    
-    public static func login() {
+    static let presenter = Presenter()
+
+    static func login() {
         emailTextField?.checkValidTextField()
         passwordTextField?.checkValidTextField()
         if let email = emailTextField?.text, email.isValidEmail, let password = passwordTextField?.text, password.isValidPassword {
@@ -29,7 +29,9 @@ public class FTAuth: NSObject {
         }
     }
     
-    public static func registration() {
+    static func registration() {
+        emailTextField?.checkValidTextField()
+        passwordTextField?.checkValidTextField()
         if let email = emailTextField?.text, email.isValidEmail, let password = passwordTextField?.text, password.isValidPassword {
             presenter.registration(email, password, completionError: { errors in
                 showError(errors: errors, outputType: errorOutputType)
@@ -37,11 +39,9 @@ public class FTAuth: NSObject {
         }
     }
     
-    public static func logout() {
+    static func logout() {
         presenter.logout(completionError: { errors in
             showError(errors: errors, outputType: errorOutputType)
         })
     }
-    
-    //MARK: DESIGN
 }

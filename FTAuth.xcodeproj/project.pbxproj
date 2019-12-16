@@ -27,6 +27,8 @@
 		A3C6C3A523A24F9000FFE5F0 /* FTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */; };
 		A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */; };
 		A3D7302123A82E89001F0073 /* FTAuthLoginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */; };
+		A3D7304423A83CBD001F0073 /* FTEmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7304323A83CBD001F0073 /* FTEmailTextField.swift */; };
+		A3D7304623A83CD7001F0073 /* FTPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7304523A83CD7001F0073 /* FTPasswordTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextField.swift; sourceTree = "<group>"; };
 		A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextFieldDelegate.swift; sourceTree = "<group>"; };
 		A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthLoginBtn.swift; sourceTree = "<group>"; };
+		A3D7304323A83CBD001F0073 /* FTEmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEmailTextField.swift; sourceTree = "<group>"; };
+		A3D7304523A83CD7001F0073 /* FTPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPasswordTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */,
+				A3D7304323A83CBD001F0073 /* FTEmailTextField.swift */,
+				A3D7304523A83CD7001F0073 /* FTPasswordTextField.swift */,
 				A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */,
 			);
 			path = CustomUI;
@@ -282,11 +288,13 @@
 				A3C6C38723A23FF600FFE5F0 /* String + Validation.swift in Sources */,
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
 				A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */,
+				A3D7304623A83CD7001F0073 /* FTPasswordTextField.swift in Sources */,
 				A33C8E19239EBA000030032A /* APIAuth.swift in Sources */,
 				4C922048239FBCDA0083B48A /* APIUrl.swift in Sources */,
 				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
 				A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */,
 				4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */,
+				A3D7304423A83CBD001F0073 /* FTEmailTextField.swift in Sources */,
 				4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */,
 				4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */,
 				A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */,
