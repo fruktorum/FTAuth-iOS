@@ -18,7 +18,7 @@ public class FTTextField: UITextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.delegate = FTAuth.textFieldDelegate
+        self.delegate = FTAuth.viewModel.textFieldDelegate
         descriptionLbl.font = self.font
         descriptionLbl.textColor = .red
         descriptionLbl.textAlignment = .left
@@ -41,7 +41,7 @@ public class FTTextField: UITextField {
         NSLayoutConstraint.activate([verticalConstraint])
     }
     
-    func checkValidTextField() {
+    func checkDescriptionValidTextField() {
         self.descriptionLbl.text = "The field cannot be empty"
         self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
     }

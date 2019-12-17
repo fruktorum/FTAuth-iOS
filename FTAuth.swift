@@ -12,6 +12,14 @@ import UIKit
 public class FTAuth: NSObject {
     
     public static var errorOutputType: ErrorOutputType? = .log
+    
+    public static var successAuth: (() -> Void)?
+    public static var successRegistration: (() -> Void)?
+    public static var successLogout: (() -> Void)?
+    
+    public static var failureAuth: (() -> Void)?
+    public static var failureRegistration: (() -> Void)?
+    public static var failureLogout: (() -> Void)?
 
     static var authEmailTF: FTAuthEmailTextField?
     static var authPasswordTF: FTAuthPasswordTextField?
@@ -24,45 +32,27 @@ public class FTAuth: NSObject {
     
     static var registrationCheckerAcceptanceOfTerms: FTCheckerAcceptanceOfTerms?
     
-    static let textFieldDelegate = FTTextFieldDelegate()
+    static let viewModel = FTAuthViewModel()
     static let presenter = Presenter()
     
-    static func cleanAuthTF() {
-        DispatchQueue.main.async {
-            authEmailTF?.text = nil
-            authPasswordTF?.text = nil
-        }
-    }
     
-    static func cleanRegistrationTF() {
-        DispatchQueue.main.async {
-            registrationFullNameTF?.text = nil
-            registrationEmailTF?.text = nil
-            registrationPasswordTF?.text = nil
-            registrationConfirmPasswordTF?.text = nil
-            registrationPhoneTF?.text = nil
-        }
-    }
-
+    
     static func login() {
-        authEmailTF?.checkValidTextField()
-        authPasswordTF?.checkValidTextField()
+        viewModel.checkDescriptionValidAuthTF()
         if let email = authEmailTF?.text,
             email.isValidEmail,
             let password = authPasswordTF?.text,
             password.isValidPassword {
-            
+
                 presenter.auth(email, password, completionError: { errors in
                     showError(errors: errors, outputType: errorOutputType)
+                    failureAuth?()
                 })
         }
     }
-    
+
     static func registration() {
-        registrationEmailTF?.checkValidTextField()
-        registrationPasswordTF?.checkValidTextField()
-        registrationConfirmPasswordTF?.checkValidTextField()
-        registrationFullNameTF?.checkValidTextField()
+        viewModel.checkDescriptionValidRegistrationTF()
         if let email = registrationEmailTF?.text,
             email.isValidEmail,
             let password = registrationPasswordTF?.text,
@@ -73,19 +63,20 @@ public class FTAuth: NSObject {
             registrationCheckerAcceptanceOfTerms?.checked ?? false),
             let name = registrationFullNameTF?.text,
             !name.isEmpty {
-            
+
                 presenter.registration(email, password, name, registrationPhoneTF?.text, completionError: { errors in
-                        showError(errors: errors, outputType: errorOutputType)
-                    })
+                    showError(errors: errors, outputType: errorOutputType)
+                    failureRegistration?()
+                })
         }
     }
-    
+
     static func logout() {
         presenter.logout(completionError: { errors in
             showError(errors: errors, outputType: errorOutputType)
+            failureLogout?()
         })
     }
-    
     
     public static func getSessionToken() -> String? {
         return APIHeader.recieve(key: .session_token)

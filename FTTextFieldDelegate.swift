@@ -12,7 +12,7 @@ public class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let textField = textField as? FTTextField {
-            textField.checkValidTextField()
+            textField.checkDescriptionValidTextField()
         }
     }
     

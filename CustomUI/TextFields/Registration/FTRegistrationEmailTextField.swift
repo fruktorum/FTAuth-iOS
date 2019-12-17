@@ -15,7 +15,7 @@ public class FTRegistrationEmailTextField: FTTextField {
         FTAuth.registrationEmailTF = self
     }
     
-    override func checkValidTextField() {
+    override func checkDescriptionValidTextField() {
         self.descriptionLbl.text = "Incorrect email"
         self.descriptionLbl.isHidden = self.text?.isValidEmail ?? false
     }

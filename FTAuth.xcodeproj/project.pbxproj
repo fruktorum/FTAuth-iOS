@@ -20,6 +20,7 @@
 		A33B9E1623A92FE400269962 /* FTRegistrationFullNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E1523A92FE400269962 /* FTRegistrationFullNameTextField.swift */; };
 		A33B9E1823A9311F00269962 /* FTRegistrationPhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */; };
 		A33B9E2623A9403E00269962 /* APIHeared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E2523A9403E00269962 /* APIHeared.swift */; };
+		A33B9E3A23A986FD00269962 /* FTAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */; };
 		A33C8E19239EBA000030032A /* APIAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C8E18239EBA000030032A /* APIAuth.swift */; };
 		A378705B239E6CC5005B057D /* FTAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705A239E6CC5005B057D /* FTAuth.swift */; };
 		A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */; };
@@ -67,6 +68,7 @@
 		A33B9E1523A92FE400269962 /* FTRegistrationFullNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationFullNameTextField.swift; sourceTree = "<group>"; };
 		A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationPhoneTextField.swift; sourceTree = "<group>"; };
 		A33B9E2523A9403E00269962 /* APIHeared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeared.swift; sourceTree = "<group>"; };
+		A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthViewModel.swift; sourceTree = "<group>"; };
 		A33C8E18239EBA000030032A /* APIAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuth.swift; sourceTree = "<group>"; };
 		A378705A239E6CC5005B057D /* FTAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuth.swift; sourceTree = "<group>"; };
 		A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
@@ -113,8 +115,8 @@
 				A33C8E18239EBA000030032A /* APIAuth.swift */,
 				4C92204B239FBD360083B48A /* APIRequest.swift */,
 				4C92204D239FBE260083B48A /* APIResponse.swift */,
-				4C92205123A013AC0083B48A /* APIAuth */,
 				A33B9E2523A9403E00269962 /* APIHeared.swift */,
+				4C92205123A013AC0083B48A /* APIAuth */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -133,13 +135,13 @@
 			isa = PBXGroup;
 			children = (
 				A378705A239E6CC5005B057D /* FTAuth.swift */,
+				A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */,
 				A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */,
-				A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */,
-				A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */,
 				A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */,
-				4C92204F239FBEBC0083B48A /* ErrorManager.swift */,
+				A33B9E3B23A9873800269962 /* Managers */,
 				A3C6C3A323A24F7000FFE5F0 /* CustomUI */,
 				A39E60FD23A1359800D4B54A /* Models */,
+				A33B9E3C23A9878A00269962 /* Core */,
 				4C922046239FBCBB0083B48A /* API */,
 				4CCF183823969CE9001846D3 /* FTAuth */,
 				4CCF184323969CE9001846D3 /* FTAuthTests */,
@@ -181,6 +183,31 @@
 				A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */,
 			);
 			path = Optional;
+			sourceTree = "<group>";
+		};
+		A33B9E3B23A9873800269962 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */,
+				4C92204F239FBEBC0083B48A /* ErrorManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A33B9E3C23A9878A00269962 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A33B9E3D23A9878F00269962 /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A33B9E3D23A9878F00269962 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A39E60FD23A1359800D4B54A /* Models */ = {
@@ -357,6 +384,7 @@
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
 				A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */,
 				A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */,
+				A33B9E3A23A986FD00269962 /* FTAuthViewModel.swift in Sources */,
 				A33B9E2623A9403E00269962 /* APIHeared.swift in Sources */,
 				A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */,
 				A33C8E19239EBA000030032A /* APIAuth.swift in Sources */,

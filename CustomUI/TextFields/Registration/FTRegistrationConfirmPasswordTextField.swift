@@ -15,7 +15,7 @@ public class FTRegistrationConfirmPasswordTextField: FTTextField {
         FTAuth.registrationConfirmPasswordTF = self
     }
     
-    override func checkValidTextField() {
+    override func checkDescriptionValidTextField() {
         self.descriptionLbl.isHidden = true
         if self.text != FTAuth.registrationPasswordTF?.text {
             self.descriptionLbl.text = "Passwords do not match"

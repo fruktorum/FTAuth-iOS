@@ -15,7 +15,7 @@ public class FTRegistrationPhoneTextField: FTTextField {
         FTAuth.registrationPhoneTF = self
     }
     
-    override func checkValidTextField() {
+    override func checkDescriptionValidTextField() {
 //        self.descriptionLbl.isHidden = true
 //        if self.text == nil || self.text == "" {
 //            self.descriptionLbl.text = "The phone cannot be blank"

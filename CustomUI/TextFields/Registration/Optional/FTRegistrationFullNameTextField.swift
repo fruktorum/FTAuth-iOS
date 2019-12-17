@@ -15,7 +15,7 @@ public class FTRegistrationFullNameTextField: FTTextField {
         FTAuth.registrationFullNameTF = self
     }
     
-    override func checkValidTextField() {
+    override func checkDescriptionValidTextField() {
         self.descriptionLbl.text = "Name cannot be blank"
         self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
     }

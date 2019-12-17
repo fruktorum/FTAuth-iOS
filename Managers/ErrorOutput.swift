@@ -12,7 +12,6 @@ import UIKit
 public enum ErrorOutputType {
     case log
     case alert
-//    case descriptionLabel
 }
 
 enum KeyError: String {
@@ -27,7 +26,8 @@ extension NSObject {
     static func showError(errors: [ErrorModel]?, outputType: ErrorOutputType?) {
         guard let errors = errors else { return }
         errors.forEach { error in
-            if let key = error.key, let keyError = KeyError.init(rawValue: key) {
+            if let key = error.key,
+                let keyError = KeyError.init(rawValue: key) {
                 DispatchQueue.main.async {
                     showInLabel(key: keyError, message: error.message)
                 }

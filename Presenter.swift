@@ -33,7 +33,8 @@ public class Presenter: NSObject {
                         guard let session_token = responseModel.session_token, let provider_token = responseModel.provider_token else { return }
                         APIHeader.save(value: session_token, key: .session_token)
                         APIHeader.save(value: provider_token, key: .provider_token)
-                        FTAuth.cleanAuthTF()
+                        FTAuth.viewModel.cleanAuthTF()
+                        FTAuth.successAuth?()
                     case false:
 //                        if let errorType = responseModel.errors {
 //                            print(GeneralError.errorType(errorType).msg)
@@ -61,7 +62,8 @@ public class Presenter: NSObject {
                         guard let session_token = responseModel.session_token, let provider_token = responseModel.provider_token else { return }
                         APIHeader.save(value: session_token, key: .session_token)
                         APIHeader.save(value: provider_token, key: .provider_token)
-                        FTAuth.cleanRegistrationTF()
+                        FTAuth.viewModel.cleanRegistrationTF()
+                        FTAuth.successRegistration?()
                     case false:
 //                        if let errorType = responseModel.errors {
 //                            print(GeneralError.errorType(errorType).msg)
@@ -88,6 +90,7 @@ public class Presenter: NSObject {
                     case true:
                         print("Success logout")
                         APIHeader.remove()
+                        FTAuth.successLogout?()
                     case false:
                         if let errorType = responseModel.errors {
                             completionError([ErrorModel(key: nil, message: GeneralError.errorType(errorType).msg)])
