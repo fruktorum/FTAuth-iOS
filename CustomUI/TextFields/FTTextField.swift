@@ -50,4 +50,3 @@ public class FTTextField: UITextField {
         self.descriptionLbl.isHidden = true
     }
 }
-

@@ -27,8 +27,13 @@
 		A3C6C3A523A24F9000FFE5F0 /* FTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */; };
 		A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */; };
 		A3D7302123A82E89001F0073 /* FTAuthLoginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */; };
-		A3D7304423A83CBD001F0073 /* FTEmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7304323A83CBD001F0073 /* FTEmailTextField.swift */; };
-		A3D7304623A83CD7001F0073 /* FTPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7304523A83CD7001F0073 /* FTPasswordTextField.swift */; };
+		A3D7304B23A8E175001F0073 /* FTAuthPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7304A23A8E175001F0073 /* FTAuthPasswordTextField.swift */; };
+		A3D7304D23A8E186001F0073 /* FTAuthEmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7304C23A8E186001F0073 /* FTAuthEmailTextField.swift */; };
+		A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7304E23A8E1A9001F0073 /* FTAuthLogoutBtn.swift */; };
+		A3D7305323A8E33F001F0073 /* FTRegistrationEmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7305223A8E33F001F0073 /* FTRegistrationEmailTextField.swift */; };
+		A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7305423A8E35C001F0073 /* FTRegistrationPasswordTextField.swift */; };
+		A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */; };
+		A3D7305E23A8E909001F0073 /* FTAuthRegistrationBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +70,13 @@
 		A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextField.swift; sourceTree = "<group>"; };
 		A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextFieldDelegate.swift; sourceTree = "<group>"; };
 		A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthLoginBtn.swift; sourceTree = "<group>"; };
-		A3D7304323A83CBD001F0073 /* FTEmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEmailTextField.swift; sourceTree = "<group>"; };
-		A3D7304523A83CD7001F0073 /* FTPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPasswordTextField.swift; sourceTree = "<group>"; };
+		A3D7304A23A8E175001F0073 /* FTAuthPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthPasswordTextField.swift; sourceTree = "<group>"; };
+		A3D7304C23A8E186001F0073 /* FTAuthEmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthEmailTextField.swift; sourceTree = "<group>"; };
+		A3D7304E23A8E1A9001F0073 /* FTAuthLogoutBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthLogoutBtn.swift; sourceTree = "<group>"; };
+		A3D7305223A8E33F001F0073 /* FTRegistrationEmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationEmailTextField.swift; sourceTree = "<group>"; };
+		A3D7305423A8E35C001F0073 /* FTRegistrationPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationPasswordTextField.swift; sourceTree = "<group>"; };
+		A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationConfirmPasswordTextField.swift; sourceTree = "<group>"; };
+		A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthRegistrationBtn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,12 +177,49 @@
 		A3C6C3A323A24F7000FFE5F0 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
-				A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */,
-				A3D7304323A83CBD001F0073 /* FTEmailTextField.swift */,
-				A3D7304523A83CD7001F0073 /* FTPasswordTextField.swift */,
-				A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */,
+				A3D7305923A8E38E001F0073 /* Buttons */,
+				A3D7305823A8E384001F0073 /* TextFields */,
 			);
 			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		A3D7305023A8E323001F0073 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				A3D7304C23A8E186001F0073 /* FTAuthEmailTextField.swift */,
+				A3D7304A23A8E175001F0073 /* FTAuthPasswordTextField.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		A3D7305123A8E330001F0073 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				A3D7305223A8E33F001F0073 /* FTRegistrationEmailTextField.swift */,
+				A3D7305423A8E35C001F0073 /* FTRegistrationPasswordTextField.swift */,
+				A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		A3D7305823A8E384001F0073 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */,
+				A3D7305023A8E323001F0073 /* Authorization */,
+				A3D7305123A8E330001F0073 /* Registration */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		A3D7305923A8E38E001F0073 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */,
+				A3D7304E23A8E1A9001F0073 /* FTAuthLogoutBtn.swift */,
+				A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,20 +332,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */,
 				A3C6C38723A23FF600FFE5F0 /* String + Validation.swift in Sources */,
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
+				A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */,
+				A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */,
 				A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */,
-				A3D7304623A83CD7001F0073 /* FTPasswordTextField.swift in Sources */,
 				A33C8E19239EBA000030032A /* APIAuth.swift in Sources */,
 				4C922048239FBCDA0083B48A /* APIUrl.swift in Sources */,
 				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
 				A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */,
 				4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */,
-				A3D7304423A83CBD001F0073 /* FTEmailTextField.swift in Sources */,
 				4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */,
 				4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */,
+				A3D7304B23A8E175001F0073 /* FTAuthPasswordTextField.swift in Sources */,
 				A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */,
 				A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */,
+				A3D7304D23A8E186001F0073 /* FTAuthEmailTextField.swift in Sources */,
+				A3D7305E23A8E909001F0073 /* FTAuthRegistrationBtn.swift in Sources */,
+				A3D7305323A8E33F001F0073 /* FTRegistrationEmailTextField.swift in Sources */,
 				4C92204C239FBD360083B48A /* APIRequest.swift in Sources */,
 				A378705B239E6CC5005B057D /* FTAuth.swift in Sources */,
 				A3D7302123A82E89001F0073 /* FTAuthLoginBtn.swift in Sources */,
