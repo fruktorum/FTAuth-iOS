@@ -23,6 +23,9 @@ extension APIResponse {
             sessionRequest.httpBody = httpBody
             sessionRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
+        if let httpHeader = request.header {
+            sessionRequest.setValue(httpHeader, forHTTPHeaderField: "session_token")
+        }
         let session = URLSession.shared
         session.dataTask(with: sessionRequest) { (data, response, error) in
             guard let response = response else {
@@ -52,19 +55,10 @@ extension APIResponse {
             URL: \(request.url);
             HTTP METHOD: \(request.httpMethod);
             BODY: \(request.body ?? [:]);
+            HEADER: \(request.header ?? "");
             ⬆️✴️✴️✴️✴️✴️
             """)
     }
-//    private func showRequestLogs() {
-//        print("""
-//            ✴️✴️✴️✴️✴️⬇️
-//            URL: \(request.url);
-//            HTTP METHOD: \(request.httpMethod);
-//            BODY: \(request.body ?? [:]);
-//            HEADER: \(request.header ?? [:]);
-//            ⬆️✴️✴️✴️✴️✴️
-//            """)
-//    }
 
     private func showSuccessLogs(with data: Data) {
         do {

@@ -14,12 +14,6 @@ public class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
         if let textField = textField as? FTTextField {
             textField.checkValidTextField()
         }
-        if let textField = textField as? FTAuthEmailTextField {
-            textField.checkValidTextField()
-        }
-        if let textField = textField as? FTAuthPasswordTextField {
-            textField.checkValidTextField()
-        }
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {

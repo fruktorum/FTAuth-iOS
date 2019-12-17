@@ -18,6 +18,8 @@ public enum ErrorOutputType {
 enum KeyError: String {
     case email = "email"
     case password = "password"
+    case fullName = "full_name"
+    case phone = "phone"
 }
 
 extension NSObject {
@@ -65,6 +67,12 @@ extension NSObject {
         case .password:
             FTAuth.authPasswordTF?.descriptionLbl.text = message
             FTAuth.authPasswordTF?.descriptionLbl.isHidden = false
+        case .fullName:
+            FTAuth.registrationFullNameTF?.descriptionLbl.text = message
+            FTAuth.registrationFullNameTF?.descriptionLbl.isHidden = false
+        case .phone:
+            FTAuth.registrationPhoneTF?.descriptionLbl.text = message
+            FTAuth.registrationPhoneTF?.descriptionLbl.isHidden = false
         }
     }
 }

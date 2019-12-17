@@ -8,7 +8,6 @@
 
 import UIKit
 
-//@IBDesignable
 public class FTCheckerAcceptanceOfTerms: UIButton {
     
     public var checked: Bool = false

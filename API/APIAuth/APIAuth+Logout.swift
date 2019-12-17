@@ -13,7 +13,8 @@ extension APIAuth.Session: APIResponse {
     var request: APIRequest {
             return APIRequest.createRequest(
                 url: path,
-                httpMethod: .post)
+                httpMethod: .post,
+                header: APIHeader.recieve(key: .session_token))
         }
 
     var path: String {

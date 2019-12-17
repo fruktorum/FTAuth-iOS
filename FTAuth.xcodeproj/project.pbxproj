@@ -17,6 +17,9 @@
 		4CCF184023969CE9001846D3 /* FTAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCF183623969CE9001846D3 /* FTAuth.framework */; };
 		4CCF184523969CE9001846D3 /* FTAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF184423969CE9001846D3 /* FTAuthTests.swift */; };
 		4CCF184723969CE9001846D3 /* FTAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CCF183923969CE9001846D3 /* FTAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A33B9E1623A92FE400269962 /* FTRegistrationFullNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E1523A92FE400269962 /* FTRegistrationFullNameTextField.swift */; };
+		A33B9E1823A9311F00269962 /* FTRegistrationPhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */; };
+		A33B9E2623A9403E00269962 /* APIHeared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E2523A9403E00269962 /* APIHeared.swift */; };
 		A33C8E19239EBA000030032A /* APIAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C8E18239EBA000030032A /* APIAuth.swift */; };
 		A378705B239E6CC5005B057D /* FTAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705A239E6CC5005B057D /* FTAuth.swift */; };
 		A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */; };
@@ -61,6 +64,9 @@
 		4CCF183F23969CE9001846D3 /* FTAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FTAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCF184423969CE9001846D3 /* FTAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthTests.swift; sourceTree = "<group>"; };
 		4CCF184623969CE9001846D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A33B9E1523A92FE400269962 /* FTRegistrationFullNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationFullNameTextField.swift; sourceTree = "<group>"; };
+		A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationPhoneTextField.swift; sourceTree = "<group>"; };
+		A33B9E2523A9403E00269962 /* APIHeared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeared.swift; sourceTree = "<group>"; };
 		A33C8E18239EBA000030032A /* APIAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuth.swift; sourceTree = "<group>"; };
 		A378705A239E6CC5005B057D /* FTAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuth.swift; sourceTree = "<group>"; };
 		A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 				4C92204B239FBD360083B48A /* APIRequest.swift */,
 				4C92204D239FBE260083B48A /* APIResponse.swift */,
 				4C92205123A013AC0083B48A /* APIAuth */,
+				A33B9E2523A9403E00269962 /* APIHeared.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -167,6 +174,15 @@
 			path = FTAuthTests;
 			sourceTree = "<group>";
 		};
+		A33B9E1423A92FC500269962 /* Optional */ = {
+			isa = PBXGroup;
+			children = (
+				A33B9E1523A92FE400269962 /* FTRegistrationFullNameTextField.swift */,
+				A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */,
+			);
+			path = Optional;
+			sourceTree = "<group>";
+		};
 		A39E60FD23A1359800D4B54A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +216,7 @@
 				A3D7305223A8E33F001F0073 /* FTRegistrationEmailTextField.swift */,
 				A3D7305423A8E35C001F0073 /* FTRegistrationPasswordTextField.swift */,
 				A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */,
+				A33B9E1423A92FC500269962 /* Optional */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -340,6 +357,7 @@
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
 				A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */,
 				A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */,
+				A33B9E2623A9403E00269962 /* APIHeared.swift in Sources */,
 				A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */,
 				A33C8E19239EBA000030032A /* APIAuth.swift in Sources */,
 				A3D7306623A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift in Sources */,
@@ -347,8 +365,10 @@
 				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
 				A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */,
 				4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */,
+				A33B9E1623A92FE400269962 /* FTRegistrationFullNameTextField.swift in Sources */,
 				4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */,
 				4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */,
+				A33B9E1823A9311F00269962 /* FTRegistrationPhoneTextField.swift in Sources */,
 				A3D7304B23A8E175001F0073 /* FTAuthPasswordTextField.swift in Sources */,
 				A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */,
 				A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */,

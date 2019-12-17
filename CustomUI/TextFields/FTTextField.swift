@@ -37,7 +37,7 @@ public class FTTextField: UITextField {
     
     public func setVerticalLocationOfDescription(_ verticalLocationOfDescription: CGFloat?) {
         NSLayoutConstraint.deactivate([verticalConstraint])
-        verticalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: verticalLocationOfDescription ?? self.frame.height)
+        verticalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: verticalLocationOfDescription ?? self.frame.height/2 + 10)
         NSLayoutConstraint.activate([verticalConstraint])
     }
     

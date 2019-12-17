@@ -14,8 +14,8 @@ public class Presenter: NSObject {
         postAuth(email, password, completionError)
     }
     
-    func registration(_ email: String, _ password: String, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        postRegistration(email, password, completionError)
+    func registration(_ email: String, _ password: String, _ name: String, _ phone: String?, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        postRegistration(email, password, name, phone, completionError)
     }
     
     func logout(completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
@@ -30,7 +30,10 @@ public class Presenter: NSObject {
                 if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
                     switch responseModel.success {
                     case true:
-                        guard let session_token = responseModel.session_token else { return }
+                        guard let session_token = responseModel.session_token, let provider_token = responseModel.provider_token else { return }
+                        APIHeader.save(value: session_token, key: .session_token)
+                        APIHeader.save(value: provider_token, key: .provider_token)
+                        FTAuth.cleanAuthTF()
                     case false:
 //                        if let errorType = responseModel.errors {
 //                            print(GeneralError.errorType(errorType).msg)
@@ -47,15 +50,18 @@ public class Presenter: NSObject {
         }
     }
         
-    private func postRegistration(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        APIAuth.Email.register(email, password).responseSimpleData { (data, error) in
+    private func postRegistration(_ email: String, _ password: String, _ name: String, _ phone: String?,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        APIAuth.Email.register(email, password, name, phone).responseSimpleData { (data, error) in
             if let error = error {
                 completionError([ErrorModel(key: nil, message: error.localizedDescription)])
             } else if let data = data {
                 if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
                     switch responseModel.success {
                     case true:
-                        guard let session_token = responseModel.session_token else { return }
+                        guard let session_token = responseModel.session_token, let provider_token = responseModel.provider_token else { return }
+                        APIHeader.save(value: session_token, key: .session_token)
+                        APIHeader.save(value: provider_token, key: .provider_token)
+                        FTAuth.cleanRegistrationTF()
                     case false:
 //                        if let errorType = responseModel.errors {
 //                            print(GeneralError.errorType(errorType).msg)
@@ -81,6 +87,7 @@ public class Presenter: NSObject {
                     switch responseModel.success {
                     case true:
                         print("Success logout")
+                        APIHeader.remove()
                     case false:
                         if let errorType = responseModel.errors {
                             completionError([ErrorModel(key: nil, message: GeneralError.errorType(errorType).msg)])
