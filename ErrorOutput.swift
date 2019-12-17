@@ -23,19 +23,19 @@ enum KeyError: String {
 extension NSObject {
 
     static func showError(errors: [ErrorModel]?, outputType: ErrorOutputType?) {
-    guard let errors = errors else { return }
-    errors.forEach { error in
-        if let key = error.key, let keyError = KeyError.init(rawValue: key) {
-            DispatchQueue.main.async {
-                showInLabel(key: keyError, message: error.message)
+        guard let errors = errors else { return }
+        errors.forEach { error in
+            if let key = error.key, let keyError = KeyError.init(rawValue: key) {
+                DispatchQueue.main.async {
+                    showInLabel(key: keyError, message: error.message)
+                }
+            } else {
+                switch outputType {
+                case .log, nil:
+                    showInLog(error: error)
+                case .alert:
+                    showInAlert(error: error)}
             }
-        } else {
-            switch outputType {
-            case .log, nil:
-                showInLog(error: error)
-            case .alert:
-                showInAlert(error: error)}
-        }
         }
     }
     
@@ -60,11 +60,11 @@ extension NSObject {
     private static func showInLabel(key: KeyError, message: String?) {
         switch key {
         case .email:
-            FTAuth.emailTextField?.descriptionLbl.text = message
-            FTAuth.emailTextField?.descriptionLbl.isHidden = false
+            FTAuth.authEmailTF?.descriptionLbl.text = message
+            FTAuth.authEmailTF?.descriptionLbl.isHidden = false
         case .password:
-            FTAuth.passwordTextField?.descriptionLbl.text = message
-            FTAuth.passwordTextField?.descriptionLbl.isHidden = false
+            FTAuth.authPasswordTF?.descriptionLbl.text = message
+            FTAuth.authPasswordTF?.descriptionLbl.isHidden = false
         }
     }
 }

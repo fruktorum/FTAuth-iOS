@@ -14,10 +14,10 @@ public class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
         if let textField = textField as? FTTextField {
             textField.checkValidTextField()
         }
-        if let textField = textField as? FTEmailTextField {
+        if let textField = textField as? FTAuthEmailTextField {
             textField.checkValidTextField()
         }
-        if let textField = textField as? FTPasswordTextField {
+        if let textField = textField as? FTAuthPasswordTextField {
             textField.checkValidTextField()
         }
     }
