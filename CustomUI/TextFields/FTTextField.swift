@@ -18,7 +18,7 @@ public class FTTextField: UITextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.delegate = FTAuth.textFieldDelegate
+        self.delegate = FTAuth.viewModel.textFieldDelegate
         descriptionLbl.font = self.font
         descriptionLbl.textColor = .red
         descriptionLbl.textAlignment = .left
@@ -37,11 +37,11 @@ public class FTTextField: UITextField {
     
     public func setVerticalLocationOfDescription(_ verticalLocationOfDescription: CGFloat?) {
         NSLayoutConstraint.deactivate([verticalConstraint])
-        verticalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: verticalLocationOfDescription ?? self.frame.height)
+        verticalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: verticalLocationOfDescription ?? self.frame.height/2 + 10)
         NSLayoutConstraint.activate([verticalConstraint])
     }
     
-    func checkValidTextField() {
+    func checkDescriptionValidTextField() {
         self.descriptionLbl.text = "The field cannot be empty"
         self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
     }

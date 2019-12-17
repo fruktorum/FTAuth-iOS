@@ -13,18 +13,10 @@ struct APIRequest {
     let url: String
     let httpMethod: String
     let body: [String: AnyObject]?
-//    let imageData: [String: Data]?
+    let header: String?
     
-//    static func createRequest(url: String, httpMethod: HTTPMethod, body: Data? = nil) -> APIRequest {
-//        return self.init(url: url, httpMethod: httpMethod.rawValue, body: body)
-//    }
-    
-//    static func createRequest(url: String, httpMethod: HTTPMethod, body: [String: AnyObject]? = nil, header: HTTPHeaders? = nil, imageData: [String: Data]? = nil) -> APIRequest {
-//        return self.init(url: url, httpMethod: httpMethod, body: body, header: header, imageData: imageData)
-//    }
-    
-    static func createRequest(url: String, httpMethod: HTTPMethod, body: [String: AnyObject]? = nil) -> APIRequest {
-        return self.init(url: url, httpMethod: httpMethod.rawValue, body: body)
+    static func createRequest(url: String, httpMethod: HTTPMethod, body: [String: AnyObject]? = nil, header: String? = nil) -> APIRequest {
+        return self.init(url: url, httpMethod: httpMethod.rawValue, body: body, header: header)
     }
 }
 

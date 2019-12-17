@@ -11,11 +11,13 @@ import Foundation
 enum ServerType: String {
     
     #if DEBUG
-    case auth = "http://localhost:3003"
+    case auth = "http://3.16.215.202:3001"
     #else
-    case auth = "2"
+    case auth = ""
     #endif
 
 }
 
 let AUTH_SERVER_URL = "\(ServerType.auth.rawValue)"
+
+

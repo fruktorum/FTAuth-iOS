@@ -12,12 +12,13 @@ import UIKit
 public enum ErrorOutputType {
     case log
     case alert
-//    case descriptionLabel
 }
 
 enum KeyError: String {
     case email = "email"
     case password = "password"
+    case fullName = "full_name"
+    case phone = "phone"
 }
 
 extension NSObject {
@@ -25,7 +26,8 @@ extension NSObject {
     static func showError(errors: [ErrorModel]?, outputType: ErrorOutputType?) {
         guard let errors = errors else { return }
         errors.forEach { error in
-            if let key = error.key, let keyError = KeyError.init(rawValue: key) {
+            if let key = error.key,
+                let keyError = KeyError.init(rawValue: key) {
                 DispatchQueue.main.async {
                     showInLabel(key: keyError, message: error.message)
                 }
@@ -65,6 +67,12 @@ extension NSObject {
         case .password:
             FTAuth.authPasswordTF?.descriptionLbl.text = message
             FTAuth.authPasswordTF?.descriptionLbl.isHidden = false
+        case .fullName:
+            FTAuth.registrationFullNameTF?.descriptionLbl.text = message
+            FTAuth.registrationFullNameTF?.descriptionLbl.isHidden = false
+        case .phone:
+            FTAuth.registrationPhoneTF?.descriptionLbl.text = message
+            FTAuth.registrationPhoneTF?.descriptionLbl.isHidden = false
         }
     }
 }
