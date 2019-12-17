@@ -19,6 +19,7 @@ public class FTAuth: NSObject {
     static var registrationEmailTF: FTRegistrationEmailTextField?
     static var registrationPasswordTF: FTRegistrationPasswordTextField?
     static var registrationConfirmPasswordTF: FTRegistrationConfirmPasswordTextField?
+    static var registrationCheckerAcceptanceOfTerms: FTCheckerAcceptanceOfTerms?
     
     static let textFieldDelegate = FTTextFieldDelegate()
     static let presenter = Presenter()
@@ -45,7 +46,8 @@ public class FTAuth: NSObject {
             let password = registrationPasswordTF?.text,
             password.isValidPassword,
             let confirmParrword = registrationConfirmPasswordTF?.text,
-            confirmParrword == password  {
+            confirmParrword == password,
+            (registrationCheckerAcceptanceOfTerms == nil || registrationCheckerAcceptanceOfTerms?.checked ?? false) {
             presenter.registration(email, password, completionError: { errors in
                 showError(errors: errors, outputType: errorOutputType)
             })
