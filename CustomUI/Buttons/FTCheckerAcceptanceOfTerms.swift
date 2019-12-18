@@ -11,8 +11,16 @@ import UIKit
 public class FTCheckerAcceptanceOfTerms: UIButton {
     
     public var checked: Bool = false
-    public var imageOn: UIImage?
-    public var imageOff: UIImage?
+    public var imageOn: UIImage? {
+        didSet {
+            updateImage()
+        }
+    }
+    public var imageOff: UIImage? {
+        didSet {
+            updateImage()
+        }
+    }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -33,6 +41,8 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
             self.tintColor = self.tintColor.withAlphaComponent(checked ? 1 : 0.3)
         }
     }
+    
+    //MARK: PUBLIC FUNCTION
     
     public func set(checked: Bool, imageOn: UIImage, imageOff: UIImage) {
         self.checked = checked

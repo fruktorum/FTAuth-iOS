@@ -14,6 +14,11 @@ public enum ErrorOutputType {
     case alert
 }
 
+enum RequestType {
+    case login
+    case registration
+}
+
 enum KeyError: String {
     case email = "email"
     case password = "password"
@@ -23,13 +28,13 @@ enum KeyError: String {
 
 extension NSObject {
 
-    static func showError(errors: [ErrorModel]?, outputType: ErrorOutputType?) {
+    static func showError(errors: [ErrorModel]?, outputType: ErrorOutputType?, _ requestType: RequestType? = nil) {
         guard let errors = errors else { return }
         errors.forEach { error in
             if let key = error.key,
                 let keyError = KeyError.init(rawValue: key) {
                 DispatchQueue.main.async {
-                    showInLabel(key: keyError, message: error.message)
+                    showInLabel(key: keyError, message: error.message, requestType)
                 }
             } else {
                 switch outputType {
@@ -59,14 +64,16 @@ extension NSObject {
         }
     }
     
-    private static func showInLabel(key: KeyError, message: String?) {
+    private static func showInLabel(key: KeyError, message: String?, _ requestType: RequestType?) {
         switch key {
         case .email:
-            FTAuth.authEmailTF?.descriptionLbl.text = message
-            FTAuth.authEmailTF?.descriptionLbl.isHidden = false
+            let emailTF = requestType == .login ? FTAuth.authEmailTF : FTAuth.registrationEmailTF
+            emailTF?.descriptionLbl.text = message
+            emailTF?.descriptionLbl.isHidden = false
         case .password:
-            FTAuth.authPasswordTF?.descriptionLbl.text = message
-            FTAuth.authPasswordTF?.descriptionLbl.isHidden = false
+            let passwordTF = requestType == .login ? FTAuth.authPasswordTF : FTAuth.registrationPasswordTF
+            passwordTF?.descriptionLbl.text = message
+            passwordTF?.descriptionLbl.isHidden = false
         case .fullName:
             FTAuth.registrationFullNameTF?.descriptionLbl.text = message
             FTAuth.registrationFullNameTF?.descriptionLbl.isHidden = false
