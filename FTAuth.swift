@@ -12,6 +12,7 @@ import UIKit
 public class FTAuth: NSObject {
     
     public static var errorOutputType: ErrorOutputType? = .log
+    public static var showSpinner = true
     
     public static var startLogin: (() -> Void)?
     public static var startRegistration: (() -> Void)?
