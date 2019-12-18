@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
+class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let textField = textField as? FTTextField {

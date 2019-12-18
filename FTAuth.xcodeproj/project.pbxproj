@@ -27,7 +27,6 @@
 		A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E610023A135BC00D4B54A /* ErrorModel.swift */; };
 		A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */; };
 		A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */; };
-		A3C6C38723A23FF600FFE5F0 /* String + Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */; };
 		A3C6C3A523A24F9000FFE5F0 /* FTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */; };
 		A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */; };
 		A3D7302123A82E89001F0073 /* FTAuthLoginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */; };
@@ -39,6 +38,8 @@
 		A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */; };
 		A3D7305E23A8E909001F0073 /* FTAuthRegistrationBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */; };
 		A3D7306623A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */; };
+		A3E9EC9523AA51F60087B360 /* NSObject+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9EC9423AA51F60087B360 /* NSObject+Spinner.swift */; };
+		A3E9EC9723AA52060087B360 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9EC9623AA52060087B360 /* String+Validation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +76,6 @@
 		A39E610023A135BC00D4B54A /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorOutput.swift; sourceTree = "<group>"; };
-		A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Validation.swift"; sourceTree = "<group>"; };
 		A3C6C3A423A24F9000FFE5F0 /* FTTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextField.swift; sourceTree = "<group>"; };
 		A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextFieldDelegate.swift; sourceTree = "<group>"; };
 		A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthLoginBtn.swift; sourceTree = "<group>"; };
@@ -87,6 +87,8 @@
 		A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationConfirmPasswordTextField.swift; sourceTree = "<group>"; };
 		A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthRegistrationBtn.swift; sourceTree = "<group>"; };
 		A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCheckerAcceptanceOfTerms.swift; sourceTree = "<group>"; };
+		A3E9EC9423AA51F60087B360 /* NSObject+Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Spinner.swift"; sourceTree = "<group>"; };
+		A3E9EC9623AA52060087B360 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,15 +178,6 @@
 			path = FTAuthTests;
 			sourceTree = "<group>";
 		};
-		A33B9E1423A92FC500269962 /* Optional */ = {
-			isa = PBXGroup;
-			children = (
-				A33B9E1523A92FE400269962 /* FTRegistrationFullNameTextField.swift */,
-				A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */,
-			);
-			path = Optional;
-			sourceTree = "<group>";
-		};
 		A33B9E3B23A9873800269962 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +198,8 @@
 		A33B9E3D23A9878F00269962 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A3C6C38623A23FF600FFE5F0 /* String + Validation.swift */,
+				A3E9EC9623AA52060087B360 /* String+Validation.swift */,
+				A3E9EC9423AA51F60087B360 /* NSObject+Spinner.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -243,7 +237,8 @@
 				A3D7305223A8E33F001F0073 /* FTRegistrationEmailTextField.swift */,
 				A3D7305423A8E35C001F0073 /* FTRegistrationPasswordTextField.swift */,
 				A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */,
-				A33B9E1423A92FC500269962 /* Optional */,
+				A33B9E1523A92FE400269962 /* FTRegistrationFullNameTextField.swift */,
+				A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -380,7 +375,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */,
-				A3C6C38723A23FF600FFE5F0 /* String + Validation.swift in Sources */,
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
 				A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */,
 				A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */,
@@ -396,8 +390,10 @@
 				A33B9E1623A92FE400269962 /* FTRegistrationFullNameTextField.swift in Sources */,
 				4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */,
 				4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */,
+				A3E9EC9523AA51F60087B360 /* NSObject+Spinner.swift in Sources */,
 				A33B9E1823A9311F00269962 /* FTRegistrationPhoneTextField.swift in Sources */,
 				A3D7304B23A8E175001F0073 /* FTAuthPasswordTextField.swift in Sources */,
+				A3E9EC9723AA52060087B360 /* String+Validation.swift in Sources */,
 				A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */,
 				A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */,
 				A3D7304D23A8E186001F0073 /* FTAuthEmailTextField.swift in Sources */,
@@ -562,6 +558,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FTAuth/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,6 +585,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FTAuth/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

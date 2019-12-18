@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Presenter: NSObject {
+class Presenter: NSObject {
     
     func auth(_ email: String, _ password: String, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         postAuth(email, password, completionError)
@@ -23,7 +23,9 @@ public class Presenter: NSObject {
     }
     
     private func postAuth(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+//        let spinner = displaySpinner()
         APIAuth.Email.auth(email, password).responseSimpleData { (data, error) in
+//            self.removeSpinner(spinner: spinner)
             if let error = error {
                 completionError([ErrorModel(key: nil, message: error.localizedDescription)])
             } else if let data = data {
@@ -34,7 +36,7 @@ public class Presenter: NSObject {
                         APIHeader.save(value: session_token, key: .session_token)
                         APIHeader.save(value: provider_token, key: .provider_token)
                         FTAuth.viewModel.cleanAuthTF()
-                        FTAuth.successAuth?()
+                        FTAuth.successLogin?()
                     case false:
 //                        if let errorType = responseModel.errors {
 //                            print(GeneralError.errorType(errorType).msg)
@@ -88,7 +90,6 @@ public class Presenter: NSObject {
                 if let responseModel = try? JSONDecoder().decode(ResponseModel.self, from: data) {
                     switch responseModel.success {
                     case true:
-                        print("Success logout")
                         APIHeader.remove()
                         FTAuth.successLogout?()
                     case false:

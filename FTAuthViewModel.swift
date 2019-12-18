@@ -40,4 +40,13 @@ class FTAuthViewModel: NSObject {
         FTAuth.registrationConfirmPasswordTF?.checkDescriptionValidTextField()
         FTAuth.registrationFullNameTF?.checkDescriptionValidTextField()
     }
+    
+    func updateConstrains(_ generalVerticalLocationOfDescription: CGFloat?) {
+        FTAuth.authEmailTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+        FTAuth.authPasswordTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+        FTAuth.registrationEmailTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+        FTAuth.registrationPasswordTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+        FTAuth.registrationConfirmPasswordTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+        FTAuth.registrationFullNameTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+    }
 }
