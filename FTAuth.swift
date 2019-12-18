@@ -59,7 +59,7 @@ public class FTAuth: NSObject {
             password.isValidPassword {
                 startLogin?()
                 presenter.auth(email, password, completionError: { errors in
-                    showError(errors: errors, outputType: errorOutputType)
+                    showError(errors: errors, outputType: errorOutputType, .login)
                     failureLogin?()
                 })
         }
@@ -79,7 +79,7 @@ public class FTAuth: NSObject {
             !name.isEmpty {
                 startRegistration?()
                 presenter.registration(email, password, name, registrationPhoneTF?.text, completionError: { errors in
-                    showError(errors: errors, outputType: errorOutputType)
+                    showError(errors: errors, outputType: errorOutputType, .registration)
                     failureRegistration?()
                 })
         }

@@ -25,7 +25,7 @@ public class FTTextField: UITextField {
     func settingDescriptionLbl() {
         descriptionLbl.font = self.font?.withSize(10)
         descriptionLbl.textColor = .red
-        descriptionLbl.textAlignment = .left
+        descriptionLbl.textAlignment = .center
         self.addSubview(descriptionLbl)
         addConstraints()
     }
