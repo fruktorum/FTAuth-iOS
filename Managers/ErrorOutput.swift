@@ -17,12 +17,14 @@ public enum ErrorOutputType {
 enum RequestType {
     case login
     case registration
+    case logout
 }
 
 enum KeyError: String {
     case email = "email"
     case password = "password"
-    case fullName = "full_name"
+    case firstName = "first_name"
+    case lastName = "last_name"
     case phone = "phone"
 }
 
@@ -74,9 +76,12 @@ extension NSObject {
             let passwordTF = requestType == .login ? FTAuth.authPasswordTF : FTAuth.registrationPasswordTF
             passwordTF?.descriptionLbl.text = message
             passwordTF?.descriptionLbl.isHidden = false
-        case .fullName:
-            FTAuth.registrationFullNameTF?.descriptionLbl.text = message
-            FTAuth.registrationFullNameTF?.descriptionLbl.isHidden = false
+        case .firstName:
+            FTAuth.registrationFirstNameTF?.descriptionLbl.text = message
+            FTAuth.registrationFirstNameTF?.descriptionLbl.isHidden = false
+        case .lastName:
+            FTAuth.registrationLastNameTF?.descriptionLbl.text = message
+            FTAuth.registrationLastNameTF?.descriptionLbl.isHidden = false
         case .phone:
             FTAuth.registrationPhoneTF?.descriptionLbl.text = message
             FTAuth.registrationPhoneTF?.descriptionLbl.isHidden = false

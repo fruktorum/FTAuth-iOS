@@ -8,15 +8,30 @@
 
 import UIKit
 
-public class FTRegistrationFullNameTextField: FTTextField {
+public class FTRegistrationFirstNameTextField: FTTextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        FTAuth.registrationFullNameTF = self
+        FTAuth.registrationFirstNameTF = self
     }
     
     override func checkDescriptionValidTextField() {
-        self.descriptionLbl.text = "Name cannot be blank"
+        self.descriptionLbl.text = "First name cannot be blank"
+        self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
+    }
+}
+
+import UIKit
+
+public class FTRegistrationLastNameTextField: FTTextField {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        FTAuth.registrationLastNameTF = self
+    }
+    
+    override func checkDescriptionValidTextField() {
+        self.descriptionLbl.text = "Last name cannot be blank"
         self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
     }
 }

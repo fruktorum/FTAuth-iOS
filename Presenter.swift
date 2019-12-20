@@ -14,8 +14,8 @@ class Presenter: NSObject {
         postAuth(email, password, completionError)
     }
     
-    func registration(_ email: String, _ password: String, _ name: String, _ phone: String?, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        postRegistration(email, password, name, phone, completionError)
+    func registration(_ email: String, _ password: String, _ firstName: String, _ lastName: String, _ phone: String?, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        postRegistration(email, password, firstName, lastName, phone, completionError)
     }
     
     func logout(completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
@@ -23,7 +23,7 @@ class Presenter: NSObject {
     }
     
     private func postAuth(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        let spinner = displaySpinner()
+        let spinner = displaySpinner(.login)
         APIAuth.Email.auth(email, password).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
@@ -36,7 +36,9 @@ class Presenter: NSObject {
                         APIHeader.save(value: session_token, key: .session_token)
                         APIHeader.save(value: provider_token, key: .provider_token)
                         FTAuth.viewModel.cleanAuthTF()
-                        FTAuth.successLogin?()
+                        DispatchQueue.main.async {
+                            FTAuth.successLogin?()
+                        }
                     case false:
 //                        if let errorType = responseModel.errors {
 //                            print(GeneralError.errorType(errorType).msg)
@@ -53,9 +55,9 @@ class Presenter: NSObject {
         }
     }
         
-    private func postRegistration(_ email: String, _ password: String, _ name: String, _ phone: String?,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        let spinner = displaySpinner()
-        APIAuth.Email.register(email, password, name, phone).responseSimpleData { (data, error) in
+    private func postRegistration(_ email: String, _ password: String, _ firstName: String, _ lastName: String, _ phone: String?,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        let spinner = displaySpinner(.registration)
+        APIAuth.Email.register(email, password, firstName, lastName, phone).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
                 completionError([ErrorModel(key: nil, message: error.localizedDescription)])
@@ -67,7 +69,9 @@ class Presenter: NSObject {
                         APIHeader.save(value: session_token, key: .session_token)
                         APIHeader.save(value: provider_token, key: .provider_token)
                         FTAuth.viewModel.cleanRegistrationTF()
-                        FTAuth.successRegistration?()
+                        DispatchQueue.main.async {
+                            FTAuth.successRegistration?()
+                        }
                     case false:
 //                        if let errorType = responseModel.errors {
 //                            print(GeneralError.errorType(errorType).msg)
@@ -85,7 +89,7 @@ class Presenter: NSObject {
     }
         
     private func postLogout(_ completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
-        let spinner = displaySpinner()
+        let spinner = displaySpinner(.login)
         APIAuth.Session.logout.responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
@@ -95,7 +99,9 @@ class Presenter: NSObject {
                     switch responseModel.success {
                     case true:
                         APIHeader.remove()
-                        FTAuth.successLogout?()
+                        DispatchQueue.main.async {
+                            FTAuth.successLogout?()
+                        }
                     case false:
                         if let errorType = responseModel.errors {
                             completionError([ErrorModel(key: nil, message: GeneralError.errorType(errorType).msg)])

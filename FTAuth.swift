@@ -14,6 +14,10 @@ public class FTAuth: NSObject {
     public static var errorOutputType: ErrorOutputType? = .log
     public static var showSpinner = true
     
+//    public static var loginViewForSpinner: UIView?
+//    public static var registrationViewForSpinner: UIView?
+//    public static var logoutViewForSpinner: UIView?
+    
     public static var startLogin: (() -> Void)?
     public static var startRegistration: (() -> Void)?
     public static var startLogout: (() -> Void)?
@@ -31,12 +35,12 @@ public class FTAuth: NSObject {
             viewModel.updateConstrains(generalVerticalLocationOfDescription)
         }
     }
-   
 
     static var authEmailTF: FTAuthEmailTextField?
     static var authPasswordTF: FTAuthPasswordTextField?
     
-    static var registrationFullNameTF: FTRegistrationFullNameTextField?
+    static var registrationFirstNameTF: FTRegistrationFirstNameTextField?
+    static var registrationLastNameTF: FTRegistrationLastNameTextField?
     static var registrationEmailTF: FTRegistrationEmailTextField?
     static var registrationPasswordTF: FTRegistrationPasswordTextField?
     static var registrationConfirmPasswordTF: FTRegistrationConfirmPasswordTextField?
@@ -76,10 +80,12 @@ public class FTAuth: NSObject {
             confirmParrword == password,
             (registrationCheckerAcceptanceOfTerms == nil ||
             registrationCheckerAcceptanceOfTerms?.checked ?? false),
-            let name = registrationFullNameTF?.text,
-            !name.isEmpty {
+            let firstName = registrationFirstNameTF?.text,
+            !firstName.isEmpty,
+            let lastName = registrationLastNameTF?.text,
+            !lastName.isEmpty {
                 startRegistration?()
-                presenter.registration(email, password, name, registrationPhoneTF?.text, completionError: { errors in
+                presenter.registration(email, password, firstName, lastName, registrationPhoneTF?.text, completionError: { errors in
                     showError(errors: errors, outputType: errorOutputType, .registration)
                     failureRegistration?()
                 })

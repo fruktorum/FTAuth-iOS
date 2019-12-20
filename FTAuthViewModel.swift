@@ -21,7 +21,8 @@ class FTAuthViewModel: NSObject {
     
     func cleanRegistrationTF() {
         DispatchQueue.main.async {
-            FTAuth.registrationFullNameTF?.text = nil
+            FTAuth.registrationFirstNameTF?.text = nil
+            FTAuth.registrationLastNameTF?.text = nil
             FTAuth.registrationEmailTF?.text = nil
             FTAuth.registrationPasswordTF?.text = nil
             FTAuth.registrationConfirmPasswordTF?.text = nil
@@ -38,7 +39,8 @@ class FTAuthViewModel: NSObject {
         FTAuth.registrationEmailTF?.checkDescriptionValidTextField()
         FTAuth.registrationPasswordTF?.checkDescriptionValidTextField()
         FTAuth.registrationConfirmPasswordTF?.checkDescriptionValidTextField()
-        FTAuth.registrationFullNameTF?.checkDescriptionValidTextField()
+        FTAuth.registrationFirstNameTF?.checkDescriptionValidTextField()
+        FTAuth.registrationLastNameTF?.checkDescriptionValidTextField()
     }
     
     func updateConstrains(_ generalVerticalLocationOfDescription: CGFloat?) {
@@ -47,6 +49,7 @@ class FTAuthViewModel: NSObject {
         FTAuth.registrationEmailTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
         FTAuth.registrationPasswordTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
         FTAuth.registrationConfirmPasswordTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
-        FTAuth.registrationFullNameTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+        FTAuth.registrationFirstNameTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+        FTAuth.registrationLastNameTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
     }
 }

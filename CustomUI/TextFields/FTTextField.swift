@@ -13,7 +13,7 @@ public class FTTextField: UITextField {
     public var descriptionLbl = UILabel()
     var horizontalConstraint = NSLayoutConstraint()
     var verticalConstraint = NSLayoutConstraint()
-    var widthConstraint = NSLayoutConstraint()
+    var leadingConstraint = NSLayoutConstraint()
     var heightConstraint = NSLayoutConstraint()
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,7 +25,7 @@ public class FTTextField: UITextField {
     func settingDescriptionLbl() {
         descriptionLbl.font = self.font?.withSize(10)
         descriptionLbl.textColor = .red
-        descriptionLbl.textAlignment = .center
+        descriptionLbl.textAlignment = .left
         self.addSubview(descriptionLbl)
         addConstraints()
     }
@@ -34,9 +34,9 @@ public class FTTextField: UITextField {
         descriptionLbl.translatesAutoresizingMaskIntoConstraints = false
         horizontalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         setVerticalLocationOfDescription(nil)
-        widthConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: self.frame.width)
-        heightConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: self.frame.height)
-        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        leadingConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
+        heightConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 10)
+        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, leadingConstraint, heightConstraint])
     }
     
     func checkDescriptionValidTextField() {
