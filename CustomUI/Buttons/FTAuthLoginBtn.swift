@@ -24,7 +24,7 @@ public class FTAuthLoginBtn: UIButton {
 
 import UIKit
 
-public class FTFacebookLoginBtn: UIButton {
+public class FTAuthFacebookLoginBtn: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

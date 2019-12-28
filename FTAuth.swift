@@ -105,33 +105,21 @@ public class FTAuth: NSObject {
     }
     
     static func facebookLogin() {
-//        viewModel.checkDescriptionValidAuthTF()
         let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [ .email ], viewController: self) { loginResult in
+        loginManager.logIn(permissions: [ .email ], viewController: nil) { loginResult in
             switch loginResult {
             case .failed(let error):
-                showError(errors: errors, outputType: errorOutputType, .login)
+                showError(errors: [ErrorModel(key: "facebook", message: error.localizedDescription)], outputType: errorOutputType, .login)
                 failureLogin?()
             case .cancelled:
                 print("‼️ Facebook login cancel by user! ‼️")
-            case .success(grantedPermissions: _, declinedPermissions: _, token: let accessToken):
-                self.presenter.loginFbRequest(accessToken.authenticationToken)
-                self.presenter.authFacebook(accessToken.authenticationToken, { errors in
+            case .success(granted: _, declined: _, token: let accessToken):
+                self.presenter.authFacebook(accessToken.tokenString, { errors in
                     showError(errors: errors, outputType: errorOutputType, .login)
                     failureLogin?()
                 })
             }
         }
-//        if let email = authEmailTF?.text,
-//            email.isValidEmail,
-//            let password = authPasswordTF?.text,
-//            password.isValidPassword {
-//                startLogin?()
-//                presenter.auth(email, password, completionError: { errors in
-//                    showError(errors: errors, outputType: errorOutputType, .login)
-//                    failureLogin?()
-//                })
-//        }
     }
     
     //MARK: PUBLIC FUNCTION
