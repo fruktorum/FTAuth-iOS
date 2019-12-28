@@ -16,6 +16,7 @@ public class FTAuth: NSObject {
     
     public static var errorOutputType: ErrorOutputType? = .log
     public static var showSpinner = true
+    public static var requiredElements = [TypeElement]()
     
 //    public static var loginViewForSpinner: UIView?
 //    public static var registrationViewForSpinner: UIView?
@@ -42,6 +43,7 @@ public class FTAuth: NSObject {
     static var authEmailTF: FTAuthEmailTextField?
     static var authPasswordTF: FTAuthPasswordTextField?
     
+    static var registrationNameTF: FTRegistrationNameTextField?
     static var registrationFirstNameTF: FTRegistrationFirstNameTextField?
     static var registrationLastNameTF: FTRegistrationLastNameTextField?
     static var registrationEmailTF: FTRegistrationEmailTextField?
@@ -75,20 +77,28 @@ public class FTAuth: NSObject {
 
     static func registration() {
         viewModel.checkDescriptionValidRegistrationTF()
-        if let email = registrationEmailTF?.text,
-            email.isValidEmail,
-            let password = registrationPasswordTF?.text,
-            password.isValidPassword,
-            let confirmParrword = registrationConfirmPasswordTF?.text,
-            confirmParrword == password,
-            (registrationCheckerAcceptanceOfTerms == nil ||
-            registrationCheckerAcceptanceOfTerms?.checked ?? false),
-            let firstName = registrationFirstNameTF?.text,
-            !firstName.isEmpty,
-            let lastName = registrationLastNameTF?.text,
-            !lastName.isEmpty {
+        if viewModel.checkValidAllElements() {
+//            registrationEmailTF?.isValid ?? false,
+//            registrationPasswordTF?.isValid ?? false,
+//            registrationConfirmPasswordTF?.isValid ?? false,
+//            registrationNameTF?.isValid ?? false,
+//            registrationFirstNameTF?.isValid ?? false,
+//            registrationLastNameTF?.isValid ?? false,
+//            registrationPhoneTF?.isValid ?? false,
+//            registrationCheckerAcceptanceOfTerms?.isValid ?? false {
+            
+//            let password = registrationPasswordTF?.text,
+//            registrationEmailTF?.isValid,
+//            let confirmParrword = registrationConfirmPasswordTF?.text,
+//            confirmParrword == password,
+//            (registrationCheckerAcceptanceOfTerms == nil ||
+//            registrationCheckerAcceptanceOfTerms?.checked ?? false),
+//            let firstName = registrationFirstNameTF?.text,
+//            !firstName.isEmpty,
+//            let lastName = registrationLastNameTF?.text,
+//            !lastName.isEmpty {
                 startRegistration?()
-                presenter.registration(email, password, firstName, lastName, registrationPhoneTF?.text, completionError: { errors in
+                presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.text, completionError: { errors in
                     showError(errors: errors, outputType: errorOutputType, .registration)
                     failureRegistration?()
                 })

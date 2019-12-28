@@ -15,14 +15,18 @@ public class FTAuthPasswordTextField: FTTextField {
         FTAuth.authPasswordTF = self
     }
     
+    override func checkValid() -> Bool {
+        text?.isValidPassword ?? false
+    }
+    
     override func checkDescriptionValidTextField() {
         self.descriptionLbl.isHidden = true
-        if self.text == nil || self.text == "" {
-            self.descriptionLbl.text = "The password cannot be blank"
-            self.descriptionLbl.isHidden = false
-        } else if !(self.text?.isValidPassword ?? false) {
-            self.descriptionLbl.text = "The password must contain at least 8 characters"
-            self.descriptionLbl.isHidden = false
+        if text == nil || text == "" {
+            descriptionLbl.text = "The password cannot be blank"
+            descriptionLbl.isHidden = false
+        } else if !checkValid() {
+            descriptionLbl.text = "The password must contain at least 8 characters"
+            descriptionLbl.isHidden = false
         }
     }
 }

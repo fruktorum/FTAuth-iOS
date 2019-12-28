@@ -15,10 +15,22 @@ public class FTTextField: UITextField {
     var verticalConstraint = NSLayoutConstraint()
     var leadingConstraint = NSLayoutConstraint()
     var heightConstraint = NSLayoutConstraint()
+    var type = TypeElement.none
+    var isValid: Bool {
+        if FTAuth.requiredElements.contains(type) {
+            return checkValid()
+        } else {
+            return true
+        }
+    }
+    
+    func checkValid() -> Bool {
+        (text != nil || text != "")
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.delegate = FTAuth.viewModel.textFieldDelegate
+        delegate = FTAuth.viewModel.textFieldDelegate
         settingDescriptionLbl()
     }
     
@@ -26,7 +38,7 @@ public class FTTextField: UITextField {
         descriptionLbl.font = self.font?.withSize(10)
         descriptionLbl.textColor = .red
         descriptionLbl.textAlignment = .left
-        self.addSubview(descriptionLbl)
+        addSubview(descriptionLbl)
         addConstraints()
     }
             
@@ -41,7 +53,7 @@ public class FTTextField: UITextField {
     
     func checkDescriptionValidTextField() {
         descriptionLbl.text = "The field cannot be empty"
-        descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
+        descriptionLbl.isHidden = !(text?.isEmpty ?? true)
     }
     
     func cleanTextFieldDescription() {
@@ -51,7 +63,7 @@ public class FTTextField: UITextField {
     //MARK: PUBLIC FUNCTION
     public func setVerticalLocationOfDescription(_ verticalLocationOfDescription: CGFloat?) {
         NSLayoutConstraint.deactivate([verticalConstraint])
-        var verticalLocation = self.frame.height/2 + 10
+        var verticalLocation = frame.height/2 + 10
         if let verticalLocationOfDescription = verticalLocationOfDescription {
             verticalLocation = verticalLocationOfDescription
         } else if let verticalLocationOfDescription = FTAuth.generalVerticalLocationOfDescription {

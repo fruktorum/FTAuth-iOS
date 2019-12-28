@@ -33,11 +33,12 @@ extension APIAuth.Email: APIResponse {
                 "email": email as AnyObject,
                 "password": password as AnyObject
             ] as [String: AnyObject]
-        case .register(let email, let password, let firstName, let lastName, let phone):
+        case .register(let email, let password, let name, let firstName, let lastName, let phone):
             return [
                 "email": email as AnyObject,
                 "password": password as AnyObject,
                 "payload": [
+                    "name": name as AnyObject,
                     "first_name": firstName as AnyObject,
                     "last_name": lastName as AnyObject,
                     "phone": phone as AnyObject
