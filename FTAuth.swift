@@ -8,8 +8,6 @@
 
 import Foundation
 import UIKit
-import FacebookLogin
-import FacebookCore
 
 
 public class FTAuth: NSObject {
@@ -17,10 +15,6 @@ public class FTAuth: NSObject {
     public static var errorOutputType: ErrorOutputType? = .log
     public static var showSpinner = true
     public static var requiredElements = [TypeElement]()
-    
-//    public static var loginViewForSpinner: UIView?
-//    public static var registrationViewForSpinner: UIView?
-//    public static var logoutViewForSpinner: UIView?
     
     public static var startLogin: (() -> Void)?
     public static var startRegistration: (() -> Void)?
@@ -112,24 +106,6 @@ public class FTAuth: NSObject {
             showError(errors: errors, outputType: errorOutputType)
             failureLogout?()
         })
-    }
-    
-    static func facebookLogin() {
-        let loginManager = LoginManager()
-        loginManager.logIn(permissions: [ .email ], viewController: nil) { loginResult in
-            switch loginResult {
-            case .failed(let error):
-                showError(errors: [ErrorModel(key: "facebook", message: error.localizedDescription)], outputType: errorOutputType, .login)
-                failureLogin?()
-            case .cancelled:
-                print("‼️ Facebook login cancel by user! ‼️")
-            case .success(granted: _, declined: _, token: let accessToken):
-                self.presenter.authFacebook(accessToken.tokenString, { errors in
-                    showError(errors: errors, outputType: errorOutputType, .login)
-                    failureLogin?()
-                })
-            }
-        }
     }
     
     //MARK: PUBLIC FUNCTION

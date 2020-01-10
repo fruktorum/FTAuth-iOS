@@ -5,7 +5,4 @@ use_frameworks!
 
 target 'FTAuth' do
 
-  pod 'FacebookLogin'
-  pod 'FacebookCore'
-
 end
