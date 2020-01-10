@@ -17,8 +17,10 @@ public class FTRegistrationFirstNameTextField: FTTextField {
     }
     
     override func checkDescriptionValidTextField() {
-        descriptionLbl.text = "First name cannot be blank"
-        descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        if FTAuth.requiredElements.contains(type) {
+            descriptionLbl.text = "First name cannot be blank"
+            descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        }
     }
 }
 
@@ -33,8 +35,10 @@ public class FTRegistrationLastNameTextField: FTTextField {
     }
     
     override func checkDescriptionValidTextField() {
-        descriptionLbl.text = "Last name cannot be blank"
-        descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        if FTAuth.requiredElements.contains(type) {
+            descriptionLbl.text = "Last name cannot be blank"
+            descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        }
     }
 }
 
@@ -49,8 +53,10 @@ public class FTRegistrationNameTextField: FTTextField {
     }
     
     override func checkDescriptionValidTextField() {
-        descriptionLbl.text = "Name cannot be blank"
-        descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        if FTAuth.requiredElements.contains(type) {
+            descriptionLbl.text = "Name cannot be blank"
+            descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        }
     }
 }
 

@@ -25,7 +25,7 @@ public class FTTextField: UITextField {
     }
     
     func checkValid() -> Bool {
-        (text != nil || text != "")
+        (text != nil && text != "")
     }
     
     required init?(coder aDecoder: NSCoder) {

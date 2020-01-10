@@ -49,6 +49,7 @@ class FTAuthViewModel: NSObject {
                 FTAuth.registrationEmailTF?.checkDescriptionValidTextField()
             case .password:
                 FTAuth.registrationPasswordTF?.checkDescriptionValidTextField()
+            case .confirmPassword:
                 FTAuth.registrationConfirmPasswordTF?.checkDescriptionValidTextField()
             case .phone:
                 FTAuth.registrationPhoneTF?.checkDescriptionValidTextField()
@@ -64,20 +65,21 @@ class FTAuthViewModel: NSObject {
             switch element {
             case .none: break
             case .name:
-                isValid = FTAuth.registrationNameTF?.isValid ?? false
+                isValid = isValid ? FTAuth.registrationNameTF?.isValid ?? false : isValid
             case .firstName:
-                isValid = FTAuth.registrationFirstNameTF?.isValid ?? false
+                isValid = isValid ? FTAuth.registrationFirstNameTF?.isValid ?? false : isValid
             case .lastName:
-                isValid = FTAuth.registrationLastNameTF?.isValid ?? false
+                isValid = isValid ? FTAuth.registrationLastNameTF?.isValid ?? false : isValid
             case .email:
-                isValid = FTAuth.registrationEmailTF?.isValid ?? false
+                isValid = isValid ? FTAuth.registrationEmailTF?.isValid ?? false : isValid
             case .password:
-                isValid = FTAuth.registrationPasswordTF?.isValid ?? false
-                isValid = FTAuth.registrationConfirmPasswordTF?.isValid ?? false
+                isValid = isValid ? FTAuth.registrationPasswordTF?.isValid ?? false : isValid
+            case .confirmPassword:
+                isValid = isValid ? FTAuth.registrationConfirmPasswordTF?.isValid ?? false : isValid
             case .phone:
-                isValid = FTAuth.registrationPhoneTF?.isValid ?? false
+                isValid = isValid ? FTAuth.registrationPhoneTF?.isValid ?? false : isValid
             case .accept:
-                isValid = FTAuth.registrationCheckerAcceptanceOfTerms?.isValid ?? false
+                isValid = isValid ? FTAuth.registrationCheckerAcceptanceOfTerms?.isValid ?? false : isValid
             }
         }
         return isValid

@@ -12,16 +12,17 @@ public class FTRegistrationConfirmPasswordTextField: FTTextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        type = TypeElement.confirmPassword
         FTAuth.registrationConfirmPasswordTF = self
     }
     
     override func checkValid() -> Bool {
-        text != FTAuth.registrationPasswordTF?.text
+        return text == FTAuth.registrationPasswordTF?.text
     }
     
     override func checkDescriptionValidTextField() {
         descriptionLbl.isHidden = true
-        if checkValid() {
+        if !checkValid() {
             descriptionLbl.text = "Passwords do not match"
             descriptionLbl.isHidden = false
         }

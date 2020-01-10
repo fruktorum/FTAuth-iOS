@@ -21,8 +21,16 @@ public class FTRegistrationEmailTextField: FTTextField {
     }
     
     override func checkDescriptionValidTextField() {
-        descriptionLbl.text = "Incorrect email"
-        descriptionLbl.isHidden = checkValid()
+        if FTAuth.requiredElements.contains(type) {
+            descriptionLbl.text = "Incorrect email"
+            descriptionLbl.isHidden = checkValid()
+        } else {
+            guard (text != nil && text != "") else { return }
+            if !checkValid() {
+                descriptionLbl.text = "Incorrect email"
+                descriptionLbl.isHidden = checkValid()
+            }
+        }
     }
 }
 
