@@ -6,6 +6,7 @@
 //  Copyright © 2019 Fruktorum. All rights reserved.
 //
 
+
 import UIKit
 
 public class FTAuthPasswordTextField: FTTextField {
@@ -30,3 +31,4 @@ public class FTAuthPasswordTextField: FTTextField {
         }
     }
 }
+

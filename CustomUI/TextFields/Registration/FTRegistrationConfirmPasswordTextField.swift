@@ -27,3 +27,4 @@ public class FTRegistrationConfirmPasswordTextField: FTTextField {
         }
     }
 }
+

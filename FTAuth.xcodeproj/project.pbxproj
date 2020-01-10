@@ -41,7 +41,6 @@
 		A3D7306623A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */; };
 		A3E9EC9523AA51F60087B360 /* NSObject+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9EC9423AA51F60087B360 /* NSObject+Spinner.swift */; };
 		A3E9EC9723AA52060087B360 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9EC9623AA52060087B360 /* String+Validation.swift */; };
-		BEF8179E2FF5D7B579230863 /* Pods_FTAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29EB44A30E2483A75870158 /* Pods_FTAuth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		186034EE7ED2B5B0D1381D53 /* Pods-FTAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FTAuth.debug.xcconfig"; path = "Target Support Files/Pods-FTAuth/Pods-FTAuth.debug.xcconfig"; sourceTree = "<group>"; };
 		4C922047239FBCDA0083B48A /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
 		4C92204B239FBD360083B48A /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4C92204D239FBE260083B48A /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 		4CCF183F23969CE9001846D3 /* FTAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FTAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCF184423969CE9001846D3 /* FTAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthTests.swift; sourceTree = "<group>"; };
 		4CCF184623969CE9001846D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63A85AD9FD06CFE65848CA9D /* Pods-FTAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FTAuth.release.xcconfig"; path = "Target Support Files/Pods-FTAuth/Pods-FTAuth.release.xcconfig"; sourceTree = "<group>"; };
 		A33B9E1523A92FE400269962 /* FTRegistrationFullNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationFullNameTextField.swift; sourceTree = "<group>"; };
 		A33B9E1723A9311F00269962 /* FTRegistrationPhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationPhoneTextField.swift; sourceTree = "<group>"; };
 		A33B9E2523A9403E00269962 /* APIHeared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeared.swift; sourceTree = "<group>"; };
@@ -94,7 +91,6 @@
 		A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCheckerAcceptanceOfTerms.swift; sourceTree = "<group>"; };
 		A3E9EC9423AA51F60087B360 /* NSObject+Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Spinner.swift"; sourceTree = "<group>"; };
 		A3E9EC9623AA52060087B360 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
-		F29EB44A30E2483A75870158 /* Pods_FTAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FTAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEF8179E2FF5D7B579230863 /* Pods_FTAuth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,14 +112,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06E50DDEB6026FCE3AC0E622 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F29EB44A30E2483A75870158 /* Pods_FTAuth.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		4C922046239FBCBB0083B48A /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +151,6 @@
 				4CCF184323969CE9001846D3 /* FTAuthTests */,
 				4CCF183723969CE9001846D3 /* Products */,
 				E0D92A9A2EA432FCC4F18124 /* Pods */,
-				06E50DDEB6026FCE3AC0E622 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,8 +271,6 @@
 		E0D92A9A2EA432FCC4F18124 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				186034EE7ED2B5B0D1381D53 /* Pods-FTAuth.debug.xcconfig */,
-				63A85AD9FD06CFE65848CA9D /* Pods-FTAuth.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -309,7 +293,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CCF184A23969CE9001846D3 /* Build configuration list for PBXNativeTarget "FTAuth" */;
 			buildPhases = (
-				8C282C4482EC29636237C14A /* [CP] Check Pods Manifest.lock */,
 				4CCF183123969CE9001846D3 /* Headers */,
 				4CCF183223969CE9001846D3 /* Sources */,
 				4CCF183323969CE9001846D3 /* Frameworks */,
@@ -396,31 +379,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8C282C4482EC29636237C14A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FTAuth-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4CCF183223969CE9001846D3 /* Sources */ = {
@@ -603,7 +561,6 @@
 		};
 		4CCF184B23969CE9001846D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 186034EE7ED2B5B0D1381D53 /* Pods-FTAuth.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -632,7 +589,6 @@
 		};
 		4CCF184C23969CE9001846D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63A85AD9FD06CFE65848CA9D /* Pods-FTAuth.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

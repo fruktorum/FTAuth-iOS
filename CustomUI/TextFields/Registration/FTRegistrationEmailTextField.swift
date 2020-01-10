@@ -25,3 +25,4 @@ public class FTRegistrationEmailTextField: FTTextField {
         descriptionLbl.isHidden = checkValid()
     }
 }
+

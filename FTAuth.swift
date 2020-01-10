@@ -9,12 +9,15 @@
 import Foundation
 import UIKit
 
-
 public class FTAuth: NSObject {
     
     public static var errorOutputType: ErrorOutputType? = .log
     public static var showSpinner = true
     public static var requiredElements = [TypeElement]()
+    
+//    public static var loginViewForSpinner: UIView?
+//    public static var registrationViewForSpinner: UIView?
+//    public static var logoutViewForSpinner: UIView?
     
     public static var startLogin: (() -> Void)?
     public static var startRegistration: (() -> Void)?
@@ -118,3 +121,4 @@ public class FTAuth: NSObject {
         return APIHeader.recieve(key: .provider_token)
     }
 }
+

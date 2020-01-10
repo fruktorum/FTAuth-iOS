@@ -100,3 +100,4 @@ class FTAuthViewModel: NSObject {
         FTAuth.registrationLastNameTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
     }
 }
+

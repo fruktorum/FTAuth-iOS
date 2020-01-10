@@ -2,12 +2,11 @@
 //  Constants.swift
 //  FTAuth
 //
-//  Created by Герасимов Тимофей Владимирович on 28.12.2019.
-//  Copyright © 2019 Fruktorum. All rights reserved.
+//  Created by Герасимов Тимофей Владимирович on 10.01.2020.
+//  Copyright © 2020 Fruktorum. All rights reserved.
 //
 
 import Foundation
-
 
 public enum TypeElement: String {
     case none

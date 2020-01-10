@@ -66,3 +66,4 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
 //        imageView?.layer.borderWidth = checked ? 0 : 1
     }
 }
+
