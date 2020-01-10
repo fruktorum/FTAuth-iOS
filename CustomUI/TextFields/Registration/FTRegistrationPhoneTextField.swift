@@ -22,12 +22,20 @@ public class FTRegistrationPhoneTextField: FTTextField {
     
     override func checkDescriptionValidTextField() {
         descriptionLbl.isHidden = true
-        if text == nil || text == "" {
-            descriptionLbl.text = "The phone cannot be blank"
-            descriptionLbl.isHidden = false
-        } else if !checkValid() {
-            descriptionLbl.text = "Incorrect phone"
-            descriptionLbl.isHidden = false
+        if FTAuth.requiredElements.contains(type) {
+            if text == nil || text == "" {
+                descriptionLbl.text = "The phone cannot be blank"
+                descriptionLbl.isHidden = false
+            } else if !checkValid() {
+                descriptionLbl.text = "Incorrect phone"
+                descriptionLbl.isHidden = false
+            }
+        } else {
+            guard (text != nil && text != "") else { return }
+            if !checkValid() {
+                descriptionLbl.text = "Incorrect phone"
+                descriptionLbl.isHidden = false
+            }
         }
     }
 }

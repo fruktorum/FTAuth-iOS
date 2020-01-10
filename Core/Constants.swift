@@ -17,6 +17,7 @@ public enum TypeElement: String {
     case lastName
     case email
     case password
+    case confirmPassword
     case phone
     case accept
 }

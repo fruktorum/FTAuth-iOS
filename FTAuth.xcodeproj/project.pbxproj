@@ -150,7 +150,6 @@
 				4CCF183823969CE9001846D3 /* FTAuth */,
 				4CCF184323969CE9001846D3 /* FTAuthTests */,
 				4CCF183723969CE9001846D3 /* Products */,
-				E0D92A9A2EA432FCC4F18124 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,13 +265,6 @@
 				A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		E0D92A9A2EA432FCC4F18124 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
