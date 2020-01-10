@@ -1,0 +1,124 @@
+//
+//  FTAuth.swift
+//  FTAuth
+//
+//  Created by Герасимов Тимофей Владимирович on 09.12.2019.
+//  Copyright © 2019 Fruktorum. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+public class FTAuth: NSObject {
+    
+    public static var errorOutputType: ErrorOutputType? = .log
+    public static var showSpinner = true
+    public static var requiredElements = [TypeElement]()
+    
+//    public static var loginViewForSpinner: UIView?
+//    public static var registrationViewForSpinner: UIView?
+//    public static var logoutViewForSpinner: UIView?
+    
+    public static var startLogin: (() -> Void)?
+    public static var startRegistration: (() -> Void)?
+    public static var startLogout: (() -> Void)?
+    
+    public static var successLogin: (() -> Void)?
+    public static var successRegistration: (() -> Void)?
+    public static var successLogout: (() -> Void)?
+    
+    public static var failureLogin: (() -> Void)?
+    public static var failureRegistration: (() -> Void)?
+    public static var failureLogout: (() -> Void)?
+    
+    public static var generalVerticalLocationOfDescription: CGFloat? {
+        didSet {
+            viewModel.updateConstrains(generalVerticalLocationOfDescription)
+        }
+    }
+
+    static var authEmailTF: FTAuthEmailTextField?
+    static var authPasswordTF: FTAuthPasswordTextField?
+    
+    static var registrationNameTF: FTRegistrationNameTextField?
+    static var registrationFirstNameTF: FTRegistrationFirstNameTextField?
+    static var registrationLastNameTF: FTRegistrationLastNameTextField?
+    static var registrationEmailTF: FTRegistrationEmailTextField?
+    static var registrationPasswordTF: FTRegistrationPasswordTextField?
+    static var registrationConfirmPasswordTF: FTRegistrationConfirmPasswordTextField?
+    static var registrationPhoneTF: FTRegistrationPhoneTextField?
+    
+    static var registrationCheckerAcceptanceOfTerms: FTCheckerAcceptanceOfTerms?
+    
+    
+    
+    static let viewModel = FTAuthViewModel()
+    static let presenter = Presenter()
+    static let spinnerController = NSObject()
+    
+    
+    
+    static func login() {
+        viewModel.checkDescriptionValidAuthTF()
+        if let email = authEmailTF?.text,
+            email.isValidEmail,
+            let password = authPasswordTF?.text,
+            password.isValidPassword {
+                startLogin?()
+                presenter.auth(email, password, completionError: { errors in
+                    showError(errors: errors, outputType: errorOutputType, .login)
+                    failureLogin?()
+                })
+        }
+    }
+
+    static func registration() {
+        viewModel.checkDescriptionValidRegistrationTF()
+        if viewModel.checkValidAllElements() {
+//            registrationEmailTF?.isValid ?? false,
+//            registrationPasswordTF?.isValid ?? false,
+//            registrationConfirmPasswordTF?.isValid ?? false,
+//            registrationNameTF?.isValid ?? false,
+//            registrationFirstNameTF?.isValid ?? false,
+//            registrationLastNameTF?.isValid ?? false,
+//            registrationPhoneTF?.isValid ?? false,
+//            registrationCheckerAcceptanceOfTerms?.isValid ?? false {
+            
+//            let password = registrationPasswordTF?.text,
+//            registrationEmailTF?.isValid,
+//            let confirmParrword = registrationConfirmPasswordTF?.text,
+//            confirmParrword == password,
+//            (registrationCheckerAcceptanceOfTerms == nil ||
+//            registrationCheckerAcceptanceOfTerms?.checked ?? false),
+//            let firstName = registrationFirstNameTF?.text,
+//            !firstName.isEmpty,
+//            let lastName = registrationLastNameTF?.text,
+//            !lastName.isEmpty {
+                startRegistration?()
+                presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.text, completionError: { errors in
+                    showError(errors: errors, outputType: errorOutputType, .registration)
+                    failureRegistration?()
+                })
+        }
+    }
+
+    static func logout() {
+        guard let _ = getSessionToken() else { return }
+        startLogout?()
+        presenter.logout(completionError: { errors in
+            showError(errors: errors, outputType: errorOutputType)
+            failureLogout?()
+        })
+    }
+    
+    //MARK: PUBLIC FUNCTION
+    
+    public static func getSessionToken() -> String? {
+        return APIHeader.recieve(key: .session_token)
+    }
+    
+    public static func getProviderToken() -> String? {
+        return APIHeader.recieve(key: .provider_token)
+    }
+}
+
