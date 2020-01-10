@@ -12,12 +12,13 @@ public class FTRegistrationFirstNameTextField: FTTextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        type = TypeElement.firstName
         FTAuth.registrationFirstNameTF = self
     }
     
     override func checkDescriptionValidTextField() {
-        self.descriptionLbl.text = "First name cannot be blank"
-        self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
+        descriptionLbl.text = "First name cannot be blank"
+        descriptionLbl.isHidden = !(text?.isEmpty ?? true)
     }
 }
 
@@ -27,11 +28,29 @@ public class FTRegistrationLastNameTextField: FTTextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        type = TypeElement.lastName
         FTAuth.registrationLastNameTF = self
     }
     
     override func checkDescriptionValidTextField() {
-        self.descriptionLbl.text = "Last name cannot be blank"
-        self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
+        descriptionLbl.text = "Last name cannot be blank"
+        descriptionLbl.isHidden = !(text?.isEmpty ?? true)
     }
 }
+
+import UIKit
+
+public class FTRegistrationNameTextField: FTTextField {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        type = TypeElement.name
+        FTAuth.registrationNameTF = self
+    }
+    
+    override func checkDescriptionValidTextField() {
+        descriptionLbl.text = "Name cannot be blank"
+        descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+    }
+}
+

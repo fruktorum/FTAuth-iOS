@@ -38,6 +38,7 @@
 		A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */; };
 		A3D7305E23A8E909001F0073 /* FTAuthRegistrationBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */; };
 		A3D7306623A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */; };
+		A3E2A40523C8E83C009B1D6A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2A40423C8E83C009B1D6A /* Constants.swift */; };
 		A3E9EC9523AA51F60087B360 /* NSObject+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9EC9423AA51F60087B360 /* NSObject+Spinner.swift */; };
 		A3E9EC9723AA52060087B360 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9EC9623AA52060087B360 /* String+Validation.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		A3D7305623A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationConfirmPasswordTextField.swift; sourceTree = "<group>"; };
 		A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthRegistrationBtn.swift; sourceTree = "<group>"; };
 		A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCheckerAcceptanceOfTerms.swift; sourceTree = "<group>"; };
+		A3E2A40423C8E83C009B1D6A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3E9EC9423AA51F60087B360 /* NSObject+Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Spinner.swift"; sourceTree = "<group>"; };
 		A3E9EC9623AA52060087B360 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				A33B9E3D23A9878F00269962 /* Extensions */,
+				A3E2A40423C8E83C009B1D6A /* Constants.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */,
 				A33C8E19239EBA000030032A /* APIAuth.swift in Sources */,
 				A3D7306623A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift in Sources */,
+				A3E2A40523C8E83C009B1D6A /* Constants.swift in Sources */,
 				4C922048239FBCDA0083B48A /* APIUrl.swift in Sources */,
 				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
 				A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */,

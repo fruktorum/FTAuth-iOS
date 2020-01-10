@@ -21,6 +21,15 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
             updateImage()
         }
     }
+    var type = TypeElement.accept
+    
+    var isValid: Bool {
+        if FTAuth.requiredElements.contains(type) {
+            return checked
+        } else {
+            return true
+        }
+    }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -50,4 +59,11 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
         self.imageOff = imageOff
         updateImage()
     }
+    
+    func checkValid() {
+        //место для добавления выделения невалидной кнопки
+//        imageView?.layer.borderColor = CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1)
+//        imageView?.layer.borderWidth = checked ? 0 : 1
+    }
 }
+

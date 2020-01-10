@@ -14,8 +14,8 @@ class Presenter: NSObject {
         postAuth(email, password, completionError)
     }
     
-    func registration(_ email: String, _ password: String, _ firstName: String, _ lastName: String, _ phone: String?, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        postRegistration(email, password, firstName, lastName, phone, completionError)
+    func registration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+        postRegistration(email, password, name, firstName, lastName, phone, completionError)
     }
     
     func logout(completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
@@ -55,9 +55,9 @@ class Presenter: NSObject {
         }
     }
         
-    private func postRegistration(_ email: String, _ password: String, _ firstName: String, _ lastName: String, _ phone: String?,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+    private func postRegistration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         let spinner = displaySpinner(.registration)
-        APIAuth.Email.register(email, password, firstName, lastName, phone).responseSimpleData { (data, error) in
+        APIAuth.Email.register(email, password, name, firstName, lastName, phone).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
                 completionError([ErrorModel(key: nil, message: error.localizedDescription)])
@@ -115,4 +115,5 @@ class Presenter: NSObject {
             }
         }
     }
+
 }

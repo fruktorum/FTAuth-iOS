@@ -12,17 +12,23 @@ public class FTRegistrationPhoneTextField: FTTextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        type = TypeElement.phone
         FTAuth.registrationPhoneTF = self
     }
     
+    override func checkValid() -> Bool {
+        text?.isValidPhone ?? false
+    }
+    
     override func checkDescriptionValidTextField() {
-//        self.descriptionLbl.isHidden = true
-//        if self.text == nil || self.text == "" {
-//            self.descriptionLbl.text = "The phone cannot be blank"
-//            self.descriptionLbl.isHidden = false
-//        } else if !(self.text?.isValidPhone ?? false) {
-//            self.descriptionLbl.text = "Incorrect phone"
-//            self.descriptionLbl.isHidden = false
-//        }
+        descriptionLbl.isHidden = true
+        if text == nil || text == "" {
+            descriptionLbl.text = "The phone cannot be blank"
+            descriptionLbl.isHidden = false
+        } else if !checkValid() {
+            descriptionLbl.text = "Incorrect phone"
+            descriptionLbl.isHidden = false
+        }
     }
 }
+
