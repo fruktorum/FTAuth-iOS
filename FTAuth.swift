@@ -96,6 +96,7 @@ public class FTAuth: NSObject {
     }
     
     public static func facebookLogin(_ facebookToken: String) {
+        startLogin?()
         self.presenter.authFacebook(facebookToken, { errors in
             showError(errors: errors, outputType: errorOutputType, .login)
             failureLogin?()
