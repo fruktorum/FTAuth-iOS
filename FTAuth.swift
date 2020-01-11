@@ -14,6 +14,7 @@ public class FTAuth: NSObject {
     public static var errorOutputType: ErrorOutputType? = .log
     public static var showSpinner = true
     public static var requiredElements = [TypeElement]()
+    static var authServerURL = ""
     
 //    public static var loginViewForSpinner: UIView?
 //    public static var registrationViewForSpinner: UIView?
@@ -49,14 +50,10 @@ public class FTAuth: NSObject {
     static var registrationPhoneTF: FTRegistrationPhoneTextField?
     
     static var registrationCheckerAcceptanceOfTerms: FTCheckerAcceptanceOfTerms?
-    
-    
-    
+
     static let viewModel = FTAuthViewModel()
     static let presenter = Presenter()
     static let spinnerController = NSObject()
-    
-    
     
     static func login() {
         viewModel.checkDescriptionValidAuthTF()
@@ -75,25 +72,6 @@ public class FTAuth: NSObject {
     static func registration() {
         viewModel.checkDescriptionValidRegistrationTF()
         if viewModel.checkValidAllElements() {
-//            registrationEmailTF?.isValid ?? false,
-//            registrationPasswordTF?.isValid ?? false,
-//            registrationConfirmPasswordTF?.isValid ?? false,
-//            registrationNameTF?.isValid ?? false,
-//            registrationFirstNameTF?.isValid ?? false,
-//            registrationLastNameTF?.isValid ?? false,
-//            registrationPhoneTF?.isValid ?? false,
-//            registrationCheckerAcceptanceOfTerms?.isValid ?? false {
-            
-//            let password = registrationPasswordTF?.text,
-//            registrationEmailTF?.isValid,
-//            let confirmParrword = registrationConfirmPasswordTF?.text,
-//            confirmParrword == password,
-//            (registrationCheckerAcceptanceOfTerms == nil ||
-//            registrationCheckerAcceptanceOfTerms?.checked ?? false),
-//            let firstName = registrationFirstNameTF?.text,
-//            !firstName.isEmpty,
-//            let lastName = registrationLastNameTF?.text,
-//            !lastName.isEmpty {
                 startRegistration?()
                 presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.text, completionError: { errors in
                     showError(errors: errors, outputType: errorOutputType, .registration)
@@ -112,6 +90,17 @@ public class FTAuth: NSObject {
     }
     
     //MARK: PUBLIC FUNCTION
+    
+    public static func setAuthSerevrURL(_ url: String) {
+        authServerURL = url
+    }
+    
+    public static func facebookLogin(_ facebookToken: String) {
+        self.presenter.authFacebook(facebookToken, { errors in
+            showError(errors: errors, outputType: errorOutputType, .login)
+            failureLogin?()
+        })
+    }
     
     public static func getSessionToken() -> String? {
         return APIHeader.recieve(key: .session_token)
