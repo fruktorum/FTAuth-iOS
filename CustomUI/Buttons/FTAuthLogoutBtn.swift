@@ -21,7 +21,7 @@ public class FTAuthLogoutBtn: UIButton {
         alert.addAction(UIAlertAction(title: "Sign out", style: UIAlertAction.Style.default, handler: { _ in
             FTAuth.logout()
         }))
-        alert.addAction(UIAlertAction(title: "Concel", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         let vc = UIApplication.shared.windows.first?.rootViewController
         vc?.present(alert, animated: true, completion: nil)
     }
