@@ -9,8 +9,8 @@
 struct APIHeader {
     
     enum HeaderKey: String, CaseIterable {
-        case session_token = "session_token"
-        case provider_token = "provider_token"
+        case session_token = "ft_auth_session_token"
+        case provider_token = "ft_auth_provider_token"
     }
     
     static func save(value: Any, key: HeaderKey) {

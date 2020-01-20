@@ -17,6 +17,12 @@ public class FTAuthLogoutBtn: UIButton {
     
     @objc func touchUpInside(sender: UIButton) {
         superview?.endEditing(true)
-        FTAuth.logout()
+        let alert = UIAlertController(title: "Sign out", message: "Do you really want to sign out?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Sign out", style: UIAlertAction.Style.default, handler: { _ in
+            FTAuth.logout()
+        }))
+        alert.addAction(UIAlertAction(title: "Concel", style: UIAlertAction.Style.cancel, handler: nil))
+        let vc = UIApplication.shared.windows.first?.rootViewController
+        vc?.present(alert, animated: true, completion: nil)
     }
 }
