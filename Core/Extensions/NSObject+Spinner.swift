@@ -26,8 +26,8 @@ extension NSObject {
 //                view = FTAuth.logoutViewForSpinner ?? view
 //            }
             let spinnerView = UIView(frame: view.frame)
-            spinnerView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-            let ai = UIActivityIndicatorView(style: .medium)
+            spinnerView.backgroundColor = FTAuth.backgroundColorOfActivityIndicator ?? UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+            let ai = FTAuth.activityIndicator ?? UIActivityIndicatorView(style: .medium)
             ai.center = spinnerView.center
             DispatchQueue.main.async {
                 ai.startAnimating()

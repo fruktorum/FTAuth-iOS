@@ -11,6 +11,8 @@ import UIKit
 
 public class FTAuth: NSObject {
     
+    public static var activityIndicator: UIActivityIndicatorView?
+    public static var backgroundColorOfActivityIndicator: UIColor?
     public static var errorOutputType: ErrorOutputType? = .log
     public static var showSpinner = true
     public static var requiredElements = [TypeElement]()
