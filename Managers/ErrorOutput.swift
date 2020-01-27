@@ -50,14 +50,14 @@ extension NSObject {
     
     private static func showInLog(error: ErrorModel?) {
         guard let error = error else { return }
-        print("❌ FTAuth Error: \n \(error.key == nil ? "" : "key: \(error.key?.description)\n") \(error.message == nil ? "" : "message: \(error.message?.description)\n") ❌")
+        print("❌ FTAuth Error: \n \(error.key == nil ? "" : "key: \(String(describing: error.key))\n") \(error.message == nil ? "" : "message: \(String(describing: error.message))\n") ❌")
     }
     
     private static func showInAlert(error: ErrorModel?) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error", message: error?.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
-            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            if var topController = UIApplication.shared.windows.first?.rootViewController {
                 while let presentedViewController = topController.presentedViewController {
                     topController = presentedViewController
                 }

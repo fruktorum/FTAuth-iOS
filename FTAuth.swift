@@ -11,6 +11,7 @@ import UIKit
 
 public class FTAuth: NSObject {
     
+    public static var webView: UIView?
     public static var activityIndicator: UIActivityIndicatorView?
     public static var backgroundColorOfActivityIndicator: UIColor?
     public static var errorOutputType: ErrorOutputType? = .log
@@ -96,13 +97,13 @@ public class FTAuth: NSObject {
         authServerURL = url
     }
     
-    public static func facebookLogin(_ facebookToken: String) {
-        startLogin?()
-        self.presenter.authFacebook(facebookToken, { errors in
-            showError(errors: errors, outputType: errorOutputType, .login)
-            failureLogin?()
-        })
-    }
+//    public static func facebookLogin(_ facebookToken: String) {
+//        startLogin?()
+//        self.presenter.authFacebook(facebookToken, { errors in
+//            showError(errors: errors, outputType: errorOutputType, .login)
+//            failureLogin?()
+//        })
+//    }
     
     public static func settingDescriptionLabel(textColor: UIColor? = nil,
                                         font: UIFont? = nil,
