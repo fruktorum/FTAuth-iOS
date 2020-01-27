@@ -90,7 +90,6 @@ public class FTAuth: NSObject {
     }
     
     //MARK: PUBLIC FUNCTION
-    
     public static func setAuthSerevrURL(_ url: String) {
         authServerURL = url
     }
@@ -103,12 +102,36 @@ public class FTAuth: NSObject {
         })
     }
     
+    public static func settingDescriptionLabel(textColor: UIColor? = nil,
+                                        font: UIFont? = nil,
+                                        textAlignment: NSTextAlignment? = nil,
+                                        backgroundColor: UIColor? = nil,
+                                        attributedText: NSAttributedString? = nil,
+                                        lineBreakMode: NSLineBreakMode? = nil,
+                                        adjustsFontSizeToFitWidth: Bool? = nil,
+                                        minimumScaleFactor: CGFloat? = nil,
+                                        numberOfLines: Int? = nil,
+                                        highlightedTextColor: UIColor? = nil,
+                                        isHighlighted: Bool? = nil,
+                                        shadowColor: UIColor? = nil,
+                                        shadowOffset: CGSize? = nil) {
+        viewModel.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+    }
+    
     public static func getSessionToken() -> String? {
         return APIHeader.recieve(key: .session_token)
     }
     
     public static func getProviderToken() -> String? {
         return APIHeader.recieve(key: .provider_token)
+    }
+    
+    public static func setProviderToken(_ providerToken: String) {
+        APIHeader.save(value: providerToken, key: .provider_token)
+    }
+    
+    public static func setSessionToken(_ sessionToken: String) {
+        APIHeader.save(value: sessionToken, key: .session_token)
     }
 }
 
