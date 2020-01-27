@@ -26,7 +26,6 @@ public class FTAuthFacebookBtn: UIButton {
     private func createWebView() {
         webView.isUserInteractionEnabled = true
         webView.load(URLRequest(url: URL(string: "\(AUTH_SERVER_URL)/facebook?mobile=true")!))
-        print("\(AUTH_SERVER_URL)/facebook?mobile=true")
         webView.navigationDelegate = self
         if let view = FTAuth.webView {
             webView.frame = view.frame
