@@ -27,6 +27,7 @@
 		A38468EC23DF392D00B11273 /* URL+params.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38468EB23DF392D00B11273 /* URL+params.swift */; };
 		A38468EE23DF39CF00B11273 /* FTAuthFacebookBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38468ED23DF39CF00B11273 /* FTAuthFacebookBtn.swift */; };
 		A384690823DF59CE00B11273 /* FTAuthGoogleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384690723DF59CE00B11273 /* FTAuthGoogleBtn.swift */; };
+		A384691423E0747200B11273 /* BaseWebViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384691323E0747200B11273 /* BaseWebViewButton.swift */; };
 		A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */; };
 		A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E610023A135BC00D4B54A /* ErrorModel.swift */; };
 		A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */; };
@@ -80,6 +81,7 @@
 		A38468EB23DF392D00B11273 /* URL+params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+params.swift"; sourceTree = "<group>"; };
 		A38468ED23DF39CF00B11273 /* FTAuthFacebookBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthFacebookBtn.swift; sourceTree = "<group>"; };
 		A384690723DF59CE00B11273 /* FTAuthGoogleBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthGoogleBtn.swift; sourceTree = "<group>"; };
+		A384691323E0747200B11273 /* BaseWebViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewButton.swift; sourceTree = "<group>"; };
 		A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		A39E610023A135BC00D4B54A /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -214,6 +216,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A384691223E0742000B11273 /* WebViewButtons */ = {
+			isa = PBXGroup;
+			children = (
+				A384691323E0747200B11273 /* BaseWebViewButton.swift */,
+				A38468ED23DF39CF00B11273 /* FTAuthFacebookBtn.swift */,
+				A384690723DF59CE00B11273 /* FTAuthGoogleBtn.swift */,
+			);
+			path = WebViewButtons;
+			sourceTree = "<group>";
+		};
 		A39E60FD23A1359800D4B54A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,9 +281,8 @@
 				A3D7302023A82E89001F0073 /* FTAuthLoginBtn.swift */,
 				A3D7304E23A8E1A9001F0073 /* FTAuthLogoutBtn.swift */,
 				A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */,
-				A38468ED23DF39CF00B11273 /* FTAuthFacebookBtn.swift */,
-				A384690723DF59CE00B11273 /* FTAuthGoogleBtn.swift */,
 				A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */,
+				A384691223E0742000B11273 /* WebViewButtons */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -387,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */,
+				A384691423E0747200B11273 /* BaseWebViewButton.swift in Sources */,
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
 				A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */,
 				A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */,
@@ -583,7 +595,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fruktorum.framework.FTAuth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -613,7 +625,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fruktorum.framework.FTAuth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

@@ -27,7 +27,7 @@ class Presenter: NSObject {
     }
     
     private func postAuth(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        let spinner = displaySpinner(.login)
+        let spinner = displaySpinner()
         APIAuth.Email.auth(email, password).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
@@ -94,7 +94,7 @@ class Presenter: NSObject {
 
         
     private func postRegistration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        let spinner = displaySpinner(.registration)
+        let spinner = displaySpinner()
         APIAuth.Email.register(email, password, name, firstName, lastName, phone).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
@@ -127,7 +127,7 @@ class Presenter: NSObject {
     }
         
     private func postLogout(_ completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
-        let spinner = displaySpinner(.login)
+        let spinner = displaySpinner()
         APIAuth.Session.logout.responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {

@@ -10,7 +10,7 @@ import UIKit
 
 extension NSObject {
     
-    func displaySpinner(_ requestType: RequestType) -> UIView? {
+    func displaySpinner() -> UIView? {//(_ requestType: RequestType) -> UIView? {
         guard FTAuth.showSpinner else { return nil }
         if var topController = UIApplication.shared.windows.first?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
