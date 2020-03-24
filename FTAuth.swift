@@ -83,7 +83,7 @@ public class FTAuth: NSObject {
         }
     }
 
-    static func logout() {
+    public static func logout() {
         guard let _ = getSessionToken() else { return }
         startLogout?()
         presenter.logout(completionError: { errors in
