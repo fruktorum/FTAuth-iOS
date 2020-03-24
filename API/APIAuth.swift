@@ -14,12 +14,12 @@ class APIAuth {
     
     enum Email {
         case auth(_ email: String, _ password: String)
-        case register(_ email: String, _ password: String, _ name: String, _ phone: String?)
+        case register(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?)
     }
 
-    enum Facebook {
-        case auth(_ fbToken: String)
-    }
+//    enum Facebook {
+//        case auth(_ fbToken: String)
+//    }
     
     enum Session {
         case logout

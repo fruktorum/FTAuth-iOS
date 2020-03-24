@@ -6,14 +6,15 @@
 //  Copyright © 2019 Fruktorum. All rights reserved.
 //
 
-import Foundation
-
+//import Foundation
+//
 //extension APIAuth.Facebook: APIResponse {
 //    
 //    var path: String {
 //        switch self {
 //        case .auth:
 //            return "\(AUTH_SERVER_URL)/facebook/auth"
+//        }
 //    }
 //    
 //    var request: APIRequest {

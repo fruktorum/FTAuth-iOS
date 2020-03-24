@@ -8,16 +8,20 @@
 
 import Foundation
 
-enum ServerType: String {
+//enum ServerType: String {
     
-    #if DEBUG
-    case auth = "http://3.16.215.202:3001"
-    #else
-    case auth = ""
-    #endif
+//    #if DEBUG
+//    case auth = "http://3.16.215.202:3001" // party up
+//    case auth = "https://agiliza-auth.herokuapp.com" //agiliza
+//    case auth = "\(FTAuth.authServerURL)"
+//    #else
+//    case auth = ""
+//    #endif
 
-}
+//}
 
-let AUTH_SERVER_URL = "\(ServerType.auth.rawValue)"
+//let AUTH_SERVER_URL = "\(ServerType.auth.rawValue)"
+let AUTH_SERVER_URL = "\(FTAuth.authServerURL)"
+
 
 

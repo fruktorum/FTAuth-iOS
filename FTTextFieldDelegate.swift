@@ -10,15 +10,25 @@ import UIKit
 
 class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
     
-    public func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if let textField = textField as? FTTextField {
             textField.checkDescriptionValidTextField()
         }
     }
     
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if let textField = textField as? FTTextField {
             textField.cleanTextFieldDescription()
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        if let nextResponder = textField.superview?.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }

@@ -17,12 +17,14 @@ public enum ErrorOutputType {
 enum RequestType {
     case login
     case registration
+    case logout
 }
 
 enum KeyError: String {
     case email = "email"
     case password = "password"
-    case fullName = "full_name"
+    case firstName = "first_name"
+    case lastName = "last_name"
     case phone = "phone"
 }
 
@@ -48,14 +50,14 @@ extension NSObject {
     
     private static func showInLog(error: ErrorModel?) {
         guard let error = error else { return }
-        print("❌ FTAuth Error: \n \(error.key == nil ? "" : "key: \(error.key?.description)\n") \(error.message == nil ? "" : "message: \(error.message?.description)\n") ❌")
+        print("❌ FTAuth Error: \n \(error.key == nil ? "" : "key: \(String(describing: error.key))\n") \(error.message == nil ? "" : "message: \(String(describing: error.message))\n") ❌")
     }
     
     private static func showInAlert(error: ErrorModel?) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error", message: error?.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
-            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            if var topController = UIApplication.shared.windows.first?.rootViewController {
                 while let presentedViewController = topController.presentedViewController {
                     topController = presentedViewController
                 }
@@ -74,9 +76,12 @@ extension NSObject {
             let passwordTF = requestType == .login ? FTAuth.authPasswordTF : FTAuth.registrationPasswordTF
             passwordTF?.descriptionLbl.text = message
             passwordTF?.descriptionLbl.isHidden = false
-        case .fullName:
-            FTAuth.registrationFullNameTF?.descriptionLbl.text = message
-            FTAuth.registrationFullNameTF?.descriptionLbl.isHidden = false
+        case .firstName:
+            FTAuth.registrationFirstNameTF?.descriptionLbl.text = message
+            FTAuth.registrationFirstNameTF?.descriptionLbl.isHidden = false
+        case .lastName:
+            FTAuth.registrationLastNameTF?.descriptionLbl.text = message
+            FTAuth.registrationLastNameTF?.descriptionLbl.isHidden = false
         case .phone:
             FTAuth.registrationPhoneTF?.descriptionLbl.text = message
             FTAuth.registrationPhoneTF?.descriptionLbl.isHidden = false

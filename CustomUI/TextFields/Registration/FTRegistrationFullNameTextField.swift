@@ -8,15 +8,55 @@
 
 import UIKit
 
-public class FTRegistrationFullNameTextField: FTTextField {
+public class FTRegistrationFirstNameTextField: FTTextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        FTAuth.registrationFullNameTF = self
+        type = TypeElement.firstName
+        FTAuth.registrationFirstNameTF = self
     }
     
     override func checkDescriptionValidTextField() {
-        self.descriptionLbl.text = "Name cannot be blank"
-        self.descriptionLbl.isHidden = !(self.text?.isEmpty ?? true)
+        if FTAuth.requiredElements.contains(type) {
+            descriptionLbl.text = "First name cannot be blank"
+            descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        }
     }
 }
+
+import UIKit
+
+public class FTRegistrationLastNameTextField: FTTextField {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        type = TypeElement.lastName
+        FTAuth.registrationLastNameTF = self
+    }
+    
+    override func checkDescriptionValidTextField() {
+        if FTAuth.requiredElements.contains(type) {
+            descriptionLbl.text = "Last name cannot be blank"
+            descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        }
+    }
+}
+
+import UIKit
+
+public class FTRegistrationNameTextField: FTTextField {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        type = TypeElement.name
+        FTAuth.registrationNameTF = self
+    }
+    
+    override func checkDescriptionValidTextField() {
+        if FTAuth.requiredElements.contains(type) {
+            descriptionLbl.text = "Name cannot be blank"
+            descriptionLbl.isHidden = !(text?.isEmpty ?? true)
+        }
+    }
+}
+

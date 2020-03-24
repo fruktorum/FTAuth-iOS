@@ -22,7 +22,12 @@
 		A33B9E2623A9403E00269962 /* APIHeared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E2523A9403E00269962 /* APIHeared.swift */; };
 		A33B9E3A23A986FD00269962 /* FTAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */; };
 		A33C8E19239EBA000030032A /* APIAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C8E18239EBA000030032A /* APIAuth.swift */; };
+		A376843523B7C93100375313 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376843423B7C93100375313 /* Constants.swift */; };
 		A378705B239E6CC5005B057D /* FTAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705A239E6CC5005B057D /* FTAuth.swift */; };
+		A38468EC23DF392D00B11273 /* URL+params.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38468EB23DF392D00B11273 /* URL+params.swift */; };
+		A38468EE23DF39CF00B11273 /* FTAuthFacebookBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38468ED23DF39CF00B11273 /* FTAuthFacebookBtn.swift */; };
+		A384690823DF59CE00B11273 /* FTAuthGoogleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384690723DF59CE00B11273 /* FTAuthGoogleBtn.swift */; };
+		A384691423E0747200B11273 /* BaseWebViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384691323E0747200B11273 /* BaseWebViewButton.swift */; };
 		A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */; };
 		A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E610023A135BC00D4B54A /* ErrorModel.swift */; };
 		A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */; };
@@ -71,7 +76,12 @@
 		A33B9E2523A9403E00269962 /* APIHeared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeared.swift; sourceTree = "<group>"; };
 		A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthViewModel.swift; sourceTree = "<group>"; };
 		A33C8E18239EBA000030032A /* APIAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuth.swift; sourceTree = "<group>"; };
+		A376843423B7C93100375313 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A378705A239E6CC5005B057D /* FTAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuth.swift; sourceTree = "<group>"; };
+		A38468EB23DF392D00B11273 /* URL+params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+params.swift"; sourceTree = "<group>"; };
+		A38468ED23DF39CF00B11273 /* FTAuthFacebookBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthFacebookBtn.swift; sourceTree = "<group>"; };
+		A384690723DF59CE00B11273 /* FTAuthGoogleBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthGoogleBtn.swift; sourceTree = "<group>"; };
+		A384691323E0747200B11273 /* BaseWebViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewButton.swift; sourceTree = "<group>"; };
 		A39E60FE23A135B200D4B54A /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		A39E610023A135BC00D4B54A /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -191,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				A33B9E3D23A9878F00269962 /* Extensions */,
+				A376843423B7C93100375313 /* Constants.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -200,8 +211,19 @@
 			children = (
 				A3E9EC9623AA52060087B360 /* String+Validation.swift */,
 				A3E9EC9423AA51F60087B360 /* NSObject+Spinner.swift */,
+				A38468EB23DF392D00B11273 /* URL+params.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A384691223E0742000B11273 /* WebViewButtons */ = {
+			isa = PBXGroup;
+			children = (
+				A384691323E0747200B11273 /* BaseWebViewButton.swift */,
+				A38468ED23DF39CF00B11273 /* FTAuthFacebookBtn.swift */,
+				A384690723DF59CE00B11273 /* FTAuthGoogleBtn.swift */,
+			);
+			path = WebViewButtons;
 			sourceTree = "<group>";
 		};
 		A39E60FD23A1359800D4B54A /* Models */ = {
@@ -260,6 +282,7 @@
 				A3D7304E23A8E1A9001F0073 /* FTAuthLogoutBtn.swift */,
 				A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */,
 				A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */,
+				A384691223E0742000B11273 /* WebViewButtons */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -375,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */,
+				A384691423E0747200B11273 /* BaseWebViewButton.swift in Sources */,
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
 				A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */,
 				A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */,
@@ -383,9 +407,12 @@
 				A3C6C3A723A2500200FFE5F0 /* FTTextFieldDelegate.swift in Sources */,
 				A33C8E19239EBA000030032A /* APIAuth.swift in Sources */,
 				A3D7306623A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift in Sources */,
+				A38468EE23DF39CF00B11273 /* FTAuthFacebookBtn.swift in Sources */,
+				A376843523B7C93100375313 /* Constants.swift in Sources */,
 				4C922048239FBCDA0083B48A /* APIUrl.swift in Sources */,
 				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
 				A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */,
+				A38468EC23DF392D00B11273 /* URL+params.swift in Sources */,
 				4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */,
 				A33B9E1623A92FE400269962 /* FTRegistrationFullNameTextField.swift in Sources */,
 				4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */,
@@ -404,6 +431,7 @@
 				A3D7302123A82E89001F0073 /* FTAuthLoginBtn.swift in Sources */,
 				4C92204E239FBE260083B48A /* APIResponse.swift in Sources */,
 				A3C6C3A523A24F9000FFE5F0 /* FTTextField.swift in Sources */,
+				A384690823DF59CE00B11273 /* FTAuthGoogleBtn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +508,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -537,6 +565,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -551,11 +580,13 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TV4YN6VX49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = FTAuth/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -564,6 +595,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fruktorum.framework.FTAuth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -578,11 +610,13 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TV4YN6VX49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = FTAuth/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -591,6 +625,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fruktorum.framework.FTAuth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
