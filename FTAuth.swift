@@ -18,6 +18,8 @@ public class FTAuth: NSObject {
     public static var showSpinner = true
     public static var requiredElements = [TypeElement]()
     static var authServerURL = ""
+    public static var authPayload: [String: AnyObject]?
+    public static var registrationPayload: [String: AnyObject]?
     
 //    public static var loginViewForSpinner: UIView?
 //    public static var registrationViewForSpinner: UIView?
