@@ -107,6 +107,14 @@ public class FTAuth: NSObject {
 //        })
 //    }
     
+    public static func loginWithApple(_ identityToken: String) {
+        startLogin?()
+        self.presenter.authApple(identityToken, { errors in
+            showError(errors: errors, outputType: errorOutputType, .login)
+            failureLogin?()
+        })
+    }
+    
     public static func settingDescriptionLabel(textColor: UIColor? = nil,
                                         font: UIFont? = nil,
                                         textAlignment: NSTextAlignment? = nil,

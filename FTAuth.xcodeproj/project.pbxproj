@@ -22,6 +22,9 @@
 		A33B9E2623A9403E00269962 /* APIHeared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E2523A9403E00269962 /* APIHeared.swift */; };
 		A33B9E3A23A986FD00269962 /* FTAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */; };
 		A33C8E19239EBA000030032A /* APIAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C8E18239EBA000030032A /* APIAuth.swift */; };
+		A35D767B244896190006CA27 /* FTAuthAppleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D767A244896190006CA27 /* FTAuthAppleBtn.swift */; };
+		A35D767D2448A07D0006CA27 /* APIAuth+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D767C2448A07D0006CA27 /* APIAuth+Apple.swift */; };
+		A35D767F2448A45E0006CA27 /* AppleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D767E2448A45E0006CA27 /* AppleAuthorizationService.swift */; };
 		A376843523B7C93100375313 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376843423B7C93100375313 /* Constants.swift */; };
 		A378705B239E6CC5005B057D /* FTAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705A239E6CC5005B057D /* FTAuth.swift */; };
 		A38468EC23DF392D00B11273 /* URL+params.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38468EB23DF392D00B11273 /* URL+params.swift */; };
@@ -76,6 +79,9 @@
 		A33B9E2523A9403E00269962 /* APIHeared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeared.swift; sourceTree = "<group>"; };
 		A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthViewModel.swift; sourceTree = "<group>"; };
 		A33C8E18239EBA000030032A /* APIAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuth.swift; sourceTree = "<group>"; };
+		A35D767A244896190006CA27 /* FTAuthAppleBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthAppleBtn.swift; sourceTree = "<group>"; };
+		A35D767C2448A07D0006CA27 /* APIAuth+Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Apple.swift"; sourceTree = "<group>"; };
+		A35D767E2448A45E0006CA27 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
 		A376843423B7C93100375313 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A378705A239E6CC5005B057D /* FTAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuth.swift; sourceTree = "<group>"; };
 		A38468EB23DF392D00B11273 /* URL+params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+params.swift"; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 			children = (
 				4C92205223A013CF0083B48A /* APIAuth+Email.swift */,
 				4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */,
+				A35D767C2448A07D0006CA27 /* APIAuth+Apple.swift */,
 				4C92205423A013DC0083B48A /* APIAuth+Logout.swift */,
 			);
 			path = APIAuth;
@@ -193,6 +200,7 @@
 			children = (
 				A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */,
 				4C92204F239FBEBC0083B48A /* ErrorManager.swift */,
+				A35D767E2448A45E0006CA27 /* AppleAuthorizationService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -282,6 +290,7 @@
 				A3D7304E23A8E1A9001F0073 /* FTAuthLogoutBtn.swift */,
 				A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */,
 				A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */,
+				A35D767A244896190006CA27 /* FTAuthAppleBtn.swift */,
 				A384691223E0742000B11273 /* WebViewButtons */,
 			);
 			path = Buttons;
@@ -398,8 +407,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */,
+				A35D767B244896190006CA27 /* FTAuthAppleBtn.swift in Sources */,
 				A384691423E0747200B11273 /* BaseWebViewButton.swift in Sources */,
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
+				A35D767D2448A07D0006CA27 /* APIAuth+Apple.swift in Sources */,
 				A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */,
 				A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */,
 				A33B9E3A23A986FD00269962 /* FTAuthViewModel.swift in Sources */,
@@ -423,6 +434,7 @@
 				A3E9EC9723AA52060087B360 /* String+Validation.swift in Sources */,
 				A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */,
 				A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */,
+				A35D767F2448A45E0006CA27 /* AppleAuthorizationService.swift in Sources */,
 				A3D7304D23A8E186001F0073 /* FTAuthEmailTextField.swift in Sources */,
 				A3D7305E23A8E909001F0073 /* FTAuthRegistrationBtn.swift in Sources */,
 				A3D7305323A8E33F001F0073 /* FTRegistrationEmailTextField.swift in Sources */,

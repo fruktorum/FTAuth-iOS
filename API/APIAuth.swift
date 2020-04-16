@@ -21,6 +21,10 @@ class APIAuth {
 //        case auth(_ fbToken: String)
 //    }
     
+    enum Apple {
+        case auth(_ identityToken: String)
+    }
+    
     enum Session {
         case logout
     }
