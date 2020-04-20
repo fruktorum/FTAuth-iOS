@@ -14,9 +14,9 @@ Pod::Spec.new do |spec|
 
   spec.ios.deployment_target = "13.2"
 
-  spec.source       = { :git => "https://github.com/GTimofey/FTAuth", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/GTimofey/FTAuth.gti", :tag => "#{spec.version}" }
 
 
-  spec.source_files  = "FTAuth/**/*"
+  spec.source_files  = "FTAuthSources/**/*"
 
 end

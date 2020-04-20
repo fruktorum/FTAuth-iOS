@@ -153,15 +153,7 @@
 		4CCF182C23969CE9001846D3 = {
 			isa = PBXGroup;
 			children = (
-				A378705A239E6CC5005B057D /* FTAuth.swift */,
-				A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */,
-				A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */,
-				A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */,
-				A33B9E3B23A9873800269962 /* Managers */,
-				A3C6C3A323A24F7000FFE5F0 /* CustomUI */,
-				A39E60FD23A1359800D4B54A /* Models */,
-				A33B9E3C23A9878A00269962 /* Core */,
-				4C922046239FBCBB0083B48A /* API */,
+				A3E541CB244E092F00CB3561 /* FTAuthSources */,
 				4CCF183823969CE9001846D3 /* FTAuth */,
 				4CCF184323969CE9001846D3 /* FTAuthTests */,
 				4CCF183723969CE9001846D3 /* Products */,
@@ -180,8 +172,8 @@
 		4CCF183823969CE9001846D3 /* FTAuth */ = {
 			isa = PBXGroup;
 			children = (
-				4CCF183923969CE9001846D3 /* FTAuth.h */,
 				4CCF183A23969CE9001846D3 /* Info.plist */,
+				4CCF183923969CE9001846D3 /* FTAuth.h */,
 			);
 			path = FTAuth;
 			sourceTree = "<group>";
@@ -294,6 +286,22 @@
 				A384691223E0742000B11273 /* WebViewButtons */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		A3E541CB244E092F00CB3561 /* FTAuthSources */ = {
+			isa = PBXGroup;
+			children = (
+				A378705A239E6CC5005B057D /* FTAuth.swift */,
+				A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */,
+				A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */,
+				A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */,
+				A33B9E3B23A9873800269962 /* Managers */,
+				A3C6C3A323A24F7000FFE5F0 /* CustomUI */,
+				A39E60FD23A1359800D4B54A /* Models */,
+				A33B9E3C23A9878A00269962 /* Core */,
+				4C922046239FBCBB0083B48A /* API */,
+			);
+			path = FTAuthSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -611,6 +619,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fruktorum.framework.FTAuth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -641,6 +650,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fruktorum.framework.FTAuth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
