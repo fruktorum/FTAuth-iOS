@@ -29,21 +29,37 @@ extension APIAuth.Email: APIResponse {
     var body: [String: AnyObject] {
         switch self {
         case .auth(let email, let password):
-            return [
-                "email": email as AnyObject,
-                "password": password as AnyObject
-            ] as [String: AnyObject]
-       case .register(let email, let password, let name, let firstName, let lastName, let phone):
-        return [
-            "email": email as AnyObject,
-            "password": password as AnyObject,
-            "payload": [
-                "name": name as AnyObject,
-                "first_name": firstName as AnyObject,
-                "last_name": lastName as AnyObject,
-                "phone": phone as AnyObject
-                ]
-            ] as [String: AnyObject]
+            var payload = FTAuth.authPayload ?? [String: AnyObject]()
+            payload["email"] = email as AnyObject
+            payload["password"] = password as AnyObject
+            return payload
+            //            return [
+            //                "email": email as AnyObject,
+            //                "password": password as AnyObject,
+        //            ] as [String: AnyObject]
+        case .register(let email, let password, let name, let firstName, let lastName, let phone):
+            var extraPayload = FTAuth.registrationPayload ?? [String: AnyObject]()
+            extraPayload["name"] = name as AnyObject
+            extraPayload["first_name"] = firstName as AnyObject
+            extraPayload["last_name"] = lastName as AnyObject
+            extraPayload["phone"] = phone as AnyObject
+            
+            var payload = [String: AnyObject]()
+            payload["email"] = email as AnyObject
+            payload["password"] = password as AnyObject
+            payload["payload"] = extraPayload as AnyObject
+            return payload
+            
+            //        return [
+            //            "email": email as AnyObject,
+            //            "password": password as AnyObject,
+            //            "payload": [
+            //                "name": name as AnyObject,
+            //                "first_name": firstName as AnyObject,
+            //                "last_name": lastName as AnyObject,
+            //                "phone": phone as AnyObject
+            //                ]
+            //            ] as [String: AnyObject]
         }
     }
 }

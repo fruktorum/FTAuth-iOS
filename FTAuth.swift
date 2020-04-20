@@ -11,10 +11,15 @@ import UIKit
 
 public class FTAuth: NSObject {
     
+    public static var webView: UIView?
+    public static var activityIndicator: UIActivityIndicatorView?
+    public static var backgroundColorOfActivityIndicator: UIColor?
     public static var errorOutputType: ErrorOutputType? = .log
     public static var showSpinner = true
     public static var requiredElements = [TypeElement]()
     static var authServerURL = ""
+    public static var authPayload: [String: AnyObject]?
+    public static var registrationPayload: [String: AnyObject]?
     
 //    public static var loginViewForSpinner: UIView?
 //    public static var registrationViewForSpinner: UIView?
@@ -80,7 +85,7 @@ public class FTAuth: NSObject {
         }
     }
 
-    static func logout() {
+    public static func logout() {
         guard let _ = getSessionToken() else { return }
         startLogout?()
         presenter.logout(completionError: { errors in
@@ -90,17 +95,40 @@ public class FTAuth: NSObject {
     }
     
     //MARK: PUBLIC FUNCTION
-    
     public static func setAuthSerevrURL(_ url: String) {
         authServerURL = url
     }
     
-    public static func facebookLogin(_ facebookToken: String) {
+//    public static func facebookLogin(_ facebookToken: String) {
+//        startLogin?()
+//        self.presenter.authFacebook(facebookToken, { errors in
+//            showError(errors: errors, outputType: errorOutputType, .login)
+//            failureLogin?()
+//        })
+//    }
+    
+    public static func loginWithApple(_ identityToken: String) {
         startLogin?()
-        self.presenter.authFacebook(facebookToken, { errors in
+        self.presenter.authApple(identityToken, { errors in
             showError(errors: errors, outputType: errorOutputType, .login)
             failureLogin?()
         })
+    }
+    
+    public static func settingDescriptionLabel(textColor: UIColor? = nil,
+                                        font: UIFont? = nil,
+                                        textAlignment: NSTextAlignment? = nil,
+                                        backgroundColor: UIColor? = nil,
+                                        attributedText: NSAttributedString? = nil,
+                                        lineBreakMode: NSLineBreakMode? = nil,
+                                        adjustsFontSizeToFitWidth: Bool? = nil,
+                                        minimumScaleFactor: CGFloat? = nil,
+                                        numberOfLines: Int? = nil,
+                                        highlightedTextColor: UIColor? = nil,
+                                        isHighlighted: Bool? = nil,
+                                        shadowColor: UIColor? = nil,
+                                        shadowOffset: CGSize? = nil) {
+        viewModel.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
     }
     
     public static func getSessionToken() -> String? {
@@ -109,6 +137,14 @@ public class FTAuth: NSObject {
     
     public static func getProviderToken() -> String? {
         return APIHeader.recieve(key: .provider_token)
+    }
+    
+    public static func setProviderToken(_ providerToken: String) {
+        APIHeader.save(value: providerToken, key: .provider_token)
+    }
+    
+    public static func setSessionToken(_ sessionToken: String) {
+        APIHeader.save(value: sessionToken, key: .session_token)
     }
 }
 

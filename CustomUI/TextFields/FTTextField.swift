@@ -34,10 +34,32 @@ public class FTTextField: UITextField {
         settingDescriptionLbl()
     }
     
-    func settingDescriptionLbl() {
-        descriptionLbl.font = self.font?.withSize(10)
-        descriptionLbl.textColor = .red
-        descriptionLbl.textAlignment = .left
+    func settingDescriptionLbl(_ textColor: UIColor? = nil,
+                              _ font: UIFont? = nil,
+                              _ textAlignment: NSTextAlignment? = nil,
+                              _ backgroundColor: UIColor? = nil,
+                              _ attributedText: NSAttributedString? = nil,
+                              _ lineBreakMode: NSLineBreakMode? = nil,
+                              _ adjustsFontSizeToFitWidth: Bool? = nil,
+                              _ minimumScaleFactor: CGFloat? = nil,
+                              _ numberOfLines: Int? = nil,
+                              _ highlightedTextColor: UIColor? = nil,
+                              _ isHighlighted: Bool? = nil,
+                              _ shadowColor: UIColor? = nil,
+                              _ shadowOffset: CGSize? = nil) {
+        descriptionLbl.textColor = textColor == nil ? .red : textColor
+        descriptionLbl.font = font == nil ? self.font?.withSize(10) : font
+        descriptionLbl.textAlignment = textAlignment ?? .left
+        descriptionLbl.backgroundColor = backgroundColor ?? .clear
+        descriptionLbl.attributedText = attributedText
+        descriptionLbl.lineBreakMode = lineBreakMode ?? descriptionLbl.lineBreakMode
+        descriptionLbl.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth ?? descriptionLbl.adjustsFontSizeToFitWidth
+        descriptionLbl.minimumScaleFactor = minimumScaleFactor ?? descriptionLbl.minimumScaleFactor
+        descriptionLbl.numberOfLines = numberOfLines ?? 1
+        descriptionLbl.highlightedTextColor = highlightedTextColor
+        descriptionLbl.isHighlighted = isHighlighted ?? descriptionLbl.isHighlighted
+        descriptionLbl.shadowColor = shadowColor
+        descriptionLbl.shadowOffset = shadowOffset ?? descriptionLbl.shadowOffset
         addSubview(descriptionLbl)
         addConstraints()
     }

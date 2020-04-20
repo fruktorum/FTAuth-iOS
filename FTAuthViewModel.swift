@@ -85,11 +85,6 @@ class FTAuthViewModel: NSObject {
         return isValid
     }
     
-    
-    
-    
-    
-    
     func updateConstrains(_ generalVerticalLocationOfDescription: CGFloat?) {
         FTAuth.authEmailTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
         FTAuth.authPasswordTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
@@ -100,6 +95,30 @@ class FTAuthViewModel: NSObject {
         FTAuth.registrationNameTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
         FTAuth.registrationFirstNameTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
         FTAuth.registrationLastNameTF?.setVerticalLocationOfDescription(generalVerticalLocationOfDescription)
+    }
+    
+    func settingDescriptionLbl(_ textColor: UIColor? = nil,
+                                _ font: UIFont? = nil,
+                                _ textAlignment: NSTextAlignment? = nil,
+                                _ backgroundColor: UIColor? = nil,
+                                _ attributedText: NSAttributedString? = nil,
+                                _ lineBreakMode: NSLineBreakMode? = nil,
+                                _ adjustsFontSizeToFitWidth: Bool? = nil,
+                                _ minimumScaleFactor: CGFloat? = nil,
+                                _ numberOfLines: Int? = nil,
+                                _ highlightedTextColor: UIColor? = nil,
+                                _ isHighlighted: Bool? = nil,
+                                _ shadowColor: UIColor? = nil,
+                                _ shadowOffset: CGSize? = nil) {
+        FTAuth.authEmailTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+        FTAuth.authPasswordTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+        FTAuth.registrationEmailTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+        FTAuth.registrationPasswordTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+        FTAuth.registrationConfirmPasswordTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+        FTAuth.registrationPhoneTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+        FTAuth.registrationNameTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+        FTAuth.registrationFirstNameTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
+        FTAuth.registrationLastNameTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
     }
 }
 
