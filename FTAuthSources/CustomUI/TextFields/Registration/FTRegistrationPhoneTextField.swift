@@ -40,6 +40,7 @@ public class FTRegistrationPhoneTextField: FTTextField {
     }
     
     private func formattedNumber(number: String) -> String {
+        print("formattedNumber \(number)")
         let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         let mask = "+X (XXX) XXX-XXXX"
 
@@ -47,19 +48,24 @@ public class FTRegistrationPhoneTextField: FTTextField {
         var index = cleanPhoneNumber.startIndex
         for ch in mask where index < cleanPhoneNumber.endIndex {
             if ch == "X" {
+                print(2)
                 result.append(cleanPhoneNumber[index])
                 index = cleanPhoneNumber.index(after: index)
             } else {
+                print(3)
                 result.append(ch)
             }
         }
+        print(4)
         return result
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("FTRegistrationPhoneTextField shouldChangeCharactersIn \(string)")
         guard let text = textField.text else { return false }
         let newString = (text as NSString).replacingCharacters(in: range, with: string)
         textField.text = formattedNumber(number: newString)
+        
         return false
     }
 }
