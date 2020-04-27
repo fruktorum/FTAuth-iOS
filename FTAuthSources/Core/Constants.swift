@@ -18,7 +18,7 @@ public enum TypeElement: Equatable {
     case email
     case password
     case confirmPassword
-    case phone(PhoneMask?)
+    case phone
     case accept
 }
 

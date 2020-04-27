@@ -10,11 +10,11 @@ import UIKit
 
 public class FTRegistrationPhoneTextField: FTTextField {
     
-    private var phoneMask: String?
+    public var phoneMask = PhoneMask.none
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        type = TypeElement.phone(nil)
+        type = TypeElement.phone
         FTAuth.registrationPhoneTF = self
     }
     
@@ -25,12 +25,6 @@ public class FTRegistrationPhoneTextField: FTTextField {
     override func checkDescriptionValidTextField() {
         descriptionLbl.isHidden = true
         if FTAuth.requiredElements.contains(type) {
-            switch type {
-            case .phone(let mask):
-                phoneMask = mask?.rawValue
-                print("phoneMask \(phoneMask)")
-            default:  break
-            }
             if text == nil || text == "" {
                 descriptionLbl.text = "The phone cannot be blank"
                 descriptionLbl.isHidden = false
@@ -49,7 +43,8 @@ public class FTRegistrationPhoneTextField: FTTextField {
     
     private func formattedNumber(number: String) -> String {
         let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        guard let mask = phoneMask else { return number }
+        guard phoneMask != .none else { return number }
+        let mask = phoneMask.rawValue
 //        let mask = "+X (XXX) XXX-XXXX"
         var result = ""
         var index = cleanPhoneNumber.startIndex
