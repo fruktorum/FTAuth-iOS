@@ -24,10 +24,4 @@ extension String {
     //        return passwordTest.evaluate(with: self)
         return self.count >= 8
     }
-    
-    var isValidPhone: Bool {
-        
-        return self.count >= 10
-    }
-    
 }

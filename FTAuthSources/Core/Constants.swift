@@ -26,4 +26,5 @@ public enum PhoneMask: String {
     case none
     case x_xxx_xxx_xxxx = "+X (XXX) XXX-XXXX"
     case xx_xxx_xxx_xxxx = "+XX (XXX) XXX-XXXX"
+    
 }

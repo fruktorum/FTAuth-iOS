@@ -19,7 +19,13 @@ public class FTRegistrationPhoneTextField: FTTextField {
     }
     
     override func checkValid() -> Bool {
-        text?.isValidPhone ?? false
+        switch phoneMask {
+        case .none:
+            return text?.count ?? 0 >= 10
+        default:
+            return text?.count == phoneMask.rawValue.count
+        }
+        
     }
     
     override func checkDescriptionValidTextField() {
@@ -45,7 +51,6 @@ public class FTRegistrationPhoneTextField: FTTextField {
         let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         guard phoneMask != .none else { return number }
         let mask = phoneMask.rawValue
-//        let mask = "+X (XXX) XXX-XXXX"
         var result = ""
         var index = cleanPhoneNumber.startIndex
         for ch in mask where index < cleanPhoneNumber.endIndex {
