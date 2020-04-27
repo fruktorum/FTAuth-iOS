@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TypeElement: String {
+public enum TypeElement: Equatable {
     case none
     
     
@@ -18,6 +18,12 @@ public enum TypeElement: String {
     case email
     case password
     case confirmPassword
-    case phone
+    case phone(PhoneMask?)
     case accept
+}
+
+public enum PhoneMask: String {
+    case none
+    case x_xxx_xxx_xxxx = "+X (XXX) XXX-XXXX"
+    case xx_xxx_xxx_xxxx = "+XX (XXX) XXX-XXXX"
 }

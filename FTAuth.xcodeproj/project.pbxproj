@@ -13,7 +13,6 @@
 		4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92204F239FBEBC0083B48A /* ErrorManager.swift */; };
 		4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205223A013CF0083B48A /* APIAuth+Email.swift */; };
 		4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205423A013DC0083B48A /* APIAuth+Logout.swift */; };
-		4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */; };
 		4CCF184023969CE9001846D3 /* FTAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCF183623969CE9001846D3 /* FTAuth.framework */; };
 		4CCF184523969CE9001846D3 /* FTAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF184423969CE9001846D3 /* FTAuthTests.swift */; };
 		4CCF184723969CE9001846D3 /* FTAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CCF183923969CE9001846D3 /* FTAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -67,7 +66,6 @@
 		4C92204F239FBEBC0083B48A /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		4C92205223A013CF0083B48A /* APIAuth+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Email.swift"; sourceTree = "<group>"; };
 		4C92205423A013DC0083B48A /* APIAuth+Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Logout.swift"; sourceTree = "<group>"; };
-		4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Facebook.swift"; sourceTree = "<group>"; };
 		4CCF183623969CE9001846D3 /* FTAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FTAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCF183923969CE9001846D3 /* FTAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAuth.h; sourceTree = "<group>"; };
 		4CCF183A23969CE9001846D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				4C92205223A013CF0083B48A /* APIAuth+Email.swift */,
-				4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */,
 				A35D767C2448A07D0006CA27 /* APIAuth+Apple.swift */,
 				4C92205423A013DC0083B48A /* APIAuth+Logout.swift */,
 			);
@@ -432,7 +429,6 @@
 				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
 				A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */,
 				A38468EC23DF392D00B11273 /* URL+params.swift in Sources */,
-				4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */,
 				A33B9E1623A92FE400269962 /* FTRegistrationFullNameTextField.swift in Sources */,
 				4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */,
 				4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */,

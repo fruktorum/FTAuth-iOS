@@ -33,10 +33,6 @@ extension APIAuth.Email: APIResponse {
             payload["email"] = email as AnyObject
             payload["password"] = password as AnyObject
             return payload
-            //            return [
-            //                "email": email as AnyObject,
-            //                "password": password as AnyObject,
-        //            ] as [String: AnyObject]
         case .register(let email, let password, let name, let firstName, let lastName, let phone):
             var extraPayload = FTAuth.registrationPayload ?? [String: AnyObject]()
             extraPayload["name"] = name as AnyObject
@@ -49,17 +45,6 @@ extension APIAuth.Email: APIResponse {
             payload["password"] = password as AnyObject
             payload["payload"] = extraPayload as AnyObject
             return payload
-            
-            //        return [
-            //            "email": email as AnyObject,
-            //            "password": password as AnyObject,
-            //            "payload": [
-            //                "name": name as AnyObject,
-            //                "first_name": firstName as AnyObject,
-            //                "last_name": lastName as AnyObject,
-            //                "phone": phone as AnyObject
-            //                ]
-            //            ] as [String: AnyObject]
         }
     }
 }

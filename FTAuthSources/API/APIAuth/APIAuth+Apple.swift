@@ -30,8 +30,6 @@ extension APIAuth.Apple: APIResponse {
             return [
                 "identity_token": identityToken
             ] as [String: AnyObject]
-        default:
-            return [:]
         }
     }
 }

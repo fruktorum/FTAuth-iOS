@@ -15,12 +15,8 @@ class Presenter: NSObject {
     }
     
     func authApple(_ identityToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?)  -> Void) {
-        postFacebook(identityToken, completionError)
+        postApple(identityToken, completionError)
     }
-    
-//    func authFacebook(_ fbToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?)  -> Void) {
-//        postFacebook(fbToken, completionError)
-//    }
     
     func registration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         postRegistration(email, password, name, firstName, lastName, phone, completionError)
@@ -63,7 +59,7 @@ class Presenter: NSObject {
         }
     }
     
-    private func postFacebook(_ identityToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+    private func postApple(_ identityToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         let spinner = displaySpinner()
         APIAuth.Apple.auth(identityToken).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
@@ -81,9 +77,9 @@ class Presenter: NSObject {
                             FTAuth.successLogin?()
                         }
                     case false:
-                        //                        if let errorType = responseModel.errors {
-                        //                            print(GeneralError.errorType(errorType).msg)
-                        //                        }
+//                        if let errorType = responseModel.errors {
+//                            print(GeneralError.errorType(errorType).msg)
+//                        }
                         let errors = responseModel.errors
                         completionError(errors)
                     default:
@@ -96,40 +92,6 @@ class Presenter: NSObject {
         }
     }
     
-//    private func postFacebook(_ fbToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-//        let spinner = displaySpinner(.login)
-//        APIAuth.Facebook.auth(fbToken).responseSimpleData { (data, error) in
-//            self.removeSpinner(spinner: spinner)
-//            if let error = error {
-//                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
-//            } else if let data = data {
-//                if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
-//                    switch responseModel.success {
-//                    case true:
-//                        guard let session_token = responseModel.session_token, let provider_token = responseModel.provider_token else { return }
-//                        APIHeader.save(value: session_token, key: .session_token)
-//                        APIHeader.save(value: provider_token, key: .provider_token)
-//                        FTAuth.viewModel.cleanAuthTF()
-//                        DispatchQueue.main.async {
-//                            FTAuth.successLogin?()
-//                        }
-//                    case false:
-//                        //                        if let errorType = responseModel.errors {
-//                        //                            print(GeneralError.errorType(errorType).msg)
-//                        //                        }
-//                        let errors = responseModel.errors
-//                        completionError(errors)
-//                    default:
-//                        break
-//                    }
-//                } else {
-//                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
-//                }
-//            }
-//        }
-//    }
-
-        
     private func postRegistration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
         let spinner = displaySpinner()
         APIAuth.Email.register(email, password, name, firstName, lastName, phone).responseSimpleData { (data, error) in
