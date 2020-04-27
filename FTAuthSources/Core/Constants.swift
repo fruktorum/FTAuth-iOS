@@ -22,9 +22,18 @@ public enum TypeElement: Equatable {
     case accept
 }
 
-public enum PhoneMask: String {
+public enum PhoneMask {
     case none
-    case x_xxx_xxx_xxxx = "+X (XXX) XXX-XXXX"
-    case xx_xxx_xxx_xxxx = "+XX (XXX) XXX-XXXX"
+    case x_xxx_xxx_xxxx
+    case xx_xxx_xxx_xxxx
+    case customMask(mask: String)
     
+    var mask: String {
+        switch self {
+        case .x_xxx_xxx_xxxx: return "+X (XXX) XXX-XXXX"
+        case .xx_xxx_xxx_xxxx: return "+XX (XXX) XXX-XXXX"
+        case .customMask(let customMask): return customMask
+        case .none: return ""
+        }
+    }
 }
