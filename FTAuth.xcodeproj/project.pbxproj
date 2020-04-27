@@ -13,7 +13,6 @@
 		4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92204F239FBEBC0083B48A /* ErrorManager.swift */; };
 		4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205223A013CF0083B48A /* APIAuth+Email.swift */; };
 		4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205423A013DC0083B48A /* APIAuth+Logout.swift */; };
-		4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */; };
 		4CCF184023969CE9001846D3 /* FTAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCF183623969CE9001846D3 /* FTAuth.framework */; };
 		4CCF184523969CE9001846D3 /* FTAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF184423969CE9001846D3 /* FTAuthTests.swift */; };
 		4CCF184723969CE9001846D3 /* FTAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CCF183923969CE9001846D3 /* FTAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,6 +21,9 @@
 		A33B9E2623A9403E00269962 /* APIHeared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E2523A9403E00269962 /* APIHeared.swift */; };
 		A33B9E3A23A986FD00269962 /* FTAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */; };
 		A33C8E19239EBA000030032A /* APIAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C8E18239EBA000030032A /* APIAuth.swift */; };
+		A35D767B244896190006CA27 /* FTAuthAppleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D767A244896190006CA27 /* FTAuthAppleBtn.swift */; };
+		A35D767D2448A07D0006CA27 /* APIAuth+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D767C2448A07D0006CA27 /* APIAuth+Apple.swift */; };
+		A35D767F2448A45E0006CA27 /* AppleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D767E2448A45E0006CA27 /* AppleAuthorizationService.swift */; };
 		A376843523B7C93100375313 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376843423B7C93100375313 /* Constants.swift */; };
 		A378705B239E6CC5005B057D /* FTAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A378705A239E6CC5005B057D /* FTAuth.swift */; };
 		A38468EC23DF392D00B11273 /* URL+params.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38468EB23DF392D00B11273 /* URL+params.swift */; };
@@ -64,7 +66,6 @@
 		4C92204F239FBEBC0083B48A /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		4C92205223A013CF0083B48A /* APIAuth+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Email.swift"; sourceTree = "<group>"; };
 		4C92205423A013DC0083B48A /* APIAuth+Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Logout.swift"; sourceTree = "<group>"; };
-		4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Facebook.swift"; sourceTree = "<group>"; };
 		4CCF183623969CE9001846D3 /* FTAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FTAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCF183923969CE9001846D3 /* FTAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAuth.h; sourceTree = "<group>"; };
 		4CCF183A23969CE9001846D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +77,9 @@
 		A33B9E2523A9403E00269962 /* APIHeared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeared.swift; sourceTree = "<group>"; };
 		A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthViewModel.swift; sourceTree = "<group>"; };
 		A33C8E18239EBA000030032A /* APIAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuth.swift; sourceTree = "<group>"; };
+		A35D767A244896190006CA27 /* FTAuthAppleBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuthAppleBtn.swift; sourceTree = "<group>"; };
+		A35D767C2448A07D0006CA27 /* APIAuth+Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIAuth+Apple.swift"; sourceTree = "<group>"; };
+		A35D767E2448A45E0006CA27 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
 		A376843423B7C93100375313 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A378705A239E6CC5005B057D /* FTAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAuth.swift; sourceTree = "<group>"; };
 		A38468EB23DF392D00B11273 /* URL+params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+params.swift"; sourceTree = "<group>"; };
@@ -137,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				4C92205223A013CF0083B48A /* APIAuth+Email.swift */,
-				4C92205623A013ED0083B48A /* APIAuth+Facebook.swift */,
+				A35D767C2448A07D0006CA27 /* APIAuth+Apple.swift */,
 				4C92205423A013DC0083B48A /* APIAuth+Logout.swift */,
 			);
 			path = APIAuth;
@@ -146,15 +150,7 @@
 		4CCF182C23969CE9001846D3 = {
 			isa = PBXGroup;
 			children = (
-				A378705A239E6CC5005B057D /* FTAuth.swift */,
-				A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */,
-				A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */,
-				A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */,
-				A33B9E3B23A9873800269962 /* Managers */,
-				A3C6C3A323A24F7000FFE5F0 /* CustomUI */,
-				A39E60FD23A1359800D4B54A /* Models */,
-				A33B9E3C23A9878A00269962 /* Core */,
-				4C922046239FBCBB0083B48A /* API */,
+				A3E541CB244E092F00CB3561 /* FTAuthSources */,
 				4CCF183823969CE9001846D3 /* FTAuth */,
 				4CCF184323969CE9001846D3 /* FTAuthTests */,
 				4CCF183723969CE9001846D3 /* Products */,
@@ -173,8 +169,8 @@
 		4CCF183823969CE9001846D3 /* FTAuth */ = {
 			isa = PBXGroup;
 			children = (
-				4CCF183923969CE9001846D3 /* FTAuth.h */,
 				4CCF183A23969CE9001846D3 /* Info.plist */,
+				4CCF183923969CE9001846D3 /* FTAuth.h */,
 			);
 			path = FTAuth;
 			sourceTree = "<group>";
@@ -193,6 +189,7 @@
 			children = (
 				A3C6C38423A23F9800FFE5F0 /* ErrorOutput.swift */,
 				4C92204F239FBEBC0083B48A /* ErrorManager.swift */,
+				A35D767E2448A45E0006CA27 /* AppleAuthorizationService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -282,9 +279,26 @@
 				A3D7304E23A8E1A9001F0073 /* FTAuthLogoutBtn.swift */,
 				A3D7305D23A8E909001F0073 /* FTAuthRegistrationBtn.swift */,
 				A3D7306523A8FB6C001F0073 /* FTCheckerAcceptanceOfTerms.swift */,
+				A35D767A244896190006CA27 /* FTAuthAppleBtn.swift */,
 				A384691223E0742000B11273 /* WebViewButtons */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		A3E541CB244E092F00CB3561 /* FTAuthSources */ = {
+			isa = PBXGroup;
+			children = (
+				A378705A239E6CC5005B057D /* FTAuth.swift */,
+				A33B9E3923A986FD00269962 /* FTAuthViewModel.swift */,
+				A3C6C3A623A2500200FFE5F0 /* FTTextFieldDelegate.swift */,
+				A3AD8E1B239EBB3F00EAD94A /* Presenter.swift */,
+				A33B9E3B23A9873800269962 /* Managers */,
+				A3C6C3A323A24F7000FFE5F0 /* CustomUI */,
+				A39E60FD23A1359800D4B54A /* Models */,
+				A33B9E3C23A9878A00269962 /* Core */,
+				4C922046239FBCBB0083B48A /* API */,
+			);
+			path = FTAuthSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,8 +412,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3D7305723A8E372001F0073 /* FTRegistrationConfirmPasswordTextField.swift in Sources */,
+				A35D767B244896190006CA27 /* FTAuthAppleBtn.swift in Sources */,
 				A384691423E0747200B11273 /* BaseWebViewButton.swift in Sources */,
 				A39E60FF23A135B200D4B54A /* AuthResponseModel.swift in Sources */,
+				A35D767D2448A07D0006CA27 /* APIAuth+Apple.swift in Sources */,
 				A3D7304F23A8E1A9001F0073 /* FTAuthLogoutBtn.swift in Sources */,
 				A3D7305523A8E35C001F0073 /* FTRegistrationPasswordTextField.swift in Sources */,
 				A33B9E3A23A986FD00269962 /* FTAuthViewModel.swift in Sources */,
@@ -413,7 +429,6 @@
 				4C92205323A013CF0083B48A /* APIAuth+Email.swift in Sources */,
 				A39E610123A135BC00D4B54A /* ErrorModel.swift in Sources */,
 				A38468EC23DF392D00B11273 /* URL+params.swift in Sources */,
-				4C92205723A013ED0083B48A /* APIAuth+Facebook.swift in Sources */,
 				A33B9E1623A92FE400269962 /* FTRegistrationFullNameTextField.swift in Sources */,
 				4C92205523A013DC0083B48A /* APIAuth+Logout.swift in Sources */,
 				4C922050239FBEBC0083B48A /* ErrorManager.swift in Sources */,
@@ -423,6 +438,7 @@
 				A3E9EC9723AA52060087B360 /* String+Validation.swift in Sources */,
 				A3C6C38523A23F9800FFE5F0 /* ErrorOutput.swift in Sources */,
 				A3AD8E1C239EBB3F00EAD94A /* Presenter.swift in Sources */,
+				A35D767F2448A45E0006CA27 /* AppleAuthorizationService.swift in Sources */,
 				A3D7304D23A8E186001F0073 /* FTAuthEmailTextField.swift in Sources */,
 				A3D7305E23A8E909001F0073 /* FTAuthRegistrationBtn.swift in Sources */,
 				A3D7305323A8E33F001F0073 /* FTRegistrationEmailTextField.swift in Sources */,
@@ -580,7 +596,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TV4YN6VX49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -595,10 +611,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fruktorum.framework.FTAuth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -610,7 +627,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TV4YN6VX49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -625,10 +642,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fruktorum.framework.FTAuth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

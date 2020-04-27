@@ -16,10 +16,10 @@ class APIAuth {
         case auth(_ email: String, _ password: String)
         case register(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?)
     }
-
-//    enum Facebook {
-//        case auth(_ fbToken: String)
-//    }
+    
+    enum Apple {
+        case auth(_ identityToken: String)
+    }
     
     enum Session {
         case logout

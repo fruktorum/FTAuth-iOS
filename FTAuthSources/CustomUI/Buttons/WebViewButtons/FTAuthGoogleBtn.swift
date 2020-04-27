@@ -18,7 +18,6 @@ public class FTAuthGoogleBtn: BaseWebViewButton {
     }
 }
 
-
 //public class FTAuthGoogleBtn: UIButton {
 //
 //    lazy var webView = WKWebView()

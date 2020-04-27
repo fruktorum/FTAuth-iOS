@@ -18,6 +18,8 @@ public class FTAuth: NSObject {
     public static var showSpinner = true
     public static var requiredElements = [TypeElement]()
     static var authServerURL = ""
+    public static var authPayload: [String: AnyObject]?
+    public static var registrationPayload: [String: AnyObject]?
     
 //    public static var loginViewForSpinner: UIView?
 //    public static var registrationViewForSpinner: UIView?
@@ -97,13 +99,13 @@ public class FTAuth: NSObject {
         authServerURL = url
     }
     
-//    public static func facebookLogin(_ facebookToken: String) {
-//        startLogin?()
-//        self.presenter.authFacebook(facebookToken, { errors in
-//            showError(errors: errors, outputType: errorOutputType, .login)
-//            failureLogin?()
-//        })
-//    }
+    public static func loginWithApple(_ identityToken: String) {
+        startLogin?()
+        self.presenter.authApple(identityToken, { errors in
+            showError(errors: errors, outputType: errorOutputType, .login)
+            failureLogin?()
+        })
+    }
     
     public static func settingDescriptionLabel(textColor: UIColor? = nil,
                                         font: UIFont? = nil,

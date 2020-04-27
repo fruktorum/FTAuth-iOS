@@ -84,7 +84,7 @@ extension BaseWebViewButton: WKNavigationDelegate {
     }
     
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        removeSpinner(spinner: spinner)
+        closeWebView()
     }
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
