@@ -29,9 +29,11 @@ extension APIAuth.Email: APIResponse {
     var body: [String: AnyObject] {
         switch self {
         case .auth(let email, let password):
-            var payload = FTAuth.authPayload ?? [String: AnyObject]()
+            let extraPayload = FTAuth.authPayload ?? [String: AnyObject]()
+            var payload = [String: AnyObject]()
             payload["email"] = email as AnyObject
             payload["password"] = password as AnyObject
+            payload["payload"] = extraPayload as AnyObject
             return payload
         case .register(let email, let password, let name, let firstName, let lastName, let phone):
             var extraPayload = FTAuth.registrationPayload ?? [String: AnyObject]()
