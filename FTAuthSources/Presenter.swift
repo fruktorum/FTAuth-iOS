@@ -140,6 +140,7 @@ class Presenter: NSObject {
                             FTAuth.successLogout?()
                         }
                     case false:
+                        APIHeader.remove()
                         if let errorType = responseModel.errors {
                             completionError([ErrorModel(key: nil, message: GeneralError.errorType(errorType).msg)])
                         }

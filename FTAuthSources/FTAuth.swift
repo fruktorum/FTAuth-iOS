@@ -89,7 +89,6 @@ public class FTAuth: NSObject {
         guard let _ = getSessionToken() else { return }
         startLogout?()
         presenter.logout(completionError: { errors in
-            APIHeader.remove()
             showError(errors: errors, outputType: errorOutputType)
             failureLogout?()
         })
@@ -125,7 +124,7 @@ public class FTAuth: NSObject {
     }
     
     public static func getSessionToken() -> String? {
-        return APIHeader.recieve(key: .session_token)
+        return APIHeader.recieve(key: .session_token) == "" ? nil : APIHeader.recieve(key: .session_token)
     }
     
     public static func getProviderToken() -> String? {
