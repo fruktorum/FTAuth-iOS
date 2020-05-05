@@ -23,7 +23,7 @@ public class FTRegistrationPhoneTextField: FTTextField {
         case .none:
             return text?.count ?? 0 >= 10
         case .plus:
-            return text?.count ?? 0 >= 11
+            return text?.count ?? 0 >= 12
         default:
             return text?.count == phoneMask.mask.count
         }
