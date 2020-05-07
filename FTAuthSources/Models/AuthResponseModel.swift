@@ -10,7 +10,7 @@ import Foundation
 
 class AuthResponseModel: Decodable {
     var success: Bool?
-    var errors: [ErrorModel]?//ErrorType?
+    var errors: [FTErrorModel]?//ErrorType?
     var provider_token: String?
     var session_token: String?
 }

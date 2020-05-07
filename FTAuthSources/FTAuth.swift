@@ -33,9 +33,9 @@ public class FTAuth: NSObject {
     public static var successRegistration: (() -> Void)?
     public static var successLogout: (() -> Void)?
     
-    public static var failureLogin: (() -> Void)?
-    public static var failureRegistration: (() -> Void)?
-    public static var failureLogout: (() -> Void)?
+    public static var failureLogin: ((_ errors: [FTErrorModel]?) -> Void)?
+    public static var failureRegistration: ((_ errors: [FTErrorModel]?) -> Void)?
+    public static var failureLogout: ((_ errors: [FTErrorModel]?) -> Void)?
     
     public static var generalVerticalLocationOfDescription: CGFloat? {
         didSet {
@@ -69,7 +69,7 @@ public class FTAuth: NSObject {
                 startLogin?()
                 presenter.auth(email, password, completionError: { errors in
                     showError(errors: errors, outputType: errorOutputType, .login)
-                    failureLogin?()
+                    failureLogin?(errors)
                 })
         }
     }
@@ -80,7 +80,7 @@ public class FTAuth: NSObject {
                 startRegistration?()
             presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.fullText, completionError: { errors in
                     showError(errors: errors, outputType: errorOutputType, .registration)
-                    failureRegistration?()
+                    failureRegistration?(errors)
                 })
         }
     }
@@ -90,7 +90,7 @@ public class FTAuth: NSObject {
         startLogout?()
         presenter.logout(completionError: { errors in
             showError(errors: errors, outputType: errorOutputType)
-            failureLogout?()
+            failureLogout?(errors)
         })
     }
     
@@ -103,7 +103,7 @@ public class FTAuth: NSObject {
         startLogin?()
         self.presenter.authApple(identityToken, { errors in
             showError(errors: errors, outputType: errorOutputType, .login)
-            failureLogin?()
+            failureLogin?(errors)
         })
     }
     
