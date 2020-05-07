@@ -9,6 +9,6 @@
 import Foundation
 
 public struct FTErrorModel: Decodable {
-    var key: String?
-    var message: String?
+    public var key: String?
+    public var message: String?
 }
