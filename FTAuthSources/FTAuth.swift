@@ -78,7 +78,7 @@ public class FTAuth: NSObject {
         viewModel.checkDescriptionValidRegistrationTF()
         if viewModel.checkValidAllElements() {
                 startRegistration?()
-                presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.text, completionError: { errors in
+            presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.fullText, completionError: { errors in
                     showError(errors: errors, outputType: errorOutputType, .registration)
                     failureRegistration?()
                 })

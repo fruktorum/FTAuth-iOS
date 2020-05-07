@@ -11,6 +11,10 @@ import UIKit
 public class FTRegistrationPhoneTextField: FTTextField {
     
     public var phoneMask = PhoneMask.none
+    public var prefix = ""
+    var fullText: String {
+        return prefix + (text ?? "")
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
