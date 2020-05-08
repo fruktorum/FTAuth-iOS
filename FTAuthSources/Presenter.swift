@@ -26,8 +26,8 @@ class Presenter: NSObject {
         postRegistration(email, password, name, firstName, lastName, phone, completionError)
     }
     
-    func logout(completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
-        postLogout(completionError)
+    func logout(sessionToken: String, completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
+        postLogout(sessionToken: sessionToken, completionError)
     }
     
     private func postAuth(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
@@ -163,9 +163,11 @@ class Presenter: NSObject {
         }
     }
         
-    private func postLogout(_ completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
+    private func postLogout(sessionToken: String, _ completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
         let spinner = displaySpinner()
-        APIAuth.Session.logout.responseSimpleData { (data, error) in
+        APIHeader.remove()
+        FTAuth.startLogout?()
+        APIAuth.Session.logout(sessionToken).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
                 completionError([ErrorModel(key: nil, message: error.localizedDescription)])
@@ -173,7 +175,6 @@ class Presenter: NSObject {
                 if let responseModel = try? JSONDecoder().decode(ResponseModel.self, from: data) {
                     switch responseModel.success {
                     case true:
-                        APIHeader.remove()
                         DispatchQueue.main.async {
                             FTAuth.successLogout?()
                         }

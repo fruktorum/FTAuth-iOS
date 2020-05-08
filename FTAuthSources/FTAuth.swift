@@ -86,10 +86,9 @@ public class FTAuth: NSObject {
     }
 
     public static func logout() {
-        guard let _ = getSessionToken() else { return }
-        startLogout?()
-        presenter.logout(completionError: { errors in
-            showError(errors: errors, outputType: errorOutputType)
+        guard let sessionToken = getSessionToken() else { return }
+        presenter.logout(sessionToken: sessionToken, completionError: { errors in
+            showError(errors: errors, outputType: .log)
             failureLogout?()
         })
     }
