@@ -24,7 +24,7 @@ extension APIResponse {
             sessionRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         if let httpHeader = request.header {
-            sessionRequest.setValue(httpHeader, forHTTPHeaderField: "session_token")
+            sessionRequest.setValue(httpHeader, forHTTPHeaderField: "session-token")
         }
         let session = URLSession.shared
         session.dataTask(with: sessionRequest) { (data, response, error) in
