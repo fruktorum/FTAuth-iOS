@@ -31,7 +31,7 @@ class Presenter: NSObject {
     private func failRegistration(_ error: FTErrorModel?) {
         guard let error = error else { return }
         NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType, .registration)
-        FTAuth.completionHandlerLogin?(.failure(error))
+        FTAuth.completionHandlerRegistration?(.failure(error))
     }
     
     func logout() {
@@ -41,7 +41,7 @@ class Presenter: NSObject {
     private func failLogout(_ error: FTErrorModel?) {
         guard let error = error else { return }
         NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType)
-        FTAuth.completionHandlerLogin?(.failure(error))
+        FTAuth.completionHandlerLogout?(.failure(error))
     }
     
     private func postAuth(_ email: String, _ password: String) {
