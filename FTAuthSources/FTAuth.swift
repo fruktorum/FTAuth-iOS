@@ -72,9 +72,8 @@ public class FTAuth: NSObject {
     }
 
     public static func logout() {
-        guard let _ = getSessionToken() else { return }
-        startLogout?()
-        presenter.logout()
+        guard let sessionToken = getSessionToken() else { return }
+        presenter.logout(sessionToken: sessionToken)
     }
     
     //MARK: PUBLIC FUNCTION
@@ -119,4 +118,3 @@ public class FTAuth: NSObject {
         APIHeader.save(value: sessionToken, key: .session_token)
     }
 }
-

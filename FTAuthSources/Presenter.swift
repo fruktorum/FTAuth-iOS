@@ -34,8 +34,8 @@ class Presenter: NSObject {
         FTAuth.completionHandlerRegistration?(.failure(error))
     }
     
-    func logout() {
-        postLogout()
+    func logout(sessionToken: String) {
+        postLogout(sessionToken: sessionToken)
     }
     
     private func failLogout(_ error: FTErrorModel?) {
@@ -134,9 +134,11 @@ class Presenter: NSObject {
         }
     }
     
-    private func postLogout() {
+    private func postLogout(sessionToken: String) {
         let spinner = displaySpinner()
-        APIAuth.Session.logout.responseSimpleData { (data, error) in
+        APIHeader.remove()
+        FTAuth.startLogout?()
+        APIAuth.Session.logout(sessionToken).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
                 self.failLogout(FTErrorModel(key: nil, message: error.localizedDescription))
@@ -144,12 +146,10 @@ class Presenter: NSObject {
                 if let responseModel = try? JSONDecoder().decode(ResponseModel.self, from: data) {
                     switch responseModel.success {
                     case true:
-                        APIHeader.remove()
                         DispatchQueue.main.async {
                             FTAuth.completionHandlerLogout?(.success(responseModel))
                         }
                     case false:
-                        APIHeader.remove()
                         guard let error = responseModel.errors?.first else { return }
                         self.failLogout(error)
                     default:
