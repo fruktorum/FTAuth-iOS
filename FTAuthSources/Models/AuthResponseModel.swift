@@ -8,7 +8,10 @@
 
 import Foundation
 
-public class AuthResponseModel: ResponseModel {
+public class AuthResponseModel: Decodable {
+    
+    public var success: Bool?
+    public var errors: [FTErrorModel]?
     public var provider_token: String?
     public var session_token: String?
     
