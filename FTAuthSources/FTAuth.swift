@@ -28,14 +28,18 @@ public class FTAuth: NSObject {
     public static var startLogin: (() -> Void)?
     public static var startRegistration: (() -> Void)?
     public static var startLogout: (() -> Void)?
+//    
+//    public static var successLogin: (() -> Void)?
+//    public static var successRegistration: (() -> Void)?
+//    public static var successLogout: (() -> Void)?
+//    
+//    public static var failureLogin: ((_ errors: [FTErrorModel]?) -> Void)?
+//    public static var failureRegistration: ((_ errors: [FTErrorModel]?) -> Void)?
+//    public static var failureLogout: ((_ errors: [FTErrorModel]?) -> Void)?
     
-    public static var successLogin: (() -> Void)?
-    public static var successRegistration: (() -> Void)?
-    public static var successLogout: (() -> Void)?
-    
-    public static var failureLogin: ((_ errors: [FTErrorModel]?) -> Void)?
-    public static var failureRegistration: ((_ errors: [FTErrorModel]?) -> Void)?
-    public static var failureLogout: ((_ errors: [FTErrorModel]?) -> Void)?
+    public static var completionHandlerLogin: ((_ completionHandler: (Result<AuthResponseModel, FTErrorModel>)) -> Void)?
+    public static var completionHandlerRegistration: ((_ completionHandler: (Result<AuthResponseModel, FTErrorModel>)) -> Void)?
+    public static var completionHandlerLogout: ((_ completionHandler: (Result<ResponseModel, FTErrorModel>)) -> Void)?
     
     public static var generalVerticalLocationOfDescription: CGFloat? {
         didSet {
@@ -67,10 +71,7 @@ public class FTAuth: NSObject {
             let password = authPasswordTF?.text,
             password.isValidPassword {
                 startLogin?()
-                presenter.auth(email, password, completionError: { errors in
-                    showError(errors: errors, outputType: errorOutputType, .login)
-                    failureLogin?(errors)
-                })
+                presenter.auth(email, password)
         }
     }
 
@@ -78,20 +79,14 @@ public class FTAuth: NSObject {
         viewModel.checkDescriptionValidRegistrationTF()
         if viewModel.checkValidAllElements() {
                 startRegistration?()
-            presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.fullText, completionError: { errors in
-                    showError(errors: errors, outputType: errorOutputType, .registration)
-                    failureRegistration?(errors)
-                })
+            presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.fullText)
         }
     }
 
     public static func logout() {
         guard let _ = getSessionToken() else { return }
         startLogout?()
-        presenter.logout(completionError: { errors in
-            showError(errors: errors, outputType: errorOutputType)
-            failureLogout?(errors)
-        })
+        presenter.logout()
     }
     
     //MARK: PUBLIC FUNCTION
@@ -101,10 +96,7 @@ public class FTAuth: NSObject {
     
     public static func loginWithApple(_ identityToken: String) {
         startLogin?()
-        self.presenter.authApple(identityToken, { errors in
-            showError(errors: errors, outputType: errorOutputType, .login)
-            failureLogin?(errors)
-        })
+        self.presenter.authApple(identityToken)
     }
     
     public static func settingDescriptionLabel(textColor: UIColor? = nil,
