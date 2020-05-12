@@ -21,21 +21,9 @@ public class FTAuth: NSObject {
     public static var authPayload: [String: AnyObject]?
     public static var registrationPayload: [String: AnyObject]?
     
-//    public static var loginViewForSpinner: UIView?
-//    public static var registrationViewForSpinner: UIView?
-//    public static var logoutViewForSpinner: UIView?
-    
     public static var startLogin: (() -> Void)?
     public static var startRegistration: (() -> Void)?
     public static var startLogout: (() -> Void)?
-//    
-//    public static var successLogin: (() -> Void)?
-//    public static var successRegistration: (() -> Void)?
-//    public static var successLogout: (() -> Void)?
-//    
-//    public static var failureLogin: ((_ errors: [FTErrorModel]?) -> Void)?
-//    public static var failureRegistration: ((_ errors: [FTErrorModel]?) -> Void)?
-//    public static var failureLogout: ((_ errors: [FTErrorModel]?) -> Void)?
     
     public static var completionHandlerLogin: ((_ completionHandler: (Result<AuthResponseModel, FTErrorModel>)) -> Void)?
     public static var completionHandlerRegistration: ((_ completionHandler: (Result<AuthResponseModel, FTErrorModel>)) -> Void)?

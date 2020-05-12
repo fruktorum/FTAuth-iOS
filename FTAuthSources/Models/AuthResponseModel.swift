@@ -9,23 +9,18 @@
 import Foundation
 
 public class AuthResponseModel: ResponseModel {
-    var provider_token: String?
-    var session_token: String?
+    public var provider_token: String?
+    public var session_token: String?
     
-    init(_ session_token: String?, _ provider_token: String?) {
-        super.init()
+    public func set(_ session_token: String?, _ provider_token: String?) {
         self.session_token = session_token
         self.provider_token = provider_token
         self.success = true
-    }
-    
-    required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
     }
 }
 
 
 public class ResponseModel: Decodable {
-    var success: Bool?
-    var errors: [FTErrorModel]?
+    public var success: Bool?
+    public var errors: [FTErrorModel]?
 }

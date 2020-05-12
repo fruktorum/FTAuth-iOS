@@ -133,7 +133,7 @@ class Presenter: NSObject {
             }
         }
     }
-        
+    
     private func postLogout() {
         let spinner = displaySpinner()
         APIAuth.Session.logout.responseSimpleData { (data, error) in
