@@ -8,8 +8,6 @@
 
 import Foundation
 
-// MARK: - API.Auth
-
 class APIAuth {
     
     enum Email {

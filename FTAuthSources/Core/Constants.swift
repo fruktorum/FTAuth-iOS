@@ -11,7 +11,6 @@ import Foundation
 public enum TypeElement: Equatable {
     case none
     
-    
     case name
     case firstName
     case lastName

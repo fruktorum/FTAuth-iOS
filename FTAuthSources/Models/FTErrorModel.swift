@@ -8,12 +8,6 @@
 
 import Foundation
 
-//public struct FTErrorModel: Decodable {
-//    public var key: String?
-//    public var message: String?
-//}
-
-
 public struct FTErrorModel: Error, Decodable {
     public var key: String?
     public var message: String?
