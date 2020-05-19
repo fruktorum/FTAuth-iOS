@@ -37,10 +37,10 @@ extension APIAuth.Email: APIResponse {
             return payload
         case .register(let email, let password, let name, let firstName, let lastName, let phone):
             var extraPayload = FTAuth.registrationPayload ?? [String: AnyObject]()
-            extraPayload["name"] = name as AnyObject
-            extraPayload["first_name"] = firstName as AnyObject
-            extraPayload["last_name"] = lastName as AnyObject
-            extraPayload["phone"] = phone as AnyObject
+            extraPayload["name"] = extraPayload["name"] != nil ? extraPayload["name"] : name as AnyObject
+            extraPayload["first_name"] = extraPayload["first_name"] != nil ? extraPayload["first_name"] : firstName as AnyObject
+            extraPayload["last_name"] = extraPayload["last_name"] != nil ? extraPayload["last_name"] : lastName as AnyObject
+            extraPayload["phone"] = extraPayload["phone"] != nil ? extraPayload["phone"] : phone as AnyObject
             
             var payload = [String: AnyObject]()
             payload["email"] = email as AnyObject
