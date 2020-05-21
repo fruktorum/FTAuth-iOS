@@ -20,7 +20,7 @@ class APIAuth {
     }
     
     enum Session {
-        case logout(_ header: String)
+        case logout
     }
 }
 
