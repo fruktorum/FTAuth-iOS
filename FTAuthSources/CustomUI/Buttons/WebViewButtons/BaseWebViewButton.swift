@@ -93,18 +93,18 @@ extension BaseWebViewButton: WKNavigationDelegate {
         
         print("document.body")
         webView.evaluateJavaScript("document.body") { (html, error) in
-            print("HTML: \(html)")
+            print("HTML body: \(html)")
           guard let html = html as? String else {
-            print("didFinis Error: \(error)")
+            print("didFinis Error body: \(error)")
             return
           }
         }
         
         print("document.body.innerHTML")
         webView.evaluateJavaScript("document.body.innerHTML") { (html, error) in
-            print("HTML: \(html)")
+            print("HTML innerHTML: \(html)")
           guard let html = html as? String else {
-            print("didFinis Error: \(error)")
+            print("didFinis Error innerHTML: \(error)")
             return
           }
         }
