@@ -106,7 +106,23 @@ extension BaseWebViewButton: WKNavigationDelegate {
                 let result = AuthResponseModel()
                 result.set(session_token, provider_token)
                 FTAuth.completionHandlerLogin?(.success(result))
+                //----- !!! for refactoring:
+            } else if let errors = params["errors"] as? [String: String], let key = errors["key"], let message = errors["message"] {
+                if key == "email", message == "has already been taken" {
+                    closeWebView()
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: "This email is already registered under an existing account. Please try another login method.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
+                        if var topController = UIApplication.shared.windows.first?.rootViewController {
+                            while let presentedViewController = topController.presentedViewController {
+                                topController = presentedViewController
+                            }
+                            topController.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                }
             }
+            //------
         }
     }
 }
