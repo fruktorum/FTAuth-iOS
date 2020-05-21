@@ -80,18 +80,15 @@ public class BaseWebViewButton: UIButton {
 
 extension BaseWebViewButton: WKNavigationDelegate {
     public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("didStartProvisionalNavigation")
         spinner = displaySpinner()
     }
     
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        print("didFail")
         closeWebView()
     }
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("didFinish")
-        webView.evaluateJavaScript("document.documentElement.outerHTML") { (html, error) in
+        webView.evaluateJavaScript("document.body.innerHTML") { (html, error) in
           guard let html = html as? String else {
             print(error)
             return
@@ -108,7 +105,6 @@ extension BaseWebViewButton: WKNavigationDelegate {
     }
     
     public func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        print("didReceiveServerRedirectForProvisionalNavigation")
         if let params = webView.url?.params() {
             print("PARAMS = \(params)")
             if let session_token = params["session_token"], let provider_token = params["provider_token"] {
