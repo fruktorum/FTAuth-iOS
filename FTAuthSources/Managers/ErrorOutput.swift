@@ -30,7 +30,7 @@ enum KeyError: String {
 
 extension NSObject {
 
-    static func showError(errors: [ErrorModel]?, outputType: ErrorOutputType?, _ requestType: RequestType? = nil) {
+    static func showError(errors: [FTErrorModel]?, outputType: ErrorOutputType?, _ requestType: RequestType? = nil) {
         guard let errors = errors else { return }
         errors.forEach { error in
             if let key = error.key,
@@ -48,12 +48,12 @@ extension NSObject {
         }
     }
     
-    private static func showInLog(error: ErrorModel?) {
+    private static func showInLog(error: FTErrorModel?) {
         guard let error = error else { return }
         print("❌ FTAuth Error: \n \(error.key == nil ? "" : "key: \(String(describing: error.key))\n") \(error.message == nil ? "" : "message: \(String(describing: error.message))\n") ❌")
     }
     
-    private static func showInAlert(error: ErrorModel?) {
+    private static func showInAlert(error: FTErrorModel?) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error", message: error?.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))

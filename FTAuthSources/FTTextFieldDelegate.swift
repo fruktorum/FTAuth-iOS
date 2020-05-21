@@ -31,4 +31,11 @@ class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
         }
         return true
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let phoneField = textField as? FTRegistrationPhoneTextField {
+            return phoneField.textField(phoneField, shouldChangeCharactersIn: range, replacementString: string)
+        }
+        return true
+    }
 }

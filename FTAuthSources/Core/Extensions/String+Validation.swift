@@ -25,9 +25,11 @@ extension String {
         return self.count >= 8
     }
     
-    var isValidPhone: Bool {
-        
-        return self.count >= 10
+    func slice(from: String, to: String) -> String? {
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                String(self[substringFrom..<substringTo])
+            }
+        }
     }
-    
 }

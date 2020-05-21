@@ -21,21 +21,13 @@ public class FTAuth: NSObject {
     public static var authPayload: [String: AnyObject]?
     public static var registrationPayload: [String: AnyObject]?
     
-//    public static var loginViewForSpinner: UIView?
-//    public static var registrationViewForSpinner: UIView?
-//    public static var logoutViewForSpinner: UIView?
-    
     public static var startLogin: (() -> Void)?
     public static var startRegistration: (() -> Void)?
     public static var startLogout: (() -> Void)?
     
-    public static var successLogin: (() -> Void)?
-    public static var successRegistration: (() -> Void)?
-    public static var successLogout: (() -> Void)?
-    
-    public static var failureLogin: (() -> Void)?
-    public static var failureRegistration: (() -> Void)?
-    public static var failureLogout: (() -> Void)?
+    public static var completionHandlerLogin: ((_ completionHandler: (Result<AuthResponseModel, FTErrorModel>)) -> Void)?
+    public static var completionHandlerRegistration: ((_ completionHandler: (Result<AuthResponseModel, FTErrorModel>)) -> Void)?
+    public static var completionHandlerLogout: ((_ completionHandler: (Result<ResponseModel, FTErrorModel>)) -> Void)?
     
     public static var generalVerticalLocationOfDescription: CGFloat? {
         didSet {
@@ -67,10 +59,7 @@ public class FTAuth: NSObject {
             let password = authPasswordTF?.text,
             password.isValidPassword {
                 startLogin?()
-                presenter.auth(email, password, completionError: { errors in
-                    showError(errors: errors, outputType: errorOutputType, .login)
-                    failureLogin?()
-                })
+                presenter.auth(email, password)
         }
     }
 
@@ -78,19 +67,20 @@ public class FTAuth: NSObject {
         viewModel.checkDescriptionValidRegistrationTF()
         if viewModel.checkValidAllElements() {
                 startRegistration?()
-                presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.text, completionError: { errors in
-                    showError(errors: errors, outputType: errorOutputType, .registration)
-                    failureRegistration?()
-                })
+            presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.fullText)
         }
     }
 
     public static func logout() {
         guard let sessionToken = getSessionToken() else { return }
+<<<<<<< HEAD
         presenter.logout(sessionToken: sessionToken, completionError: { errors in
             showError(errors: errors, outputType: .log)
             failureLogout?()
         })
+=======
+        presenter.logout(sessionToken: sessionToken)
+>>>>>>> testing
     }
     
     //MARK: PUBLIC FUNCTION
@@ -98,20 +88,9 @@ public class FTAuth: NSObject {
         authServerURL = url
     }
     
-//    public static func facebookLogin(_ facebookToken: String) {
-//        startLogin?()
-//        self.presenter.authFacebook(facebookToken, { errors in
-//            showError(errors: errors, outputType: errorOutputType, .login)
-//            failureLogin?()
-//        })
-//    }
-    
     public static func loginWithApple(_ identityToken: String) {
         startLogin?()
-        self.presenter.authApple(identityToken, { errors in
-            showError(errors: errors, outputType: errorOutputType, .login)
-            failureLogin?()
-        })
+        self.presenter.authApple(identityToken)
     }
     
     public static func settingDescriptionLabel(textColor: UIColor? = nil,
@@ -131,7 +110,7 @@ public class FTAuth: NSObject {
     }
     
     public static func getSessionToken() -> String? {
-        return APIHeader.recieve(key: .session_token)
+        return APIHeader.recieve(key: .session_token) == "" ? nil : APIHeader.recieve(key: .session_token)
     }
     
     public static func getProviderToken() -> String? {
@@ -146,4 +125,3 @@ public class FTAuth: NSObject {
         APIHeader.save(value: sessionToken, key: .session_token)
     }
 }
-
