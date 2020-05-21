@@ -11,6 +11,10 @@ import UIKit
 public class FTRegistrationPhoneTextField: FTTextField {
     
     public var phoneMask = PhoneMask.none
+    public var prefix = ""
+    var fullText: String {
+        return prefix + (text ?? "")
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -22,6 +26,8 @@ public class FTRegistrationPhoneTextField: FTTextField {
         switch phoneMask {
         case .none:
             return text?.count ?? 0 >= 10
+        case .plus:
+            return text?.count ?? 0 >= 12
         default:
             return text?.count == phoneMask.mask.count
         }

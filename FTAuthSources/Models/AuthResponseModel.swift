@@ -8,15 +8,22 @@
 
 import Foundation
 
-class AuthResponseModel: Decodable {
-    var success: Bool?
-    var errors: [ErrorModel]?//ErrorType?
-    var provider_token: String?
-    var session_token: String?
+public class AuthResponseModel: Decodable {
+    
+    public var success: Bool?
+    public var errors: [FTErrorModel]?
+    public var provider_token: String?
+    public var session_token: String?
+    
+    public func set(_ session_token: String?, _ provider_token: String?) {
+        self.session_token = session_token
+        self.provider_token = provider_token
+        self.success = true
+    }
 }
 
 
-class ResponseModel: Decodable {
-    var success: Bool?
-    var errors: ErrorType?//String?
+public class ResponseModel: Decodable {
+    public var success: Bool?
+    public var errors: [FTErrorModel]?
 }

@@ -8,8 +8,6 @@
 
 import Foundation
 
-// MARK: - API.Auth
-
 class APIAuth {
     
     enum Email {
@@ -22,6 +20,7 @@ class APIAuth {
     }
     
     enum Session {
-        case logout
+        case logout(_ header: String)
     }
 }
+

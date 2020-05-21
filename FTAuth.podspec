@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "FTAuth"
-  spec.version      = "0.0.1"
+  spec.version      = "2.2"
   spec.summary      = "Module for authorization and registration"
   spec.homepage     = "https://github.com/GTimofey/FTAuth.git"
   spec.license      = { :type => "MIT", :file => "LICENSE" }

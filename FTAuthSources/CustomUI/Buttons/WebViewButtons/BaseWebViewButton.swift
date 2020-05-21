@@ -103,7 +103,9 @@ extension BaseWebViewButton: WKNavigationDelegate {
                 APIHeader.save(value: session_token, key: .session_token)
                 APIHeader.save(value: provider_token, key: .provider_token)
                 closeWebView()
-                FTAuth.successLogin?()
+                let result = AuthResponseModel()
+                result.set(session_token, provider_token)
+                FTAuth.completionHandlerLogin?(.success(result))
             }
         }
     }

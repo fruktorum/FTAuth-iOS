@@ -147,11 +147,11 @@ import Foundation
 
 enum ErrorType: Decodable {
 
-    case model(errorModel: ErrorModel), string(errorString: String), stringArray(errorStringArray: [String])
+    case model(errorModel: FTErrorModel), string(errorString: String), stringArray(errorStringArray: [String])
 
     init(from decoder: Decoder) throws {
         //выяснить почему не распознается модель
-        if let model = try? decoder.singleValueContainer().decode(ErrorModel.self) {
+        if let model = try? decoder.singleValueContainer().decode(FTErrorModel.self) {
             self = .model(errorModel: model)
             return
         }
