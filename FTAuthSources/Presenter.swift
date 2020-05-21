@@ -10,32 +10,46 @@ import Foundation
 
 class Presenter: NSObject {
     
-    func auth(_ email: String, _ password: String, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        postAuth(email, password, completionError)
+    func auth(_ email: String, _ password: String) {
+        postAuth(email, password)
     }
     
-    func authApple(_ identityToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?)  -> Void) {
-        postFacebook(identityToken, completionError)
+    func authApple(_ identityToken: String) {
+        postApple(identityToken)
     }
     
-//    func authFacebook(_ fbToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?)  -> Void) {
-//        postFacebook(fbToken, completionError)
-//    }
-    
-    func registration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?, completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-        postRegistration(email, password, name, firstName, lastName, phone, completionError)
+    private func failLogin(_ error: FTErrorModel?) {
+        guard let error = error else { return }
+        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType, .login)
+        FTAuth.completionHandlerLogin?(.failure(error))
     }
     
-    func logout(completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
-        postLogout(completionError)
+    func registration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?) {
+        postRegistration(email, password, name, firstName, lastName, phone)
     }
     
-    private func postAuth(_ email: String, _ password: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+    private func failRegistration(_ error: FTErrorModel?) {
+        guard let error = error else { return }
+        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType, .registration)
+        FTAuth.completionHandlerRegistration?(.failure(error))
+    }
+    
+    func logout(sessionToken: String) {
+        postLogout(sessionToken: sessionToken)
+    }
+    
+    private func failLogout(_ error: FTErrorModel?) {
+        guard let error = error else { return }
+        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType)
+        FTAuth.completionHandlerLogout?(.failure(error))
+    }
+    
+    private func postAuth(_ email: String, _ password: String) {
         let spinner = displaySpinner()
         APIAuth.Email.auth(email, password).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
-                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
+                self.failLogin(FTErrorModel(key: nil, message: error.localizedDescription))
             } else if let data = data {
                 if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
                     switch responseModel.success {
@@ -45,30 +59,27 @@ class Presenter: NSObject {
                         APIHeader.save(value: provider_token, key: .provider_token)
                         FTAuth.viewModel.cleanAuthTF()
                         DispatchQueue.main.async {
-                            FTAuth.successLogin?()
+                            FTAuth.completionHandlerLogin?(.success(responseModel))
                         }
                     case false:
-//                        if let errorType = responseModel.errors {
-//                            print(GeneralError.errorType(errorType).msg)
-//                        }
-                        let errors = responseModel.errors
-                        completionError(errors)
+                        guard let error = responseModel.errors?.first else { return }
+                        self.failLogin(error)
                     default:
                         break
                     }
                 } else {
-                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
+                    self.failLogin(FTErrorModel(key: nil, message: error?.localizedDescription))
                 }
             }
         }
     }
     
-    private func postFacebook(_ identityToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+    private func postApple(_ identityToken: String) {
         let spinner = displaySpinner()
         APIAuth.Apple.auth(identityToken).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
-                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
+                self.failLogin(FTErrorModel(key: nil, message: error.localizedDescription))
             } else if let data = data {
                 if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
                     switch responseModel.success {
@@ -78,64 +89,27 @@ class Presenter: NSObject {
                         APIHeader.save(value: provider_token, key: .provider_token)
                         FTAuth.viewModel.cleanAuthTF()
                         DispatchQueue.main.async {
-                            FTAuth.successLogin?()
+                            FTAuth.completionHandlerLogin?(.success(responseModel))
                         }
                     case false:
-                        //                        if let errorType = responseModel.errors {
-                        //                            print(GeneralError.errorType(errorType).msg)
-                        //                        }
-                        let errors = responseModel.errors
-                        completionError(errors)
+                        guard let error = responseModel.errors?.first else { return }
+                        self.failLogin(error)
                     default:
                         break
                     }
                 } else {
-                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
+                    self.failLogin(FTErrorModel(key: nil, message: error?.localizedDescription))
                 }
             }
         }
     }
     
-//    private func postFacebook(_ fbToken: String,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
-//        let spinner = displaySpinner(.login)
-//        APIAuth.Facebook.auth(fbToken).responseSimpleData { (data, error) in
-//            self.removeSpinner(spinner: spinner)
-//            if let error = error {
-//                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
-//            } else if let data = data {
-//                if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
-//                    switch responseModel.success {
-//                    case true:
-//                        guard let session_token = responseModel.session_token, let provider_token = responseModel.provider_token else { return }
-//                        APIHeader.save(value: session_token, key: .session_token)
-//                        APIHeader.save(value: provider_token, key: .provider_token)
-//                        FTAuth.viewModel.cleanAuthTF()
-//                        DispatchQueue.main.async {
-//                            FTAuth.successLogin?()
-//                        }
-//                    case false:
-//                        //                        if let errorType = responseModel.errors {
-//                        //                            print(GeneralError.errorType(errorType).msg)
-//                        //                        }
-//                        let errors = responseModel.errors
-//                        completionError(errors)
-//                    default:
-//                        break
-//                    }
-//                } else {
-//                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
-//                }
-//            }
-//        }
-//    }
-
-        
-    private func postRegistration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?,_ completionError: @escaping (_ errors: [ErrorModel]?) -> Void) {
+    private func postRegistration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?) {
         let spinner = displaySpinner()
         APIAuth.Email.register(email, password, name, firstName, lastName, phone).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
-                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
+                self.failRegistration(FTErrorModel(key: nil, message: error.localizedDescription))
             } else if let data = data {
                 if let responseModel = try? JSONDecoder().decode(AuthResponseModel.self, from: data) {
                     switch responseModel.success {
@@ -145,47 +119,44 @@ class Presenter: NSObject {
                         APIHeader.save(value: provider_token, key: .provider_token)
                         FTAuth.viewModel.cleanRegistrationTF()
                         DispatchQueue.main.async {
-                            FTAuth.successRegistration?()
+                            FTAuth.completionHandlerRegistration?(.success(responseModel))
                         }
                     case false:
-//                        if let errorType = responseModel.errors {
-//                            print(GeneralError.errorType(errorType).msg)
-//                        }
-                        let errors = responseModel.errors
-                        completionError(errors)
+                        guard let error = responseModel.errors?.first else { return }
+                        self.failRegistration(error)
                     default:
                         break
                     }
                 } else {
-                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
+                    self.failRegistration(FTErrorModel(key: nil, message: error?.localizedDescription))
                 }
             }
         }
     }
-        
-    private func postLogout(_ completionError: @escaping (_ error: [ErrorModel]?) -> Void) {
+    
+    private func postLogout(sessionToken: String) {
         let spinner = displaySpinner()
-        APIAuth.Session.logout.responseSimpleData { (data, error) in
+        APIHeader.remove()
+        FTAuth.startLogout?()
+        APIAuth.Session.logout(sessionToken).responseSimpleData { (data, error) in
             self.removeSpinner(spinner: spinner)
             if let error = error {
-                completionError([ErrorModel(key: nil, message: error.localizedDescription)])
+                self.failLogout(FTErrorModel(key: nil, message: error.localizedDescription))
             } else if let data = data {
                 if let responseModel = try? JSONDecoder().decode(ResponseModel.self, from: data) {
                     switch responseModel.success {
                     case true:
-                        APIHeader.remove()
                         DispatchQueue.main.async {
-                            FTAuth.successLogout?()
+                            FTAuth.completionHandlerLogout?(.success(responseModel))
                         }
                     case false:
-                        if let errorType = responseModel.errors {
-                            completionError([ErrorModel(key: nil, message: GeneralError.errorType(errorType).msg)])
-                        }
+                        guard let error = responseModel.errors?.first else { return }
+                        self.failLogout(error)
                     default:
                         break
                     }
                 } else {
-                    completionError([ErrorModel(key: nil, message: error?.localizedDescription)])
+                    self.failLogout(FTErrorModel(key: nil, message: error?.localizedDescription))
                 }
             }
         }
