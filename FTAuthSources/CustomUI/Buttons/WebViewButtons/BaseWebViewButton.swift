@@ -88,17 +88,31 @@ extension BaseWebViewButton: WKNavigationDelegate {
     }
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        removeSpinner(spinner: spinner)
+        //----- !!! for refactoring:
         webView.evaluateJavaScript("document.body.innerHTML") { (html, error) in
-            print("HTML innerHTML: \(html)")
+            print("HTML innerHTML: \(String(describing: html))")
             guard let html = html as? String else {
-                print("Error innerHTML: \(error)")
+                print("Error innerHTML: \(String(describing: error))")
                 return
             }
             let substring = html.slice(from: "{", to: "}")
-            print("substring = \(substring)")
+            print("Substring = \(String(describing: substring))")
+            if substring?.contains("email") ?? false && substring?.contains("has already been taken") ?? false {
+                self.closeWebView()
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: "This email is already registered under an existing account. Please try another login method.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
+                    if var topController = UIApplication.shared.windows.first?.rootViewController {
+                        while let presentedViewController = topController.presentedViewController {
+                            topController = presentedViewController
+                        }
+                        topController.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
         }
-        
-        removeSpinner(spinner: spinner)
+        //--------
         if let params = webView.url?.params() {
             print("params: \(params)")
             if let error_reason = params["error_reason"], error_reason == "user_denied" {
@@ -109,7 +123,6 @@ extension BaseWebViewButton: WKNavigationDelegate {
     
     public func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         if let params = webView.url?.params() {
-            print("PARAMS = \(params)")
             if let session_token = params["session_token"], let provider_token = params["provider_token"] {
                 APIHeader.save(value: session_token, key: .session_token)
                 APIHeader.save(value: provider_token, key: .provider_token)
@@ -117,23 +130,7 @@ extension BaseWebViewButton: WKNavigationDelegate {
                 let result = AuthResponseModel()
                 result.set(session_token, provider_token)
                 FTAuth.completionHandlerLogin?(.success(result))
-                //----- !!! for refactoring:
-            } else if let errors = params["errors"] as? [String: String], let key = errors["key"], let message = errors["message"] {
-                if key == "email", message == "has already been taken" {
-                    closeWebView()
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error", message: "This email is already registered under an existing account. Please try another login method.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in }))
-                        if var topController = UIApplication.shared.windows.first?.rootViewController {
-                            while let presentedViewController = topController.presentedViewController {
-                                topController = presentedViewController
-                            }
-                            topController.present(alert, animated: true, completion: nil)
-                        }
-                    }
-                }
             }
-            //------
         }
     }
 }
