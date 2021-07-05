@@ -477,6 +477,8 @@ guard let `self` = self else { return }
 
 ### API Документация
 
+[Mobile API спецификация](https://docs.google.com/spreadsheets/d/1uKBGsNgds9ovyJngjirpdJqrBXQ2EnStmWZTNCRiYtY/edit?usp=sharing)
+
 <img src="https://i.gyazo.com/27f9e2ba8112245aee6ce1baf12159a7.png" align="center" width="1000"> 
 <img src="https://i.gyazo.com/db04951db9a264e21ddfac1f1c10cee5.png" align="center" width="1000"> 
 <img src="https://i.gyazo.com/ebf188f7e6ea19355b844cb6ccd47174.png" align="center" width="1000"> 
