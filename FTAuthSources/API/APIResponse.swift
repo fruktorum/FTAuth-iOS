@@ -16,7 +16,10 @@ extension APIResponse {
     
     func responseSimpleData(completionHandler: @escaping (_ responseData: Data?, _ error: NSError?) -> Void) {
         showRequestLogs()
-        guard let url = URL(string: request.url) else { return }
+        guard let url = URL(string: request.url) else {
+            print("ℹ️ FTAuth ℹ️ Error: invalid url \(request.url)")
+            return
+        }
         var sessionRequest = URLRequest(url: url)
         sessionRequest.httpMethod = request.httpMethod
         if let body = request.body, let httpBody = try? JSONSerialization.data(withJSONObject: body, options: []) {
@@ -30,16 +33,15 @@ extension APIResponse {
         session.dataTask(with: sessionRequest) { (data, response, error) in
             guard let response = response else {
                 if let error = error {
-                    print("Error: \(error)")
+                    print("ℹ️ FTAuth ℹ️ Error: \(error)")
                     self.showFailureLogs(with: error)
                 }
                 return
             }
             if let httpResponse = response as? HTTPURLResponse {
-                print("StatusCode: \(httpResponse.statusCode)")
-                // ошибку всегда выводим алертом, если она не от сервера
+                print("ℹ️ FTAuth ℹ️ StatusCode: \(httpResponse.statusCode)")
             }
-            print("Response: \(response)")
+            print("ℹ️ FTAuth ℹ️ Response: \(response)")
             
             guard let data = data else { return }
             self.showSuccessLogs(with: data)
@@ -51,6 +53,7 @@ extension APIResponse {
     
     private func showRequestLogs() {
         print("""
+            ℹ️ FTAuth ℹ️
             ✴️✴️✴️✴️✴️⬇️
             URL: \(request.url);
             HTTP METHOD: \(request.httpMethod);
@@ -65,6 +68,7 @@ extension APIResponse {
             let decoded = try JSONSerialization.jsonObject(with: data, options: [])
             if let dictFromJSON = decoded as? [String: AnyObject] {
                 print("""
+                    ℹ️ FTAuth ℹ️
                     ✅✅✅✅✅⬇️ Success Data Response (url = \(self.request.url)):
                     \(dictFromJSON)
                     ⬆️✅✅✅✅✅
@@ -77,6 +81,7 @@ extension APIResponse {
 
     private func showFailureLogs(with error: Error) {
         print("""
+            ℹ️ FTAuth ℹ️
             ❌❌❌❌❌⬇️ Failure Response (url = \(self.request.url)):
             \(error.localizedDescription)"
             ⬆️❌❌❌❌❌

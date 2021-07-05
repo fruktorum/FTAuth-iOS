@@ -6,18 +6,19 @@
 //  Copyright © 2019 Fruktorum. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public class FTAuth: NSObject {
     
+    // MARK: - Public Properties
+    
+    static var authServerURL = ""
     public static var webView: UIView?
     public static var activityIndicator: UIActivityIndicatorView?
     public static var backgroundColorOfActivityIndicator: UIColor?
     public static var errorOutputType: ErrorOutputType? = .log
     public static var showSpinner = true
     public static var requiredElements = [TypeElement]()
-    static var authServerURL = ""
     public static var authPayload: [String: AnyObject]?
     public static var registrationPayload: [String: AnyObject]?
     
@@ -34,7 +35,9 @@ public class FTAuth: NSObject {
             viewModel.updateConstrains(generalVerticalLocationOfDescription)
         }
     }
-
+    
+    // MARK: - Properties
+    
     static var authEmailTF: FTAuthEmailTextField?
     static var authPasswordTF: FTAuthPasswordTextField?
     
@@ -45,12 +48,13 @@ public class FTAuth: NSObject {
     static var registrationPasswordTF: FTRegistrationPasswordTextField?
     static var registrationConfirmPasswordTF: FTRegistrationConfirmPasswordTextField?
     static var registrationPhoneTF: FTRegistrationPhoneTextField?
-    
     static var registrationCheckerAcceptanceOfTerms: FTCheckerAcceptanceOfTerms?
-
+    
     static let viewModel = FTAuthViewModel()
     static let presenter = Presenter()
     static let spinnerController = NSObject()
+    
+    // MARK: - Methods
     
     static func login() {
         viewModel.checkDescriptionValidAuthTF()
@@ -70,20 +74,21 @@ public class FTAuth: NSObject {
             presenter.registration(registrationEmailTF?.text, registrationPasswordTF?.text, registrationNameTF?.text, registrationFirstNameTF?.text, registrationLastNameTF?.text, registrationPhoneTF?.fullText)
         }
     }
-
-    public static func logout() {
-        guard let sessionToken = getSessionToken() else { return }
-        presenter.logout(sessionToken: sessionToken)
-    }
     
-    //MARK: PUBLIC FUNCTION
-    public static func setAuthSerevrURL(_ url: String) {
+    // MARK: - Public methods
+    
+    public static func setAuthServerURL(_ url: String) {
         authServerURL = url
     }
     
     public static func loginWithApple(_ identityToken: String) {
         startLogin?()
         self.presenter.authApple(identityToken)
+    }
+
+    public static func logout() {
+        guard let sessionToken = getSessionToken() else { return }
+        presenter.logout(sessionToken: sessionToken)
     }
     
     public static func settingDescriptionLabel(textColor: UIColor? = nil,

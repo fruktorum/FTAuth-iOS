@@ -24,4 +24,3 @@ public class FTAuthEmailTextField: FTTextField {
         descriptionLbl.isHidden = checkValid()
     }
 }
-

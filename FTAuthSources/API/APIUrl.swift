@@ -9,6 +9,3 @@
 import Foundation
 
 let AUTH_SERVER_URL = "\(FTAuth.authServerURL)"
-
-
-

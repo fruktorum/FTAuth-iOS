@@ -22,7 +22,6 @@ public class AuthResponseModel: Decodable {
     }
 }
 
-
 public class ResponseModel: Decodable {
     public var success: Bool?
     public var errors: [FTErrorModel]?

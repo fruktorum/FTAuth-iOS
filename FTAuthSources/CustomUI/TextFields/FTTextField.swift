@@ -82,7 +82,8 @@ public class FTTextField: UITextField {
         descriptionLbl.isHidden = true
     }
     
-    //MARK: PUBLIC FUNCTION
+    //MARK: - Public Methods
+    
     public func setVerticalLocationOfDescription(_ verticalLocationOfDescription: CGFloat?) {
         NSLayoutConstraint.deactivate([verticalConstraint])
         var verticalLocation = frame.height/2 + 10

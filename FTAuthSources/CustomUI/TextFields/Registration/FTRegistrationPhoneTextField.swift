@@ -12,6 +12,7 @@ public class FTRegistrationPhoneTextField: FTTextField {
     
     public var phoneMask = PhoneMask.none
     public var prefix = ""
+    
     var fullText: String {
         return prefix + (text ?? "")
     }
@@ -77,4 +78,3 @@ public class FTRegistrationPhoneTextField: FTTextField {
         return false
     }
 }
-

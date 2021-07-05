@@ -6,7 +6,6 @@
 //  Copyright © 2020 Fruktorum. All rights reserved.
 //
 
-import UIKit
 import WebKit
 
 public class BaseWebViewButton: UIButton {

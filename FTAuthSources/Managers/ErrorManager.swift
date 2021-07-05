@@ -6,7 +6,6 @@
 //  Copyright © 2019 Fruktorum. All rights reserved.
 //
 
-//NSError+ConsoleOutput
 import Foundation
 
 extension Error {
@@ -39,9 +38,6 @@ extension Error {
         }
     }
 }
-
-//ErrorManager
-import Foundation
 
 struct ErrorManager {
     
@@ -106,7 +102,6 @@ struct ErrorManager {
     }
 }
 
-//GeneralError
 enum GeneralError: Error {
     case notFound
     case unknown
@@ -142,15 +137,11 @@ enum GeneralError: Error {
     }
 }
 
-//ErrorModel
-import Foundation
-
 enum ErrorType: Decodable {
 
     case model(errorModel: FTErrorModel), string(errorString: String), stringArray(errorStringArray: [String])
 
     init(from decoder: Decoder) throws {
-        //выяснить почему не распознается модель
         if let model = try? decoder.singleValueContainer().decode(FTErrorModel.self) {
             self = .model(errorModel: model)
             return
@@ -166,4 +157,3 @@ enum ErrorType: Decodable {
         throw GeneralError.missingValue
     }
 }
-

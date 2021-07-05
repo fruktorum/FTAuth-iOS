@@ -24,8 +24,6 @@ public class FTRegistrationFirstNameTextField: FTTextField {
     }
 }
 
-import UIKit
-
 public class FTRegistrationLastNameTextField: FTTextField {
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,8 +40,6 @@ public class FTRegistrationLastNameTextField: FTTextField {
     }
 }
 
-import UIKit
-
 public class FTRegistrationNameTextField: FTTextField {
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,4 +55,3 @@ public class FTRegistrationNameTextField: FTTextField {
         }
     }
 }
-

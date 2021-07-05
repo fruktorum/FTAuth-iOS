@@ -23,7 +23,7 @@ class AppleAuthorizationService: NSObject, ASAuthorizationControllerDelegate, AS
         authorizationController.performRequests()
     }
     
-// MARK: - ASAuthorizationControllerDelegate
+    // MARK: - ASAuthorizationControllerDelegate
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return UIApplication.shared.windows.first!
@@ -32,14 +32,14 @@ class AppleAuthorizationService: NSObject, ASAuthorizationControllerDelegate, AS
     // MARK: - ASAuthorizationControllerDelegate
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("❌ Error Apple authorization = \(error.localizedDescription)")
+        print("ℹ️ FTAuth ℹ️ ❌ Error Apple authorization: \(error.localizedDescription)")
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             if let identityTokenData = appleIDCredential.identityToken {
                 guard let identityTokenStr = String(data: identityTokenData, encoding: String.Encoding.utf8) else { return }
-                print("❗️Apple identityToken = \(identityTokenStr)")
+                print("ℹ️ FTAuth ℹ️❗️Apple identityToken = \(identityTokenStr)")
                 didReceiveIdentityToken?(identityTokenStr)
             }
         }

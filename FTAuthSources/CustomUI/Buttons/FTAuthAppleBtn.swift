@@ -10,7 +10,7 @@ import UIKit
 
 public class FTAuthAppleBtn: UIButton {
     
-    var authorizationService = AppleAuthorizationService()
+    private var authorizationService = AppleAuthorizationService()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -21,7 +21,7 @@ public class FTAuthAppleBtn: UIButton {
         superview?.endEditing(true)
         authorizationService.configureAuthorization()
         authorizationService.didReceiveIdentityToken = { [weak self] identityToken in
-        guard let `self` = self else { return }
+            guard let self = self else { return }
             FTAuth.loginWithApple(identityToken)
         }
     }

@@ -10,6 +10,8 @@ import Foundation
 
 class Presenter: NSObject {
     
+    // MARK: - Methods
+    
     func auth(_ email: String, _ password: String) {
         postAuth(email, password)
     }
@@ -18,31 +20,15 @@ class Presenter: NSObject {
         postApple(identityToken)
     }
     
-    private func failLogin(_ error: FTErrorModel?) {
-        guard let error = error else { return }
-        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType, .login)
-        FTAuth.completionHandlerLogin?(.failure(error))
-    }
-    
     func registration(_ email: String?, _ password: String?, _ name: String?, _ firstName: String?, _ lastName: String?, _ phone: String?) {
         postRegistration(email, password, name, firstName, lastName, phone)
-    }
-    
-    private func failRegistration(_ error: FTErrorModel?) {
-        guard let error = error else { return }
-        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType, .registration)
-        FTAuth.completionHandlerRegistration?(.failure(error))
     }
     
     func logout(sessionToken: String) {
         postLogout(sessionToken: sessionToken)
     }
     
-    private func failLogout(_ error: FTErrorModel?) {
-        guard let error = error else { return }
-        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType)
-        FTAuth.completionHandlerLogout?(.failure(error))
-    }
+    // MARK: - Private methods
     
     private func postAuth(_ email: String, _ password: String) {
         let spinner = displaySpinner()
@@ -160,5 +146,23 @@ class Presenter: NSObject {
                 }
             }
         }
+    }
+    
+    private func failLogin(_ error: FTErrorModel?) {
+        guard let error = error else { return }
+        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType, .login)
+        FTAuth.completionHandlerLogin?(.failure(error))
+    }
+    
+    private func failRegistration(_ error: FTErrorModel?) {
+        guard let error = error else { return }
+        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType, .registration)
+        FTAuth.completionHandlerRegistration?(.failure(error))
+    }
+    
+    private func failLogout(_ error: FTErrorModel?) {
+        guard let error = error else { return }
+        NSObject.showError(errors: [error], outputType: FTAuth.errorOutputType)
+        FTAuth.completionHandlerLogout?(.failure(error))
     }
 }

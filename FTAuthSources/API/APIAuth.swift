@@ -23,4 +23,3 @@ class APIAuth {
         case logout(_ header: String)
     }
 }
-

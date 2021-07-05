@@ -11,15 +11,13 @@ import UIKit
 class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let textField = textField as? FTTextField {
-            textField.checkDescriptionValidTextField()
-        }
+        guard let textField = textField as? FTTextField else { return }
+        textField.checkDescriptionValidTextField()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if let textField = textField as? FTTextField {
-            textField.cleanTextFieldDescription()
-        }
+        guard let textField = textField as? FTTextField else { return }
+        textField.cleanTextFieldDescription()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -33,9 +31,7 @@ class FTTextFieldDelegate: NSObject, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let phoneField = textField as? FTRegistrationPhoneTextField {
-            return phoneField.textField(phoneField, shouldChangeCharactersIn: range, replacementString: string)
-        }
-        return true
+        guard let phoneField = textField as? FTRegistrationPhoneTextField else { return true }
+        return phoneField.textField(phoneField, shouldChangeCharactersIn: range, replacementString: string)
     }
 }

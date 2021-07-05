@@ -121,4 +121,3 @@ class FTAuthViewModel: NSObject {
         FTAuth.registrationLastNameTF?.settingDescriptionLbl(textColor, font, textAlignment, backgroundColor, attributedText, lineBreakMode, adjustsFontSizeToFitWidth, minimumScaleFactor, numberOfLines, highlightedTextColor, isHighlighted, shadowColor, shadowOffset)
     }
 }
-

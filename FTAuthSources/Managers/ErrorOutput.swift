@@ -6,7 +6,6 @@
 //  Copyright © 2019 Fruktorum. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public enum ErrorOutputType {

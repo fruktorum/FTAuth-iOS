@@ -10,19 +10,25 @@ import UIKit
 
 public class FTCheckerAcceptanceOfTerms: UIButton {
     
-    public var checked: Bool = false
+    // MARK: - Public Properties
+    
+    public var checked = false
     public var imageOn: UIImage? {
         didSet {
             updateImage()
         }
     }
+    
     public var imageOff: UIImage? {
         didSet {
             updateImage()
         }
     }
-    var type = TypeElement.accept
     
+    // MARK: - Properties
+    
+    var type = TypeElement.accept
+
     var isValid: Bool {
         if FTAuth.requiredElements.contains(type) {
             return checked
@@ -31,19 +37,21 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
         }
     }
     
+    // MARK: - Methods
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         FTAuth.registrationCheckerAcceptanceOfTerms = self
-        self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
+        addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
         updateImage()
     }
     
-    @objc func touchUpInside(sender: UIButton) {
+    @objc private func touchUpInside(sender: UIButton) {
         checked = !checked
         updateImage()
     }
     
-    func updateImage() {
+    private func updateImage() {
         if let imageOn = imageOn, let imageOff = imageOff {
             self.setImage(checked ? imageOn : imageOff , for: .normal)
         } else {
@@ -51,7 +59,13 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
         }
     }
     
-    //MARK: PUBLIC FUNCTION
+    func checkValid() {
+        //место для добавления выделения невалидной кнопки
+//        imageView?.layer.borderColor = CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1)
+//        imageView?.layer.borderWidth = checked ? 0 : 1
+    }
+    
+    // MARK: - Public Methods
     
     public func set(checked: Bool, imageOn: UIImage, imageOff: UIImage) {
         self.checked = checked
@@ -59,11 +73,4 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
         self.imageOff = imageOff
         updateImage()
     }
-    
-    func checkValid() {
-        //место для добавления выделения невалидной кнопки
-//        imageView?.layer.borderColor = CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1)
-//        imageView?.layer.borderWidth = checked ? 0 : 1
-    }
 }
-
