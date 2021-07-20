@@ -55,7 +55,7 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
         if let imageOn = imageOn, let imageOff = imageOff {
             self.setImage(checked ? imageOn : imageOff , for: .normal)
         }
-        self.tintColor = self.tintColor.withAlphaComponent(checked ? 1 : 0.3)
+//        self.tintColor = self.tintColor.withAlphaComponent(checked ? 1 : 0.3)
     }
     
     func checkValid() {
