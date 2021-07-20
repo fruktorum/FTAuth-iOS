@@ -13,6 +13,7 @@
 ***
   
 ## Requirements
+
 - Xcode 11+
 - Swift 5+
 - iOS 13.2+
@@ -28,39 +29,44 @@
 
 3. Создайте profiles в разделе [Profiles](https://developer.apple.com/account/resources/profiles/list)
 
-4. В Xcode во вкладке **Signing & Capabilities**, добавитье **Capability**  *"Sign In With Apple"*:
+4. В Xcode во вкладке **Signing & Capabilities**, добавитье **Capability**  _**Sign In With Apple**_:
 <img src="https://i.gyazo.com/b0a6b241a11c0b3d65f7be230efb1c18.png" align="center" width="500">
   
 ***
 
 ## Установка
 
-### Вручную:
-1. Перенесите ***FTAuth.framework*** в папку проекта
-2. Установите необходимые параметры копирования в проект (установите флажки "Copy items if needed", "Create groups" и выберите целевой объект):
+### Ручная
+
+1. Перенесите ***FTAuth.framework*** в папку **Frameworks** в вашем проекте
+2. Установите необходимые параметры копирования в проект (установите флажки **Copy items if needed**, **Create groups** и выберите целевой объект):
 <img src="https://i.gyazo.com/52bd2e756bf3a049d4ac035bd74e19d9.png" align="center" width="500">   
 
 3. В ***Build Phases*** добавьте ***FTAuth.framework*** в ***Embed Frameworks***:
 <img src="https://i.gyazo.com/f59a32f7243bfb5670d74a6a31bead72.png" align="center" width="500">
 
-### С помощью **CocoaPods**:
+### Через CocoaPods
 
-1. Добавьте 
-``` pod 'FTAuth', :git => "https://github.com/GTimofey/FTAuth.git"``` в свой **Podfile**.
-2. Запустите ```pod install```.
-3. Во время установки потребуется ввести логин и пароль для доступа к приватному репозиторую.
+1. У вас должен быть доступ к приватному репозиторию проекта 
+2. Добавьте `pod 'FTAuth', :git => "https://github.com/fruktorum/FTAuth.git"` в свой **Podfile**
+3. Выполните в терминале из директории проекта команду `pod install` 
+4. Во время установки потребуется ввести логин и пароль для доступа к приватному репозиторую
   
-  ***
-## Последовательность действий при использовании FTAuth для авторизации и регистрации:
+***
+
+## Использование FTAuth в проекте для авторизации и регистрации:
+
 1. Импорт модуля ***FTAuth***
-2. Установка URL для обращения к серверу (Обязательно)
-2. Добавление UI элементов необходимых для авторизации и регистрации и установка классов этих элементов (Обязательно)
-3. Настройка отображения ошибок валидации и серверных ошибок (Не обязательно)
-4. Настройка ***FTAuth*** (определение обязательных элементов, отображение индикатора загрузки, настройка дополнительных данных *Payload* отправляемых на сервер и т.д.) (Не обязательно)
-5. Настройка замыкания для выполнения действий перед запросом на сервер, после успешного запроса и после неудачного запроса (Обязательно)
+2. Установка URL для обращения к серверу **ОБЯЗАТЕЛЬНО**
+2. Добавление UI элементов необходимых для авторизации и регистрации и установка классов этих элементов **ОБЯЗАТЕЛЬНО**
+3. Настройка отображения ошибок валидации и серверных ошибок **НЕ ОБЯЗАТЕЛЬНО**
+4. Настройка ***FTAuth*** (определение обязательных элементов, отображение индикатора загрузки, настройка дополнительных данных *Payload* отправляемых на сервер и т.д.) **НЕ ОБЯЗАТЕЛЬНО**
+5. Настройка замыкания для выполнения действий перед запросом на сервер, после успешного запроса и после неудачного запроса **ОБЯЗАТЕЛЬНО**
   
-Нчальная настройка SDK
+**Начальная настройка SDK:**
+
 1. import ***FTAuth***:
+
 ```swift
 import FTAuth
 ```
@@ -68,62 +74,79 @@ import FTAuth
 2. Установка URL для обращения к серверу: 
 
 Установку URL-адреса необходимо производить перед использованием SDK, например, внутри функции ***didFinishLaunchingWithOptions*** в ***AppDelegate***
+
 ```swift
 FTAuth.setAuthSerevrURL("http://00.00.198.200:3001")
 ```
   
-  ***
+***
+
 ## Подключение UI элементов  
 
 ### UITextFields
 
+**1. Описание полей:**
+
 | Тип UITextField | Описание |
 | ------ | ------ |
-| ***Авторизация*** ||
-| FTAuthEmailTextField | Для ввода email при авторизации |
-| FTAuthPasswordTextField | Для ввода пароля при авторизации | 
-| ***Регистрация*** ||
-| FTRegistrationNameTextField | Для ввода произвольного именя при регистрации |
-| FTRegistrationFirstNameTextField | Для ввода имени при регистрации |
-| FTRegistrationLastNameTextField | Для ввода фамилии при регистрации |
-| FTRegistrationEmailTextField | Для ввода email при регистрации |
-| FTRegistrationPasswordTextField | Для ввода пароля при регистрации |
-| FTRegistrationConfirmPasswordTextField | Для подтверждения при регистрации |
-| FTRegistrationPhoneTextField | Для ввода номера телефона при регистрации |
+| **Авторизация** |
+| FTAuthEmailTextField | Для ввода **email** при авторизации |
+| FTAuthPasswordTextField | Для ввода **пароля** при авторизации | 
+| **Регистрация** |
+| FTRegistrationNameTextField | Для ввода **имени в произвольном формате** (в одну строку) при регистрации |
+| FTRegistrationFirstNameTextField | Для ввода **имени** при регистрации |
+| FTRegistrationLastNameTextField | Для ввода **фамилии** при регистрации |
+| FTRegistrationEmailTextField | Для ввода **email** при регистрации |
+| FTRegistrationPasswordTextField | Для ввода **пароля** при регистрации |
+| FTRegistrationConfirmPasswordTextField | Для **подтверждения пароля** при регистрации |
+| FTRegistrationPhoneTextField | Для ввода **номера телефона** при регистрации |
 
- + #### Для подключения текстовых полей необходимо:
-1. перейти к **Stiryboard***
-2. выбрать  **UITextField***
-3. открыть вкладку **Identity Inspector**
-4. В графе **Class** установить класс, соответствующий назначению этого ***UITextField***
-5. В графе **Modul** установить значение ***FTAuth***
+**2. Для подключения текстовых полей необходимо:**
 
+1. Перейти в **Storyboard**
+2. Выбрать  **UITextField**
+3. Открыть вкладку **Identity Inspector**
+4. В графе **Class** установить класс, соответствующий назначению этого _**UITextField**_
+5. В графе **Module** установить значение _**FTAuth**_:
 <img src="https://i.gyazo.com/c3b4a883bcf380dd3619cd0c8f6b2be2.jpg" align="center" width="500">
 
-  + #### Особенности FTAuthTextFields элементов и примеры использования
-  + Каждый FTAuthTextField имеет публичную переменную ***descriptionLbl*** - меткe, для вывода ошибок валидации или ошибок с сервера. 
-  Её свойства можно переопределять. обратившись к ней через IBOutlet конкретного поля.  ()
+**3. Особенности FTAuthTextFields элементов и примеры использования:**
+
+- Каждый ***FTAuthTextField*** имеет публичную переменную ***descriptionLbl*** - метка, для вывода ошибок валидации или ошибок с сервера. Её свойства можно переопределять, обращаясь к ней через ***IBOutlet*** конкретного поля.
+
+**Пример:**
+
 ```swift
 @IBOutlet weak var emailTF: FTAuthEmailTextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTF.descriptionLbl.textColor = .blue
     }
 ```
-**Результат**  
-<img src="https://i.gyazo.com/02c4a26f5e2f053adb41b911f00c551f.png" align="center" width="500">  
-  + Каждый FTAuthTextField имеет публичный метод ***setVerticalLocationOfDescription(_ verticalLocationOfDescription: CGFloat?)***. Функция, меняет вертикальное расстояние от центра текстового поля до центра descriptionLbl. По умолчанию descriptionLbl расположен под текстовым полем.
+
+**Результат:**
+
+<img src="https://i.gyazo.com/02c4a26f5e2f053adb41b911f00c551f.png" align="center" width="500">
+
+- Каждый ***FTAuthTextField*** имеет публичный метод ***setVerticalLocationOfDescription(_ verticalLocationOfDescription: CGFloat?)***. Функция, меняет вертикальное расстояние от центра текстового поля до центра ***descriptionLbl***. По умолчанию ***descriptionLbl*** расположен под текстовым полем.
+
+**Пример:**
+
 ```swift
 @IBOutlet weak var emailTF: FTAuthEmailTextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTF.setVerticalLocationOfDescription(-25)
     }
 ```
-**Результат**  
+
+**Результат:**
+
 <img src="https://i.gyazo.com/eb9576cfa2124c00a8ea2f6cf1c5b433.png" align="center" width="500">
 
-  + В классе ***FTRegistrationPhoneTextField*** существует публичное свойство ***phoneMask*** типа ***PhoneMask***, предназначеное для назначения маски ввода телефонного номера.
+- В классе ***FTRegistrationPhoneTextField*** существует публичное свойство ***phoneMask*** типа ***PhoneMask***, предназначеное для назначения маски ввода телефонного номера.
 
 | Значение ***PhoneMask*** | Описание | Вид маски | Валидация |
 | ------ | ------ | ------ | ------ |
