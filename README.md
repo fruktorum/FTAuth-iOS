@@ -1,36 +1,38 @@
 <img src="https://i.gyazo.com/11190570e98e16e002c5c6acd21b854b.png" align="center" width="200" >
 
 # FTAuth SDK 
-  
-  ***
+
 ## Особенности
 
 - Авторизация и регистрация пользователей
-- Возможность авторизации через Facebook^ Google или Apple
-- Настройка полей, обязательных для регистрации
-- Вывод ошибок валидации или ошибок с сервера в виде подписи к полям с возможностью настройки отображения ошибок
+- Возможность авторизации через Facebook, Google и Apple
+- Настройка полей обязательных для регистрации
+- Вывод ошибок валидации или ошибок с сервера в виде подписи к полям с возможностью настройки отображения ошибок через всплывающий алерт или вывод в консоль
 - Готовые классы UI объектов
 
+***
   
-  ***
 ## Requirements
 - Xcode 11+
 - Swift 5+
 - iOS 13.2+
   
-  ***
-## Начальные установки (требуются только для авторизации с помощью AppleID)
-1. Создайте явный идентификатор приложения в поле [Идентификаторы](https://developer.apple.com/account/resources/identifiers/list)
+***
 
-2. В настройках идентификатора включите возможность использования "Sign In with Apple" [Идентификаторы](https://developer.apple.com/account/resources/identifiers/list):
+## Первоначальные настройки ТОЛЬКО для авторизации с помощью AppleID
+
+1. В Apple Developer Account cоздайте явный идентификатор приложения в разделе [Identifiers](https://developer.apple.com/account/resources/identifiers/list)
+
+2. В настройках созданного идентификатора включите возможность использования **Sign In with Apple**:
 <img src="https://i.gyazo.com/1d76c5d827b5cfc2e5514364900826e1.png" align="center" width="500">
 
-3. Создайте профиль подготовки разработки и распространения в разделе [Профили](https://developer.apple.com/account/resources/profiles/list)
+3. Создайте profiles в разделе [Profiles](https://developer.apple.com/account/resources/profiles/list)
 
 4. В Xcode во вкладке **Signing & Capabilities**, добавитье **Capability**  *"Sign In With Apple"*:
 <img src="https://i.gyazo.com/b0a6b241a11c0b3d65f7be230efb1c18.png" align="center" width="500">
   
-  ***
+***
+
 ## Установка
 
 ### Вручную:
