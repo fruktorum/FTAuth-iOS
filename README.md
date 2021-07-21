@@ -1,4 +1,4 @@
-<img src="https://i.gyazo.com/11190570e98e16e002c5c6acd21b854b.png" align="center" width="200" >
+<img src="https://i.gyazo.com/fcbc3c4c7369d613fa7bfef1cae5ec3a.png" align="center" width="500" >
 
 # FTAuth SDK 
 
