@@ -15,6 +15,11 @@ public class FTAuthLogoutBtn: UIButton {
         self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
+    }
+    
     @objc func touchUpInside(sender: UIButton) {
         superview?.endEditing(true)
         let alert = UIAlertController(title: "Sign out", message: "Do you really want to sign out?", preferredStyle: UIAlertController.Style.alert)
