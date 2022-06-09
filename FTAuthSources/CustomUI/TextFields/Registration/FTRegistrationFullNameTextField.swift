@@ -10,6 +10,12 @@ import UIKit
 
 public class FTRegistrationFirstNameTextField: FTTextField {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        type = TypeElement.firstName
+        FTAuth.registrationFirstNameTF = self
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         type = TypeElement.firstName

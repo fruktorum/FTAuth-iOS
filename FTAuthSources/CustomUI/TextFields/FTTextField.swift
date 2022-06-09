@@ -23,11 +23,19 @@ public class FTTextField: UITextField {
             return true
         }
     }
-    
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        delegate = FTAuth.viewModel.textFieldDelegate
+        settingDescriptionLbl()
+    }
+
     func checkValid() -> Bool {
         (text != nil && text != "")
     }
     
+
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         delegate = FTAuth.viewModel.textFieldDelegate

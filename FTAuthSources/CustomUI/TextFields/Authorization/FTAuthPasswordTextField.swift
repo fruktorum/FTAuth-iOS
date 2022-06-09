@@ -11,6 +11,11 @@ import UIKit
 
 public class FTAuthPasswordTextField: FTTextField {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        FTAuth.authPasswordTF = self
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         FTAuth.authPasswordTF = self

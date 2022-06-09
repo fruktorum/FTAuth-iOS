@@ -10,6 +10,12 @@ import UIKit
 
 public class FTRegistrationPasswordTextField: FTTextField {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        type = TypeElement.password
+        FTAuth.registrationPasswordTF = self
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         type = TypeElement.password

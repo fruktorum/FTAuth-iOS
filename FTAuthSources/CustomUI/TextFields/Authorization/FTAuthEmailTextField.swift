@@ -9,7 +9,12 @@
 import UIKit
 
 public class FTAuthEmailTextField: FTTextField {
-    
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        FTAuth.authEmailTF = self
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         FTAuth.authEmailTF = self

@@ -39,6 +39,13 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
     
     // MARK: - Methods
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        FTAuth.registrationCheckerAcceptanceOfTerms = self
+        addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
+        updateImage()
+    }
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         FTAuth.registrationCheckerAcceptanceOfTerms = self
