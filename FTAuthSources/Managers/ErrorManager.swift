@@ -44,7 +44,6 @@ struct ErrorManager {
     static func errorHandler(_ errorType: ErrorType) -> String {
         switch errorType {
         case .model(let errorModel):
-            //уточнить у бэка какие ошибки будут на этапе авторизации и в соответствии этого изменить блок ниже
             if let msg = errorModel.message, let key = errorModel.key {
                 switch msg {
                 case "required":
