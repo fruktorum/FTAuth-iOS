@@ -41,6 +41,7 @@ extension Error {
 
 struct ErrorManager {
     
+    //уточнить у бэка какие ошибки будут на этапе авторизации и в соответствии этого изменить блок ниже
     static func errorHandler(_ errorType: ErrorType) -> String {
         switch errorType {
         case .model(let errorModel):

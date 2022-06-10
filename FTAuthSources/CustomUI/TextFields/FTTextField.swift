@@ -34,8 +34,6 @@ public class FTTextField: UITextField {
         (text != nil && text != "")
     }
     
-
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         delegate = FTAuth.viewModel.textFieldDelegate
