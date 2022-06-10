@@ -17,6 +17,12 @@ public class FTRegistrationPhoneTextField: FTTextField {
         return prefix + (text ?? "")
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        type = TypeElement.phone
+        FTAuth.registrationPhoneTF = self
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         type = TypeElement.phone
