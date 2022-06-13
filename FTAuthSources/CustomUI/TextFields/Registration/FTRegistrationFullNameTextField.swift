@@ -32,6 +32,12 @@ public class FTRegistrationFirstNameTextField: FTTextField {
 
 public class FTRegistrationLastNameTextField: FTTextField {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        type = TypeElement.lastName
+        FTAuth.registrationLastNameTF = self
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         type = TypeElement.lastName
@@ -48,6 +54,12 @@ public class FTRegistrationLastNameTextField: FTTextField {
 
 public class FTRegistrationNameTextField: FTTextField {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        type = TypeElement.name
+        FTAuth.registrationNameTF = self
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         type = TypeElement.name
