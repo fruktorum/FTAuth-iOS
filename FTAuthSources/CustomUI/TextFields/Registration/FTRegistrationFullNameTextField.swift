@@ -22,7 +22,7 @@ public class FTRegistrationFirstNameTextField: FTTextField {
         FTAuth.registrationFirstNameTF = self
     }
     
-    override func checkDescriptionValidTextField() {
+    public override func checkDescriptionValidTextField() {
         if FTAuth.requiredElements.contains(type) {
             descriptionLbl.text = "First name cannot be blank"
             descriptionLbl.isHidden = !(text?.isEmpty ?? true)

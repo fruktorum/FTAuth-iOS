@@ -30,7 +30,7 @@ public class FTTextField: UITextField {
         settingDescriptionLbl()
     }
 
-    func checkValid() -> Bool {
+    public func checkValid() -> Bool {
         (text != nil && text != "")
     }
     

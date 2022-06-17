@@ -20,7 +20,7 @@ public class FTAuthEmailTextField: FTTextField {
         FTAuth.authEmailTF = self
     }
     
-    override func checkValid() -> Bool {
+    public override func checkValid() -> Bool {
         text?.isValidEmail ?? false
     }
     

@@ -29,7 +29,7 @@ public class FTRegistrationPhoneTextField: FTTextField {
         FTAuth.registrationPhoneTF = self
     }
     
-    override func checkValid() -> Bool {
+    public override func checkValid() -> Bool {
         switch phoneMask {
         case .none:
             return text?.count ?? 0 >= 10
