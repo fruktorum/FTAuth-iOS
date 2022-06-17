@@ -21,7 +21,7 @@ public class FTAuthPasswordTextField: FTTextField {
         FTAuth.authPasswordTF = self
     }
     
-    override func checkValid() -> Bool {
+    public override func checkValid() -> Bool {
         text?.isValidPassword ?? false
     }
     

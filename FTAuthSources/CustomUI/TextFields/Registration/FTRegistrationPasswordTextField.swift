@@ -22,7 +22,7 @@ public class FTRegistrationPasswordTextField: FTTextField {
         FTAuth.registrationPasswordTF = self
     }
     
-    override func checkValid() -> Bool {
+    public override func checkValid() -> Bool {
         text?.isValidPassword ?? false
     }
     
