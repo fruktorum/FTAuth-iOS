@@ -74,7 +74,7 @@ public class FTTextField: UITextField {
         descriptionLbl.translatesAutoresizingMaskIntoConstraints = false
         horizontalConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         setVerticalLocationOfDescription(nil)
-        leadingConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
+        leadingConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 15)
         heightConstraint = NSLayoutConstraint(item: descriptionLbl, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 10)
         NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, leadingConstraint, heightConstraint])
     }
