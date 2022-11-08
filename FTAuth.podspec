@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "FTAuth"
-  spec.version      = "3.0.5"
+  spec.version      = "3.0.6"
   spec.summary      = "Access to field validation methods is open"
   spec.homepage     = "https://github.com/fruktorum/FTAuth.git"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
