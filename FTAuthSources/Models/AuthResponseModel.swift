@@ -11,7 +11,7 @@ import Foundation
 public class AuthResponseModel: Decodable {
     
     public var success: Bool?
-    public var errors: [FTErrorModel]?
+    public var errors: ErrorType?
     public var provider_token: String?
     public var session_token: String?
     
@@ -24,5 +24,5 @@ public class AuthResponseModel: Decodable {
 
 public class ResponseModel: Decodable {
     public var success: Bool?
-    public var errors: [FTErrorModel]?
+    public var errors: ErrorType?
 }
