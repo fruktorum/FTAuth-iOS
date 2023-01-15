@@ -10,7 +10,7 @@ import UIKit
 
 open class FTAuthLoginBtn: UIButton {
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
     }
