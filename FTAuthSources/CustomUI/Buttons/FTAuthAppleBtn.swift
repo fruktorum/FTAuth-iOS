@@ -9,7 +9,7 @@
 import UIKit
 
 @available(iOS 13.0, *)
-public class FTAuthAppleBtn: UIButton {
+open class FTAuthAppleBtn: UIButton {
     
     private var authorizationService = AppleAuthorizationService()
     
@@ -18,7 +18,7 @@ public class FTAuthAppleBtn: UIButton {
         self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
     }

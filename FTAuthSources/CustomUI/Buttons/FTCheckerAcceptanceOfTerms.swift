@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class FTCheckerAcceptanceOfTerms: UIButton {
+open class FTCheckerAcceptanceOfTerms: UIButton {
     
     // MARK: - Public Properties
     
@@ -46,7 +46,7 @@ public class FTCheckerAcceptanceOfTerms: UIButton {
         updateImage()
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         FTAuth.registrationCheckerAcceptanceOfTerms = self
         addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
