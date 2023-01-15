@@ -137,11 +137,11 @@ enum GeneralError: Error {
     }
 }
 
-public enum ErrorType: Decodable {
+enum ErrorType: Decodable {
 
     case model(errorModel: FTErrorModel), string(errorString: String), stringArray(errorStringArray: [String])
 
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         if let model = try? decoder.singleValueContainer().decode(FTErrorModel.self) {
             self = .model(errorModel: model)
             return
