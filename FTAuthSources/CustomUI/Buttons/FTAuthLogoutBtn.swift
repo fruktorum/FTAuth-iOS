@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class FTAuthLogoutBtn: UIButton {
+open class FTAuthLogoutBtn: UIButton {
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
     }
