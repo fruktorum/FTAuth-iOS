@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class FTAuthLoginBtn: UIButton {
+open class FTAuthLoginBtn: UIButton {
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addTarget(self, action: #selector(touchUpInside), for: UIControl.Event.touchUpInside)
     }
