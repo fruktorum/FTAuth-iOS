@@ -47,11 +47,8 @@ class Presenter: NSObject {
                         DispatchQueue.main.async {
                             FTAuth.completionHandlerLogin?(.success(responseModel))
                         }
-                    case false:
-                        guard let error = responseModel.errors?.first else { return }
-                        self.failLogin(error)
                     default:
-                        break
+                        self.failHandler(responseModel.errors, .login)
                     }
                 } else {
                     self.failLogin(FTErrorModel(key: nil, message: error?.localizedDescription))
@@ -77,11 +74,8 @@ class Presenter: NSObject {
                         DispatchQueue.main.async {
                             FTAuth.completionHandlerLogin?(.success(responseModel))
                         }
-                    case false:
-                        guard let error = responseModel.errors?.first else { return }
-                        self.failLogin(error)
                     default:
-                        break
+                        self.failHandler(responseModel.errors, .login)
                     }
                 } else {
                     self.failLogin(FTErrorModel(key: nil, message: error?.localizedDescription))
@@ -107,11 +101,8 @@ class Presenter: NSObject {
                         DispatchQueue.main.async {
                             FTAuth.completionHandlerRegistration?(.success(responseModel))
                         }
-                    case false:
-                        guard let error = responseModel.errors?.first else { return }
-                        self.failRegistration(error)
                     default:
-                        break
+                        self.failHandler(responseModel.errors, .registration)
                     }
                 } else {
                     self.failRegistration(FTErrorModel(key: nil, message: error?.localizedDescription))
@@ -145,6 +136,31 @@ class Presenter: NSObject {
                     self.failLogout(FTErrorModel(key: nil, message: error?.localizedDescription))
                 }
             }
+        }
+    }
+    
+    private func failHandler(_ errorType: ErrorType?, _ requestType: RequestType) {
+        guard let errorType = errorType else { return }
+        var error: FTErrorModel?
+        switch errorType {
+            
+        case let .model(errorModel: errorModel):
+            error = errorModel
+        case let .models(errorModels: errorModels):
+            error = errorModels.first
+        case let .string(errorString: errorString):
+            error = .init(message: errorString)
+        case let .stringArray(errorStringArray: errorStringArray):
+            error = .init(message: errorStringArray.first)
+        }
+        
+        switch requestType {
+        case .login:
+            failLogin(error)
+        case .registration:
+            failRegistration(error)
+        case .logout:
+            failLogout(error)
         }
     }
     
