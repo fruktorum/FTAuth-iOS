@@ -6,6 +6,8 @@
 //  Copyright © 2019 Fruktorum. All rights reserved.
 //
 
+import Foundation
+
 struct APIHeader {
     
     enum HeaderKey: String, CaseIterable {
