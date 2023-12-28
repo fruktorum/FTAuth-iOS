@@ -61,6 +61,23 @@ struct ErrorManager {
             } else {
                 return "Server error"
             }
+        case .models(let errorModels):
+            if let msg = errorModels.first?.message, let key = errorModels.first?.key {
+                switch msg {
+                case "required":
+                    return "Field \(key) are required!"
+                case "invalid":
+                    return "The username or password you entered is incorrect."
+                case "exists":
+                    return "This email already exists."
+                case "too_short":
+                    return "Password must be at least 8 symbols."
+                default:
+                    return "Server error"
+                }
+            } else {
+                return "Server error"
+            }
         case .string(let errorString):
             switch errorString {
             case "internal_server_error":
@@ -138,22 +155,26 @@ enum GeneralError: Error {
 }
 
 public enum ErrorType: Decodable {
+    
+case model(errorModel: FTErrorModel), models(errorModels: [FTErrorModel]), string(errorString: String), stringArray(errorStringArray: [String])
 
-    case model(errorModel: FTErrorModel), string(errorString: String), stringArray(errorStringArray: [String])
-
-    public init(from decoder: Decoder) throws {
-        if let model = try? decoder.singleValueContainer().decode(FTErrorModel.self) {
-            self = .model(errorModel: model)
-            return
-        }
-        if let string = try? decoder.singleValueContainer().decode(String.self) {
-            self = .string(errorString: string)
-            return
-        }
-        if let stringArray = try? decoder.singleValueContainer().decode([String].self) {
-            self = .stringArray(errorStringArray: stringArray)
-            return
-        }
-        throw GeneralError.missingValue
+public init(from decoder: Decoder) throws {
+    if let model = try? decoder.singleValueContainer().decode(FTErrorModel.self) {
+        self = .model(errorModel: model)
+        return
     }
+    if let modelArray = try? decoder.singleValueContainer().decode([FTErrorModel].self) {
+        self = .models(errorModels: modelArray)
+        return
+    }
+    if let string = try? decoder.singleValueContainer().decode(String.self) {
+        self = .string(errorString: string)
+        return
+    }
+    if let stringArray = try? decoder.singleValueContainer().decode([String].self) {
+        self = .stringArray(errorStringArray: stringArray)
+        return
+    }
+    throw GeneralError.missingValue
+}
 }
